@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agustín Cabral - CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            font-size: 12px;
+            line-height: 1.4;
+            color: #333;
+            background: white;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20mm;
+        }
+
+        @media print {
+            body {
+                padding: 15mm;
+                font-size: 11px;
+            }
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .header .title {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .contact {
+            font-size: 11px;
+            color: #666;
+        }
+
+        .contact a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            font-size: 16px;
+            font-weight: bold;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .summary {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .impact-card {
+            border: 1px solid #ddd;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .impact-card h3 {
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .impact-card p {
+            font-size: 11px;
+            color: #666;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .skill-card h3 {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .skill-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .skill-card li {
+            font-size: 11px;
+            margin-bottom: 3px;
+            padding-left: 10px;
+            position: relative;
+        }
+
+        .skill-card li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+        }
+
+        .timeline-item {
+            margin-bottom: 15px;
+            border-left: 3px solid #333;
+            padding-left: 10px;
+        }
+
+        .timeline-date {
+            font-size: 11px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        .timeline-item h3 {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .timeline-item p {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-item li {
+            font-size: 11px;
+            margin-bottom: 3px;
+            padding-left: 10px;
+            position: relative;
+        }
+
+        .timeline-item li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .project-card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .project-card h3 {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .project-card p {
+            font-size: 11px;
+            margin-bottom: 5px;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .education-card {
+            border: 1px solid #ddd;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .education-card h3 {
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .education-card p {
+            font-size: 11px;
+            color: #666;
+        }
+
+        .contact-info p {
+            font-size: 11px;
+            margin-bottom: 5px;
+        }
+
+        .contact-info a {
+            color: #333;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Agustín Cabral</h1>
+        <div class="title">Analista de Datos & QA Tester</div>
+        <div class="contact">
+            Buenos Aires, Argentina | agustinkbral2013@gmail.com | +54 11 2397-1679<br>
+            linkedin.com/in/agustincabral13 | github.com/agustiininicabral
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Resumen Profesional</h2>
+        <p class="summary">
+            Analista de datos con enfoque en Data Quality, Business Intelligence y Testing. Experiencia en análisis, validación y transformación de datos mediante SQL, Power BI, Excel y Python. Perfil híbrido con capacidad para detectar inconsistencias, optimizar procesos, validar APIs RESTful y generar insights accionables. Conocimientos técnicos en integración de sistemas y manejo de flujos de información, orientado a roles data-driven con capacidad de entender arquitecturas backend.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Áreas de Impacto</h2>
+        <div class="impact-grid">
+            <div class="impact-card">
+                <h3>Data Quality</h3>
+                <p>Validación, limpieza y control de integridad de datos</p>
+            </div>
+            <div class="impact-card">
+                <h3>Data Analysis</h3>
+                <p>Exploración de datos y generación de insights accionables</p>
+            </div>
+            <div class="impact-card">
+                <h3>API Validation</h3>
+                <p>Testing de endpoints REST y control de flujos de datos</p>
+            </div>
+            <div class="impact-card">
+                <h3>Process Optimization</h3>
+                <p>Mejora de procesos operativos basada en análisis de datos</p>
+            </div>
+            <div class="impact-card">
+                <h3>Reporting & BI</h3>
+                <p>Creación de dashboards interactivos en Power BI</p>
+            </div>
+            <div class="impact-card">
+                <h3>Backend & Data Flow</h3>
+                <p>Comprensión de integraciones y flujos de datos complejos</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Habilidades Técnicas</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Data</h3>
+                <ul>
+                    <li>SQL: JOIN, agregaciones, filtros, subqueries</li>
+                    <li>Power BI: modelado, KPIs, dashboards, DAX</li>
+                    <li>Excel: tablas dinámicas, limpieza, reporting</li>
+                    <li>Power Query: ETL y normalización de datos</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>QA</h3>
+                <ul>
+                    <li>Testing manual, triage, reporte de bugs</li>
+                    <li>API Testing con Postman y validación JSON</li>
+                    <li>Casos de prueba, regresión y seguimiento</li>
+                    <li>Auditoría de integridad y control de datos</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Stack Tecnológico</h3>
+                <ul>
+                    <li>SQL, Power BI, Excel</li>
+                    <li>Python (pandas), Power Query</li>
+                    <li>Postman, Jira, Confluence</li>
+                    <li>Git, GitHub, C# (automatización)</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Backend/APIs</h3>
+                <ul>
+                    <li>REST APIs: consumo e integración de endpoints</li>
+                    <li>Testing de APIs con Postman y validación de contratos</li>
+                    <li>Manejo de JSON y estructuras de datos</li>
+                    <li>Automatización backend en Python y C#</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Experiencia Laboral</h2>
+        <div class="timeline-item">
+            <div class="timeline-date">Sep 2024 - Mar 2026</div>
+            <h3>Farmafe</h3>
+            <p>Administrativo / Data Quality</p>
+            <ul>
+                <li>Validación de calidad de datos operativos de múltiples fuentes</li>
+                <li>Detección de inconsistencias y mejoras en precisión de registros</li>
+                <li>Generación de reportes para decisiones operativas</li>
+                <li>Documentación de procesos y trazabilidad</li>
+            </ul>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-date">Abr 2022 - Nov 2023</div>
+            <h3>COTO</h3>
+            <p>Auxiliar Administrativo</p>
+            <ul>
+                <li>Gestión y validación de datos en e-commerce</li>
+                <li>Control de stock, facturación y resolución de incidencias</li>
+            </ul>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-date">May 2021 - Feb 2022</div>
+            <h3>Ravio</h3>
+            <p>Coordinador de Pagos</p>
+            <ul>
+                <li>Conciliación y validación de datos financieros</li>
+                <li>Control de operaciones y registros</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Proyectos Destacados</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Dashboard de Ventas – Power BI</h3>
+                <p><strong>Problema:</strong> visibilidad limitada de categoría/sucursal.</p>
+                <p><strong>Herramientas:</strong> Power BI, SQL, Excel</p>
+                <p><strong>Resultado:</strong> +20% de precisión en pedidos y monitoreo de KPIs en tiempo real.</p>
+            </div>
+            <div class="project-card">
+                <h3>Análisis de Datos con SQL</h3>
+                <p><strong>Problema:</strong> datos inconsistentes en reportes de venta.</p>
+                <p><strong>Herramientas:</strong> SQL, Python (pandas), Power Query</p>
+                <p><strong>Resultado:</strong> detección de error de 25% en dataset y recomendaciones de limpieza.</p>
+            </div>
+            <div class="project-card">
+                <h3>API Testing & Data Validation</h3>
+                <p><strong>Problema:</strong> tráfico de API sin pruebas de respuesta estándar.</p>
+                <p><strong>Herramientas:</strong> Postman, JSON schema</p>
+                <p><strong>Resultado:</strong> reducción de 15% en fallas de integración y mayor confiabilidad.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Educación</h2>
+        <div class="education-grid">
+            <div class="education-card">
+                <h3>Coderhouse - Data Analytics (2025)</h3>
+                <p>SQL, Power BI, ETL, análisis de datos</p>
+            </div>
+            <div class="education-card">
+                <h3>Coderhouse - QA Testing (2025–2026)</h3>
+                <p>Testing manual, Postman, gestión de bugs</p>
+            </div>
+            <div class="education-card">
+                <h3>Coderhouse - SQL (2026)</h3>
+                <p>Consultas avanzadas, optimización y calidad de datos</p>
+            </div>
+            <div class="education-card">
+                <h3>Coderhouse - Python (2026, en curso)</h3>
+                <p>Automatización de procesos, pandas, manipulación de datos</p>
+            </div>
+            <div class="education-card">
+                <h3>ITBA - Ingeniería en Petróleo (2021–2024, incompleto)</h3>
+                <p>Formación analítica y técnica</p>
+            </div>
+            <div class="education-card">
+                <h3>UTN - Análisis de Sistemas (2017–2019, incompleto)</h3>
+                <p>Fundamentos de sistemas, bases de datos y lógica</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Contacto</h2>
+        <div class="contact-info">
+            <p><strong>Ubicación:</strong> Buenos Aires, Argentina</p>
+            <p><strong>Email:</strong> <a href="mailto:agustinkbral2013@gmail.com">agustinkbral2013@gmail.com</a></p>
+            <p><strong>Teléfono:</strong> <a href="https://wa.me/541123971679">+54 11 2397-1679</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/agustincabral13">linkedin.com/in/agustincabral13</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/agustiininicabral">github.com/agustiininicabral</a></p>
+        </div>
+    </div>
+
+</body>
+</html>
