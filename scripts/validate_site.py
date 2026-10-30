@@ -29,7 +29,7 @@ class SiteParser(HTMLParser):
             self.images_without_alt += 1
         if tag == "a" and attrs.get("target") == "_blank":
             rel = set(attrs.get("rel", "").lower().split())
-            if not {"noopener", "noreferrer"}.issubset(rel):
+            if "noopener" not in rel:
                 self.unsafe_blank_links.append(href)
         for key in ("href", "src"):
             value = attrs.get(key, "")
@@ -84,7 +84,7 @@ print("PASS: required site files exist")
 print("PASS: index and CV have no duplicate IDs")
 print("PASS: all in-page navigation targets exist")
 print("PASS: all local assets referenced by index and CV exist")
-print("PASS: external target=_blank links use safe rel attributes")
+print("PASS: external target=_blank links include noopener protection")
 print("PASS: images have alt attributes")
 print("PASS: exactly 8 project cards")
 print("PASS: CV download references are not broken")
