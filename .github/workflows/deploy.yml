@@ -1,0 +1,50 @@
+name: Validate and deploy portfolio
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "index.html"
+      - "style.css"
+      - "script.js"
+      - "cv.html"
+      - "wrangler.jsonc"
+      - "scripts/**"
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-production
+  cancel-in-progress: true
+
+jobs:
+  validate-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Validate site structure
+        run: python3 scripts/validate_site.py
+
+      - name: Validate JavaScript syntax
+        run: node --check script.js
+
+      - name: Prepare static assets
+        run: |
+          mkdir -p dist
+          cp index.html style.css script.js cv.html dist/
+
+      - name: Deploy to Cloudflare Workers
+        run: npx --yes wrangler@4 deploy --config wrangler.jsonc
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
