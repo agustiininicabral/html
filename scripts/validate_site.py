@@ -67,7 +67,7 @@ for filename, parser in parsers.items():
     if missing_assets:
         fail(f"{filename} has missing local assets: {', '.join(missing_assets)}")
     if parser.unsafe_blank_links:
-        fail(f"{filename} has target=_blank links without noopener+noreferrer: {parser.unsafe_blank_links}")
+        fail(f"{filename} has target=_blank links without noopener: {parser.unsafe_blank_links}")
     if parser.images_without_alt:
         fail(f"{filename} has {parser.images_without_alt} images without alt text")
 
@@ -75,7 +75,7 @@ if parsers["index.html"].project_cards != 8:
     fail(f"expected 8 project cards, found {parsers['index.html'].project_cards}")
 
 js = (ROOT / "script.js").read_text(encoding="utf-8")
-if re.search(r"CV_Agustin_Cabral_(ES|EN)\\.pdf", js):
+if re.search(r"CV_Agustin_Cabral_(ES|EN)\.pdf", js):
     fail("JavaScript still references missing CV PDF files")
 if "if (!['es', 'en'].includes(lang)) return;" not in js:
     fail("language selection must reject unsupported language values")
