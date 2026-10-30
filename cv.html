@@ -22,11 +22,30 @@
             padding: 20mm;
         }
 
+        .print-actions {
+            max-width: 210mm;
+            margin: 0 auto 12px;
+            text-align: right;
+        }
+        .print-actions button {
+            border: 0; border-radius: 6px; background: #0d1b2e; color: #fff;
+            padding: 10px 16px; font: inherit; font-weight: 600; cursor: pointer;
+        }
+        .print-actions button:hover { background: #2563eb; }
+        .print-actions button:focus-visible { outline: 3px solid #38bdf8; outline-offset: 3px; }
+        @page { size: A4; margin: 12mm; }
         @media print {
-            body {
-                padding: 15mm;
-                font-size: 11px;
+            body { max-width: none; padding: 0; font-size: 10.5px; }
+            .section, .impact-card, .skill-card, .timeline-item, .project-card, .education-card {
+                break-inside: avoid; page-break-inside: avoid;
             }
+            a { color: #222; text-decoration: none; }
+            .print-actions { display: none; }
+        }
+        @media screen and (max-width: 700px) {
+            body { padding: 16px; }
+            .impact-grid, .skills-grid, .education-grid { grid-template-columns: 1fr; }
+            .contact { overflow-wrap: anywhere; }
         }
 
         .header {
@@ -230,6 +249,10 @@
     </style>
 </head>
 <body>
+
+    <div class="print-actions">
+        <button type="button" onclick="window.print()" aria-label="Imprimir o guardar el CV como PDF">Imprimir / Guardar PDF</button>
+    </div>
 
     <div class="header">
         <h1>Agustín Cabral</h1>
