@@ -74,6 +74,19 @@ for filename, parser in parsers.items():
 if parsers["index.html"].project_cards != 8:
     fail(f"expected 8 project cards, found {parsers['index.html'].project_cards}")
 
+# Keep the public profile and printable CV aligned on verified training history.
+index_html = (ROOT / "index.html").read_text(encoding="utf-8")
+cv_html = (ROOT / "cv.html").read_text(encoding="utf-8")
+required_training = (
+    "Data Analytics (Oct–Dic 2025)",
+    "QA Manual Testing (Nov 2025–Feb 2026)",
+    "Power BI (Jul 2026)",
+    "Python MTA (Sep 2026)",
+)
+for item in required_training:
+    if item not in index_html or item not in cv_html:
+        fail(f"training history is missing or inconsistent between portfolio and CV: {item}")
+
 js = (ROOT / "script.js").read_text(encoding="utf-8")
 if re.search(r"CV_Agustin_Cabral_(ES|EN)\.pdf", js):
     fail("JavaScript still references missing CV PDF files")
@@ -87,5 +100,6 @@ print("PASS: all local assets referenced by index and CV exist")
 print("PASS: external target=_blank links include noopener protection")
 print("PASS: images have alt attributes")
 print("PASS: exactly 8 project cards")
+print("PASS: portfolio and CV training history are consistent")
 print("PASS: CV download references are not broken")
 print("PASS: language selection accepts only ES/EN")
