@@ -23,6 +23,7 @@ function translateAll(lang) {
 }
 
 function setLanguage(lang) {
+    if (!['es', 'en'].includes(lang)) return;
     safeSetItem(LANG_KEY, lang);
     document.documentElement.lang = lang;
     translateAll(lang);
@@ -117,7 +118,7 @@ function attachEvents() {
 
 function initialize() {
     const savedLanguage = safeGetItem(LANG_KEY);
-    if (savedLanguage) {
+    if (savedLanguage === 'es' || savedLanguage === 'en') {
         setLanguage(savedLanguage);
     }
 
