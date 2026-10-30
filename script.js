@@ -24,12 +24,13 @@ function translateAll(lang) {
 
 function setLanguage(lang) {
     safeSetItem(LANG_KEY, lang);
+    document.documentElement.lang = lang;
     translateAll(lang);
     document.getElementById('language-screen').classList.add('hidden');
     document.getElementById('main-content').classList.remove('hidden');
 
     document.querySelectorAll('#main-nav a').forEach(a => a.classList.remove('active'));
-    const firstNav = document.querySelector('#main-nav a[href="#about"]');
+    const firstNav = document.querySelector('#main-nav a[href="#overview"]');
     if (firstNav) firstNav.classList.add('active');
 
     // Actualiza los botones fijos de cambio de idioma
@@ -84,18 +85,6 @@ function toggleBackToTop() {
     }
 }
 
-function downloadCv(event) {
-    event.preventDefault();
-    const lang = safeGetItem(LANG_KEY) || 'es';
-    const filename = lang === 'en' ? 'CV_Agustin_Cabral_EN.pdf' : 'CV_Agustin_Cabral_ES.pdf';
-    const link = document.createElement('a');
-    link.href = filename;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
-
 function attachEvents() {
     const langButtons = document.querySelectorAll('[data-lang]');
     langButtons.forEach(btn => {
@@ -105,11 +94,6 @@ function attachEvents() {
     const projectButtons = document.querySelectorAll('#show-projects, #hero-projects');
     projectButtons.forEach(btn => {
         btn.addEventListener('click', () => scrollToSection('projects'));
-    });
-
-    const downloadButtons = document.querySelectorAll('#download-cv-nav, #download-cv-hero');
-    downloadButtons.forEach(el => {
-        el.addEventListener('click', downloadCv);
     });
 
     const navLinks = document.querySelectorAll('#main-nav a');
