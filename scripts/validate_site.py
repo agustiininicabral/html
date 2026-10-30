@@ -4,8 +4,7 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-INDEX = ROOT / "index.html"
-REQUIRED_FILES = ("style.css", "script.js", "cv.html")
+REQUIRED_FILES = ("index.html", "style.css", "script.js", "cv.html")
 
 class SiteParser(HTMLParser):
     def __init__(self):
@@ -14,6 +13,8 @@ class SiteParser(HTMLParser):
         self.anchors = []
         self.project_cards = 0
         self.local_assets = []
+        self.unsafe_blank_links = []
+        self.images_without_alt = 0
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
@@ -24,6 +25,12 @@ class SiteParser(HTMLParser):
             self.anchors.append(href[1:])
         if tag == "article" and "project-card" in attrs.get("class", "").split():
             self.project_cards += 1
+        if tag == "img" and "alt" not in attrs:
+            self.images_without_alt += 1
+        if tag == "a" and attrs.get("target") == "_blank":
+            rel = set(attrs.get("rel", "").lower().split())
+            if not {"noopener", "noreferrer"}.issubset(rel):
+                self.unsafe_blank_links.append(href)
         for key in ("href", "src"):
             value = attrs.get(key, "")
             if value and not value.startswith(("#", "http://", "https://", "mailto:", "tel:", "data:", "javascript:")):
@@ -35,38 +42,50 @@ def fail(message):
     print(f"FAIL: {message}")
     sys.exit(1)
 
-if not INDEX.is_file():
-    fail("index.html is missing")
-
 for filename in REQUIRED_FILES:
     if not (ROOT / filename).is_file():
         fail(f"required file is missing: {filename}")
 
-parser = SiteParser()
-parser.feed(INDEX.read_text(encoding="utf-8"))
+parsers = {}
+for filename in ("index.html", "cv.html"):
+    parser = SiteParser()
+    try:
+        parser.feed((ROOT / filename).read_text(encoding="utf-8"))
+        parser.close()
+    except Exception as exc:
+        fail(f"could not parse {filename}: {exc}")
+    parsers[filename] = parser
 
-duplicates = sorted({item for item in parser.ids if parser.ids.count(item) > 1})
-if duplicates:
-    fail(f"duplicate HTML ids: {', '.join(duplicates)}")
+for filename, parser in parsers.items():
+    duplicates = sorted({item for item in parser.ids if parser.ids.count(item) > 1})
+    if duplicates:
+        fail(f"{filename} has duplicate IDs: {', '.join(duplicates)}")
+    missing_anchors = sorted(set(parser.anchors) - set(parser.ids))
+    if missing_anchors:
+        fail(f"{filename} has missing in-page targets: {', '.join(missing_anchors)}")
+    missing_assets = sorted({p for p in parser.local_assets if not (ROOT / p).is_file()})
+    if missing_assets:
+        fail(f"{filename} has missing local assets: {', '.join(missing_assets)}")
+    if parser.unsafe_blank_links:
+        fail(f"{filename} has target=_blank links without noopener+noreferrer: {parser.unsafe_blank_links}")
+    if parser.images_without_alt:
+        fail(f"{filename} has {parser.images_without_alt} images without alt text")
 
-missing_anchors = sorted(set(parser.anchors) - set(parser.ids))
-if missing_anchors:
-    fail(f"navigation targets do not exist: {', '.join(missing_anchors)}")
-
-if parser.project_cards != 8:
-    fail(f"expected 8 project cards, found {parser.project_cards}")
-
-missing_assets = sorted({p for p in parser.local_assets if not (ROOT / p).is_file()})
-if missing_assets:
-    fail(f"local linked files are missing: {', '.join(missing_assets)}")
+if parsers["index.html"].project_cards != 8:
+    fail(f"expected 8 project cards, found {parsers['index.html'].project_cards}")
 
 js = (ROOT / "script.js").read_text(encoding="utf-8")
-if re.search(r"CV_Agustin_Cabral_(ES|EN)\.pdf", js):
+if re.search(r"CV_Agustin_Cabral_(ES|EN)\\.pdf", js):
     fail("JavaScript still references missing CV PDF files")
+if "if (!['es', 'en'].includes(lang)) return;" not in js:
+    fail("language selection must reject unsupported language values")
 
-print("PASS: required files exist")
-print("PASS: no duplicate IDs")
+print("PASS: required site files exist")
+print("PASS: index and CV have no duplicate IDs")
 print("PASS: all in-page navigation targets exist")
+print("PASS: all local assets referenced by index and CV exist")
+print("PASS: external target=_blank links use safe rel attributes")
+print("PASS: images have alt attributes")
 print("PASS: exactly 8 project cards")
-print("PASS: all local linked assets exist")
-print("PASS: no broken PDF download references")
+print("PASS: CV download references are not broken")
+print("PASS: language selection accepts only ES/EN")
