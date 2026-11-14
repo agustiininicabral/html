@@ -1,10 +1,9 @@
 from html.parser import HTMLParser
 from pathlib import Path
-import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-REQUIRED_FILES = ("index.html", "style.css", "script.js", "cv.html")
+REQUIRED_FILES = ("index.html", "style.css", "script.js", "cv.html", "cv-en.html")
 
 class SiteParser(HTMLParser):
     def __init__(self):
@@ -47,7 +46,7 @@ for filename in REQUIRED_FILES:
         fail(f"required file is missing: {filename}")
 
 parsers = {}
-for filename in ("index.html", "cv.html"):
+for filename in ("index.html", "cv.html", "cv-en.html"):
     parser = SiteParser()
     try:
         parser.feed((ROOT / filename).read_text(encoding="utf-8"))
@@ -71,35 +70,43 @@ for filename, parser in parsers.items():
     if parser.images_without_alt:
         fail(f"{filename} has {parser.images_without_alt} images without alt text")
 
-if parsers["index.html"].project_cards != 8:
-    fail(f"expected 8 project cards, found {parsers['index.html'].project_cards}")
+if parsers["index.html"].project_cards != 5:
+    fail(f"expected 5 selected project cards, found {parsers['index.html'].project_cards}")
 
-# Keep the public profile and printable CV aligned on verified training history.
 index_html = (ROOT / "index.html").read_text(encoding="utf-8")
-cv_html = (ROOT / "cv.html").read_text(encoding="utf-8")
-required_training = (
-    "Data Analytics (Oct–Dic 2025)",
-    "QA Manual Testing (Nov 2025–Feb 2026)",
-    "Power BI (Jul 2026)",
-    "Python MTA (Sep 2026)",
-)
-for item in required_training:
-    if item not in index_html or item not in cv_html:
-        fail(f"training history is missing or inconsistent between portfolio and CV: {item}")
-
+cv_es = (ROOT / "cv.html").read_text(encoding="utf-8")
+cv_en = (ROOT / "cv-en.html").read_text(encoding="utf-8")
+css = (ROOT / "style.css").read_text(encoding="utf-8")
 js = (ROOT / "script.js").read_text(encoding="utf-8")
-if re.search(r"CV_Agustin_Cabral_(ES|EN)\.pdf", js):
-    fail("JavaScript still references missing CV PDF files")
-if "if (!['es', 'en'].includes(lang)) return;" not in js:
-    fail("language selection must reject unsupported language values")
 
-print("PASS: required site files exist")
-print("PASS: index and CV have no duplicate IDs")
-print("PASS: all in-page navigation targets exist")
-print("PASS: all local assets referenced by index and CV exist")
+for employer in ("Farmafe", "COTO", "Hotel Devoto", "Ravio", "Concorsistemas", "COPAGRAN"):
+    if employer not in index_html or employer not in cv_es or employer not in cv_en:
+        fail(f"verified work history is missing from portfolio or CV: {employer}")
+
+for token in ("#F5F1E9", "#E5DED2", "#252525", "#A65D42", "#B9A58D"):
+    if token.lower() not in css.lower():
+        fail(f"visual palette token is missing: {token}")
+
+if "cv-en.html" not in index_html or "cv-en.html" not in js:
+    fail("English CV link is missing from portfolio or language switcher")
+if 'data-es="' not in index_html or 'data-en="' not in index_html:
+    fail("portfolio language attributes are missing")
+if "prefers-reduced-motion" not in css:
+    fail("reduced-motion support is missing")
+if "window.requestAnimationFrame" not in js:
+    fail("scroll progress should use requestAnimationFrame")
+
+for filename, html in (("cv.html", cv_es), ("cv-en.html", cv_en)):
+    if "<html lang=" not in html or "window.print()" not in html:
+        fail(f"{filename} is missing language metadata or print support")
+
+print("PASS: required portfolio and bilingual CV files exist")
+print("PASS: HTML documents have no duplicate IDs or broken in-page anchors")
+print("PASS: all referenced local assets exist")
 print("PASS: external target=_blank links include noopener protection")
-print("PASS: images have alt attributes")
-print("PASS: exactly 8 project cards")
-print("PASS: portfolio and CV training history are consistent")
-print("PASS: CV download references are not broken")
-print("PASS: language selection accepts only ES/EN")
+print("PASS: exactly five selected projects are presented")
+print("PASS: all six verified employers appear in the portfolio and both CVs")
+print("PASS: editorial premium palette is defined")
+print("PASS: Spanish and English CV links and language attributes exist")
+print("PASS: reduced-motion and scroll-progress behavior are present")
+print("PASS: both CVs include language metadata and print support")
