@@ -1,462 +1,52 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es-AR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agustín Cabral - CV | Data Quality, Analytics & QA</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --ink: #172033;
-            --muted: #4b5870;
-            --line: #d3d9e4;
-            --accent: #70263f;
-            --paper: #fbfcfe;
-            --night: #0b1020;
-            --red: #b52c43;
-        }
-
-        html {
-            background: var(--night);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 12px;
-            line-height: 1.5;
-            color: var(--ink);
-            background: var(--paper);
-            max-width: 210mm;
-            margin: 0 auto;
-            padding: 18mm;
-        }
-
-        .print-actions {
-            max-width: 210mm;
-            margin: 0 auto 12px;
-            text-align: right;
-        }
-        .print-actions button {
-            border: 0; border-radius: 999px; background: var(--red); color: #fff;
-            padding: 10px 16px; font: inherit; font-weight: 600; cursor: pointer;
-        }
-        .print-actions button:hover { background: var(--accent); }
-        .print-actions button:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
-        @page { size: A4; margin: 12mm; }
-        @media print {
-            html, body { background: #fff; }
-            body { max-width: none; padding: 0; font-size: 10.5px; }
-            .section, .impact-card, .skill-card, .timeline-item, .project-card, .education-card {
-                break-inside: avoid; page-break-inside: avoid;
-            }
-            a { color: var(--ink); text-decoration: none; }
-            .print-actions { display: none; }
-        }
-        @media screen and (max-width: 700px) {
-            body { padding: 24px 16px; }
-            .impact-grid, .skills-grid, .education-grid { grid-template-columns: 1fr; }
-            .contact { overflow-wrap: anywhere; }
-        }
-
-        .header {
-            text-align: left;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 16px;
-            margin-bottom: 22px;
-        }
-
-        .header h1 {
-            font: 400 30px/1.1 'DM Serif Display', Georgia, serif;
-            letter-spacing: -0.04em;
-            margin-bottom: 6px;
-        }
-
-        .header .title {
-            font-size: 12px;
-            color: var(--accent);
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .contact {
-            font-size: 9.5px;
-            color: var(--muted);
-        }
-
-        .contact a {
-            color: var(--ink);
-            text-decoration: none;
-        }
-
-        .section {
-            margin-bottom: 20px;
-        }
-
-        .section h2 {
-            font: 500 11px/1.4 'IBM Plex Mono', monospace;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            border-bottom: 1px solid var(--line);
-            padding-bottom: 6px;
-            margin-bottom: 11px;
-            color: var(--accent);
-        }
-
-        .summary {
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-
-        .impact-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .impact-card {
-            border: 1px solid var(--line);
-            border-left: 2px solid var(--accent);
-            padding: 8px;
-            border-radius: 3px;
-        }
-
-        .impact-card h3 {
-            font-size: 13px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .impact-card p {
-            font-size: 11px;
-            color: var(--muted);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-
-        .skill-card h3 {
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .skill-card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .skill-card li {
-            font-size: 11px;
-            margin-bottom: 3px;
-            padding-left: 10px;
-            position: relative;
-        }
-
-        .skill-card li:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-        }
-
-        .timeline-item {
-            margin-bottom: 15px;
-            border-left: 2px solid var(--accent);
-            padding-left: 12px;
-        }
-
-        .timeline-date {
-            font-size: 11px;
-            color: var(--accent);
-            font-weight: bold;
-        }
-
-        .timeline-item h3 {
-            font-size: 14px;
-            font-weight: bold;
-            margin: 5px 0;
-        }
-
-        .timeline-item p {
-            font-size: 12px;
-            color: var(--accent);
-            margin-bottom: 8px;
-        }
-
-        .timeline-item ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .timeline-item li {
-            font-size: 11px;
-            margin-bottom: 3px;
-            padding-left: 10px;
-            position: relative;
-        }
-
-        .timeline-item li:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
-
-        .project-card {
-            border: 1px solid var(--line);
-            padding: 10px;
-            border-radius: 3px;
-        }
-
-        .project-card h3 {
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .project-card p {
-            font-size: 11px;
-            margin-bottom: 5px;
-        }
-
-        .project-card a {
-            color: var(--accent);
-        }
-
-        .education-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        .education-card {
-            border: 1px solid var(--line);
-            border-left: 2px solid var(--accent);
-            padding: 8px;
-            border-radius: 3px;
-        }
-
-        .education-card h3 {
-            font-size: 13px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .education-card p {
-            font-size: 11px;
-            color: var(--muted);
-        }
-
-        .contact-info p {
-            font-size: 11px;
-            margin-bottom: 5px;
-        }
-
-        .contact-info a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-    </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="CV de Agustín Cabral — QA Automation, Data Analytics y tecnología.">
+<title>Agustín Cabral — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#fff;--ink:#252525;--muted:#625d55;--accent:#A65D42;--line:#d9d0c4;--sand:#E5DED2}*{box-sizing:border-box}html{background:#e9e3d9}body{max-width:210mm;min-height:297mm;margin:24px auto;padding:17mm 18mm;background:var(--paper);color:var(--ink);font:10pt/1.45 "DM Sans",Arial,sans-serif}.actions{max-width:210mm;margin:0 auto 12px;text-align:right}.actions a,.actions button{display:inline-block;margin-left:8px;padding:9px 14px;border:1px solid var(--ink);border-radius:999px;background:white;color:var(--ink);font:600 12px "DM Sans",sans-serif;text-decoration:none;cursor:pointer}.actions button{background:var(--accent);border-color:var(--accent);color:#fff}.header{padding-bottom:14px;border-bottom:2px solid var(--accent)}h1{margin:0;font:400 32pt/1.05 "DM Serif Display",Georgia,serif;letter-spacing:-.04em}.headline{margin:7px 0 8px;color:var(--accent);font:500 9pt "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase}.contact{color:var(--muted);font-size:8.5pt}.contact a{color:inherit;text-decoration:none}.section{margin-top:17px;break-inside:avoid}.section h2{margin:0 0 8px;padding-bottom:5px;border-bottom:1px solid var(--line);color:var(--accent);font:500 9pt "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}.summary{margin:0;color:#49443e}.skills{display:grid;grid-template-columns:1fr 1fr;gap:5px 22px}.skill-line{margin:0}.skill-line strong{color:var(--ink)}.job{display:grid;grid-template-columns:112px 1fr;gap:12px;margin:10px 0;break-inside:avoid}.date{padding-top:2px;color:var(--accent);font:500 8pt "IBM Plex Mono",monospace}.job h3,.project h3{display:inline;margin:0;font-size:10pt}.job .meta{margin:1px 0 3px;color:var(--muted);font-size:8.5pt}.job ul{margin:3px 0 0;padding-left:15px;color:#49443e}.job li{margin:2px 0}.project{margin:8px 0;break-inside:avoid}.project p{margin:2px 0;color:#49443e}.project a{color:var(--accent);text-decoration:none}.edu{margin:6px 0}.edu strong{display:block}.edu span{color:var(--muted)}.courses{display:grid;grid-template-columns:1fr 1fr;gap:10px 22px}.courses h3{margin:0 0 4px;color:var(--accent);font:500 8pt "IBM Plex Mono",monospace;text-transform:uppercase}.courses ul{margin:0;padding-left:14px;color:#49443e}.courses li{margin:2px 0}.note{margin-top:9px;color:var(--muted);font-size:8pt}.footer{margin-top:15px;padding-top:7px;border-top:1px solid var(--line);color:var(--muted);font:7pt "IBM Plex Mono",monospace}
+@page{size:A4;margin:12mm}@media print{html{background:white}body{max-width:none;min-height:0;margin:0;padding:0}.actions{display:none}a{color:inherit!important;text-decoration:none!important}.section,.job,.project,.edu{break-inside:avoid}body{font-size:9.2pt}.section{margin-top:13px}}
+@media(max-width:700px){body{margin:0;padding:24px 18px}.job{grid-template-columns:1fr;gap:2px}.skills,.courses{grid-template-columns:1fr}h1{font-size:27pt}}
+</style>
 </head>
 <body>
-
-    <div class="print-actions">
-        <button type="button" onclick="window.print()" aria-label="Imprimir o guardar el CV como PDF">Imprimir / Guardar PDF</button>
-    </div>
-
-    <div class="header">
-        <h1>Agustín Cabral</h1>
-        <div class="title">Analista de Datos | Data Quality & QA</div>
-        <div class="contact">
-            Buenos Aires, Argentina | agustinkbral2013@gmail.com | +54 11 2397-1679<br>
-            linkedin.com/in/agustincabral13 | github.com/agustiininicabral
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Resumen Profesional</h2>
-        <p class="summary">
-            Analista de datos con experiencia en tareas administrativas, validación de datos operativos y control de calidad en Farmafe. Mi recorrido en operaciones también incluye gestión de e-commerce y conciliación de pagos. Complemento esa experiencia con formación y proyectos propios en SQL, Power BI, Excel y Python, además de pruebas de APIs y automatización. Me enfoco en entender la fuente y el uso de los datos, identificar inconsistencias y documentar controles y hallazgos con claridad.
-        </p>
-    </div>
-
-    <div class="section">
-        <h2>Cómo aporto</h2>
-        <div class="impact-grid">
-            <div class="impact-card">
-                <h3>Calidad y trazabilidad</h3>
-                <p>Controles sobre datos operativos y documentación de validaciones y fuentes</p>
-            </div>
-            <div class="impact-card">
-                <h3>Análisis y reporting</h3>
-                <p>Exploración y reportes en SQL, Power BI y Excel con contexto operativo</p>
-            </div>
-            <div class="impact-card">
-                <h3>QA e integración</h3>
-                <p>Validación de APIs REST, datos JSON y casos de prueba</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Habilidades Técnicas</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <h3>Analítica & BI</h3>
-                <ul>
-                    <li>SQL: JOIN, agregaciones, filtros, subqueries</li>
-                    <li>Power BI: modelado, KPIs, dashboards, DAX</li>
-                    <li>Excel: tablas dinámicas, limpieza, reporting</li>
-                    <li>Power Query: ETL y normalización de datos</li>
-                </ul>
-            </div>
-            <div class="skill-card">
-                <h3>Calidad & QA</h3>
-                <ul>
-                    <li>Testing manual, triage, reporte de bugs</li>
-                    <li>API Testing con Postman y validación JSON</li>
-                    <li>Casos de prueba, regresión y seguimiento</li>
-                    <li>Auditoría de integridad y control de datos</li>
-                </ul>
-            </div>
-            <div class="skill-card">
-                <h3>Automatización & stack</h3>
-                <ul>
-                    <li>SQL, Power BI, Excel</li>
-                    <li>Python (pandas), Power Query</li>
-                    <li>Postman, Jira, Confluence</li>
-                    <li>Git, GitHub, C# (automatización)</li>
-                </ul>
-            </div>
-            <div class="skill-card">
-                <h3>Integración & APIs</h3>
-                <ul>
-                    <li>REST APIs: consumo e integración de endpoints</li>
-                    <li>Testing de APIs con Postman y validación de contratos</li>
-                    <li>Manejo de JSON y estructuras de datos</li>
-                    <li>Automatización backend en Python y C#</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Experiencia Laboral</h2>
-        <div class="timeline-item">
-            <div class="timeline-date">Sep 2024 - Mar 2026</div>
-            <h3>Farmafe</h3>
-            <p>Administrativo / Data Quality</p>
-            <ul>
-                <li>Validación de calidad de datos operativos de múltiples fuentes</li>
-                <li>Detección de inconsistencias y mejoras en precisión de registros</li>
-                <li>Generación de reportes para decisiones operativas</li>
-                <li>Documentación de procesos y trazabilidad</li>
-            </ul>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-date">Abr 2022 - Nov 2023</div>
-            <h3>COTO</h3>
-            <p>Auxiliar Administrativo</p>
-            <ul>
-                <li>Gestión y validación de datos en e-commerce</li>
-                <li>Control de stock, facturación y resolución de incidencias</li>
-            </ul>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-date">May 2021 - Feb 2022</div>
-            <h3>Ravio</h3>
-            <p>Coordinador de Pagos</p>
-            <ul>
-                <li>Conciliación y validación de datos financieros</li>
-                <li>Control de operaciones y registros</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Proyectos Destacados</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <h3>Python Data Processing</h3>
-                <p>Pipeline reproducible para limpiar y validar datos CSV, separar registros rechazados y generar KPIs y agregaciones mensuales.</p>
-                <p><strong>Herramientas:</strong> Python, pandas, NumPy</p>
-                <p><a href="https://github.com/agustiininicabral/python-data-processing">github.com/agustiininicabral/python-data-processing</a></p>
-            </div>
-            <div class="project-card">
-                <h3>SQL Advanced Analytics</h3>
-                <p>Consultas analíticas para explorar datos, construir métricas y responder preguntas de negocio mediante SQL.</p>
-                <p><strong>Herramientas:</strong> SQL</p>
-                <p><a href="https://github.com/agustiininicabral/sql-advanced-analytics">github.com/agustiininicabral/sql-advanced-analytics</a></p>
-            </div>
-            <div class="project-card">
-                <h3>Performance & Load Testing</h3>
-                <p>Pruebas de carga con Locust y Apache JMeter sobre una API FastAPI local, con métricas de latencia, throughput y errores.</p>
-                <p><strong>Herramientas:</strong> Python, Locust, Apache JMeter, FastAPI</p>
-                <p><a href="https://github.com/agustiininicabral/performance-load-testing">github.com/agustiininicabral/performance-load-testing</a></p>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Educación</h2>
-        <div class="education-grid">
-            <div class="education-card">
-                <h3>Data Analytics (Oct–Dic 2025)</h3>
-                <p>SQL, Power BI, ETL, análisis de datos</p>
-            </div>
-            <div class="education-card">
-                <h3>QA Manual Testing (Nov 2025–Feb 2026)</h3>
-                <p>Testing manual, Postman, gestión de bugs</p>
-            </div>
-            <div class="education-card">
-                <h3>Power BI (Jul 2026)</h3>
-                <p>Consultas avanzadas, optimización y calidad de datos</p>
-            </div>
-            <div class="education-card">
-                <h3>Python MTA (Sep 2026)</h3>
-                <p>Automatización de procesos, pandas, manipulación de datos</p>
-            </div>
-            <div class="education-card">
-                <h3>ITBA - Ingeniería en Petróleo (2021–2024, incompleto)</h3>
-                <p>Formación analítica y técnica</p>
-            </div>
-            <div class="education-card">
-                <h3>UTN - Análisis de Sistemas (2017–2019, incompleto)</h3>
-                <p>Fundamentos de sistemas, bases de datos y lógica</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Contacto</h2>
-        <div class="contact-info">
-            <p><strong>Ubicación:</strong> Buenos Aires, Argentina</p>
-            <p><strong>Email:</strong> <a href="mailto:agustinkbral2013@gmail.com">agustinkbral2013@gmail.com</a></p>
-            <p><strong>Teléfono:</strong> <a href="https://wa.me/541123971679">+54 11 2397-1679</a></p>
-            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/agustincabral13">linkedin.com/in/agustincabral13</a></p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/agustiininicabral">github.com/agustiininicabral</a></p>
-        </div>
-    </div>
-
-</body>
-</html>
+<div class="actions"><a href="cv-en.html">English CV</a><button type="button" onclick="window.print()">Imprimir / Guardar PDF</button></div>
+<header class="header"><h1>Agustín Cabral</h1><p class="headline">QA Automation · Data Analytics · Software & Automation</p><p class="contact">Buenos Aires, Argentina · <a href="mailto:agustinkbral2013@gmail.com">agustinkbral2013@gmail.com</a> · +54 11 2397-1679<br><a href="https://www.linkedin.com/in/agustincabral13/">linkedin.com/in/agustincabral13</a> · <a href="https://github.com/agustiininicabral">github.com/agustiininicabral</a> · <a href="https://portfolio-agustin.agustinkbral2013.workers.dev/">Portfolio</a></p></header>
+<section class="section"><h2>Perfil profesional</h2><p class="summary">Perfil con experiencia en administración, operaciones, atención y soporte, complementada con formación en análisis de sistemas, datos, QA y gestión de proyectos. Desarrollo proyectos prácticos con Python, SQL, Playwright, pytest, APIs y herramientas de automatización. Me enfoco en comprender procesos, validar información, documentar hallazgos y construir soluciones comprobables.</p></section>
+<section class="section"><h2>Competencias técnicas</h2><div class="skills">
+<p class="skill-line"><strong>Data & BI:</strong> SQL, Python, Power BI, Excel, Power Query, MySQL, SQL Server, pandas.</p>
+<p class="skill-line"><strong>QA & Testing:</strong> Playwright, pytest, Postman, API Testing, testing manual, regresión.</p>
+<p class="skill-line"><strong>Desarrollo:</strong> Python, JavaScript, React, FastAPI, Node.js, Tauri, C#, HTML, CSS.</p>
+<p class="skill-line"><strong>Automatización:</strong> n8n, REST APIs, JSON, Webhooks, ETL, GitHub Actions.</p>
+<p class="skill-line"><strong>Gestión:</strong> Agile, Scrum, Kanban, Design Thinking, planificación y documentación.</p>
+</div></section>
+<section class="section"><h2>Experiencia laboral</h2>
+<div class="job"><div class="date">Sep 2024 — Abr 2025</div><div><h3>Farmafe</h3><p class="meta">Administrativo · Relación laboral</p><ul><li>Soporte administrativo y tareas de facturación.</li><li>Carga y control de facturas en el sistema; colaboración en tareas contables utilizando SAS.</li><li>Revisión de documentación y seguimiento de inconsistencias operativas.</li></ul></div></div>
+<div class="job"><div class="date">Abr 2022 — Nov 2023</div><div><h3>COTO</h3><p class="meta">Auxiliar administrativo · Relación laboral</p><ul><li>Gestión administrativa de facturación y devoluciones.</li><li>Manejo de documentación y trámites vinculados con ARCA.</li><li>Elaboración de reportes y seguimiento de incidencias.</li></ul></div></div>
+<div class="job"><div class="date">Dic 2021 — Abr 2022</div><div><h3>Hotel Devoto</h3><p class="meta">Recepción y administración · Relación laboral</p><ul><li>Atención y recepción de huéspedes.</li><li>Tareas administrativas y coordinación de información operativa.</li></ul></div></div>
+<div class="job"><div class="date">Ene 2021 — Ago 2021</div><div><h3>Ravio</h3><p class="meta">Soporte y operaciones con ERP · Parcial / híbrido</p><ul><li>Soporte operativo y asistencia en el uso de herramientas ERP.</li><li>Seguimiento de procesos y resolución de incidencias.</li></ul></div></div>
+<div class="job"><div class="date">Mar 2018 — Nov 2019</div><div><h3>Concorsistemas</h3><p class="meta">E-commerce, desarrollo y soporte técnico · Autónomo</p><ul><li>Trabajo independiente vinculado con e-commerce y soluciones digitales.</li><li>Desarrollo y soporte técnico de herramientas y procesos.</li></ul></div></div>
+<div class="job"><div class="date">Ene 2017 — Feb 2018</div><div><h3>COPAGRAN</h3><p class="meta">Auxiliar administrativo ganadero · Relación laboral</p><ul><li>Apoyo administrativo en operaciones vinculadas con actividad ganadera.</li><li>Registro, organización y control de documentación.</li></ul></div></div>
+</section>
+<section class="section"><h2>Proyectos seleccionados</h2>
+<div class="project"><h3>API Testing Framework</h3><p>Framework REST con Python, pytest y requests; escenarios positivos/negativos, validación de contratos, errores de conexión y timeouts. <a href="https://github.com/agustiininicabral/api-testing-framework">Repositorio</a>.</p></div>
+<div class="project"><h3>Playwright UI Testing</h3><p>Pruebas de interfaz de login, escenarios locales e integración, reportes HTML, capturas y GitHub Actions. <a href="https://github.com/agustiininicabral/playwright-ui-testing">Repositorio</a>.</p></div>
+<div class="project"><h3>PriceWatch</h3><p>Aplicación local para catálogo, observaciones manuales, comparación y alertas; integraciones reales con tiendas pendientes. <a href="https://github.com/agustiininicabral/pricewatch">Repositorio</a>.</p></div>
+<div class="project"><h3>Automatic-OC</h3><p>Agente de escritorio local en desarrollo con Tauri, React y FastAPI.</p></div>
+<div class="project"><h3>n8n Automation Portfolio</h3><p>Ocho workflows educativos con validaciones automatizadas; importación y ejecución real pendientes de verificar. <a href="https://github.com/agustiininicabral/n8n-automation-portfolio">Repositorio</a>.</p></div>
+</section>
+<section class="section"><h2>Formación académica</h2>
+<div class="edu"><strong>ITBA — Ingeniería en Petróleo</strong><span>Mar 2021 — Ago 2024 · Estudios universitarios incompletos.</span></div>
+<div class="edu"><strong>UTN — Análisis de Sistemas</strong><span>Feb 2017 — Mar 2019 · Formación universitaria parcial.</span></div>
+</section>
+<section class="section"><h2>Cursos y certificaciones</h2><div class="courses">
+<div><h3>Gestión de proyectos</h3><ul><li>IBM — Project Management Fundamentals (nov. 2026).</li><li>Academia 3E — Metodologías ágiles, 20 h: Scrum, Kanban y Design Thinking (nov. 2026).</li><li>Santander — Gestión efectiva de proyectos y equipos (2026).</li></ul></div>
+<div><h3>Datos y BI</h3><ul><li>Coderhouse — Data Analytics (dic. 2025).</li><li>Santander — Python (oct. 2026).</li><li>Santander — Power BI Intermedio: Análisis y Modelado de Datos (sept. 2026).</li><li>LinkedIn Learning — Consultas SQL, Power Query (PL-300), SQL Server 2019 esencial, SAP ERP, SQL en Microsoft Fabric y Azure SQL (dic. 2025).</li><li>Santander — Excel y herramientas para internacionalizar pymes (2026).</li></ul></div>
+<div><h3>QA & Testing</h3><ul><li>Coderhouse — Testing QA Manual (mar. 2026).</li></ul></div>
+<div><h3>Otras formaciones</h3><ul><li>Santander — Negociación (2026).</li></ul></div>
+</div><p class="note">Los estudios universitarios se presentan como formación parcial, no como títulos obtenidos. Los cursos se enumeran como formación realizada; su inclusión no implica vigencia indefinida de una credencial.</p></section>
+<footer class="footer">Agustín Cabral · CV profesional · Buenos Aires, Argentina</footer>
+</body></html>
