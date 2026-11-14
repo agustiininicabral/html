@@ -27,8 +27,6 @@ function setLanguage(lang) {
     safeSetItem(LANG_KEY, lang);
     document.documentElement.lang = lang;
     translateAll(lang);
-    document.getElementById('language-screen').classList.add('hidden');
-    document.getElementById('main-content').classList.remove('hidden');
 
     document.querySelectorAll('#main-nav a').forEach(a => a.classList.remove('active'));
     const firstNav = document.querySelector('#main-nav a[href="#overview"]');
@@ -39,26 +37,41 @@ function setLanguage(lang) {
         btn.classList.toggle('active', btn.dataset.lang === lang);
     });
 
-    document.body.classList.add('loaded');
-}
+    const languageSwitcher = document.querySelector('.language-switcher');
+    if (languageSwitcher) {
+        languageSwitcher.setAttribute('aria-label', lang === 'es' ? 'Selector de idioma' : 'Language selector');
+    }
 
-function scrollToSection(id) {
-    const section = document.getElementById(id);
-    if (!section) return;
-    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const backToTop = document.getElementById('back-to-top');
+    if (backToTop) {
+        backToTop.setAttribute('aria-label', lang === 'es' ? 'Volver arriba' : 'Back to top');
+    }
+
+    document.body.classList.add('loaded');
 }
 
 function setupObservers() {
     const revealItems = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add('show');
-            observer.unobserve(entry.target);
-        });
-    }, { threshold: 0.2 });
+    if (!('IntersectionObserver' in window)) {
+        revealItems.forEach(el => el.classList.add('show'));
+        return;
+    }
 
-    revealItems.forEach(el => revealObserver.observe(el));
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+        revealItems.forEach(el => el.classList.add('show'));
+    } else {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('show');
+                observer.unobserve(entry.target);
+            });
+        }, { threshold: 0.12 });
+
+        revealItems.forEach(el => revealObserver.observe(el));
+    }
 
     const sections = document.querySelectorAll('main section');
     const sectionObserver = new IntersectionObserver((entries) => {
@@ -76,34 +89,19 @@ function setupObservers() {
     sections.forEach(section => sectionObserver.observe(section));
 }
 
-function toggleBackToTop() {
+function updateScrollUI() {
+    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0;
+    const progressBar = document.getElementById('scroll-progress-bar');
     const btn = document.getElementById('back-to-top');
-    if (!btn) return;
-    if (window.scrollY > 280) {
-        btn.classList.add('show');
-    } else {
-        btn.classList.remove('show');
-    }
+    if (progressBar) progressBar.style.width = `${progress}%`;
+    if (btn) btn.classList.toggle('show', window.scrollY > 420);
 }
 
 function attachEvents() {
     const langButtons = document.querySelectorAll('[data-lang]');
     langButtons.forEach(btn => {
         btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
-    });
-
-    const projectButtons = document.querySelectorAll('#show-projects, #hero-projects');
-    projectButtons.forEach(btn => {
-        btn.addEventListener('click', () => scrollToSection('projects'));
-    });
-
-    const navLinks = document.querySelectorAll('#main-nav a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', event => {
-            event.preventDefault();
-            const target = link.getAttribute('href').replace('#', '');
-            scrollToSection(target);
-        });
     });
 
     const back = document.getElementById('back-to-top');
@@ -113,18 +111,20 @@ function attachEvents() {
         });
     }
 
-    window.addEventListener('scroll', () => toggleBackToTop());
+    window.addEventListener('scroll', updateScrollUI, { passive: true });
 }
 
 function initialize() {
+    document.documentElement.classList.add('js-motion');
     const savedLanguage = safeGetItem(LANG_KEY);
-    if (savedLanguage === 'es' || savedLanguage === 'en') {
-        setLanguage(savedLanguage);
-    }
+    setLanguage(savedLanguage === 'en' ? 'en' : 'es');
+
+    const hero = document.getElementById('hero');
+    if (hero) hero.classList.add('show');
 
     setupObservers();
     attachEvents();
-    toggleBackToTop();
+    updateScrollUI();
 }
 
 document.addEventListener('DOMContentLoaded', initialize);

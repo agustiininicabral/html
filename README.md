@@ -5,7 +5,7 @@ Sitio profesional estático para presentar experiencia, habilidades y proyectos 
 ## Archivos
 
 - `index.html`: contenido principal, versión ES/EN.
-- `style.css`: estilos responsive y sistema visual azul marino/cian.
+- `style.css`: estilos responsive y paleta 60/20/10/5/5 de azul noche, azules/gris azulado, bordó, rojo y coral.
 - `script.js`: navegación, idioma y efectos de interfaz.
 - `cv.html`: CV imprimible desde el navegador.
 

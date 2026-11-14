@@ -3,8 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agustín Cabral - CV</title>
+    <title>Agustín Cabral - CV | Data Quality, Analytics & QA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --ink: #172033;
+            --muted: #4b5870;
+            --line: #d3d9e4;
+            --accent: #70263f;
+            --paper: #fbfcfe;
+            --night: #0b1020;
+            --red: #b52c43;
+        }
+
+        html {
+            background: var(--night);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,14 +29,14 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'DM Sans', sans-serif;
             font-size: 12px;
-            line-height: 1.4;
-            color: #333;
-            background: white;
+            line-height: 1.5;
+            color: var(--ink);
+            background: var(--paper);
             max-width: 210mm;
             margin: 0 auto;
-            padding: 20mm;
+            padding: 18mm;
         }
 
         .print-actions {
@@ -28,52 +45,56 @@
             text-align: right;
         }
         .print-actions button {
-            border: 0; border-radius: 6px; background: #0d1b2e; color: #fff;
+            border: 0; border-radius: 999px; background: var(--red); color: #fff;
             padding: 10px 16px; font: inherit; font-weight: 600; cursor: pointer;
         }
-        .print-actions button:hover { background: #2563eb; }
-        .print-actions button:focus-visible { outline: 3px solid #38bdf8; outline-offset: 3px; }
+        .print-actions button:hover { background: var(--accent); }
+        .print-actions button:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
         @page { size: A4; margin: 12mm; }
         @media print {
+            html, body { background: #fff; }
             body { max-width: none; padding: 0; font-size: 10.5px; }
             .section, .impact-card, .skill-card, .timeline-item, .project-card, .education-card {
                 break-inside: avoid; page-break-inside: avoid;
             }
-            a { color: #222; text-decoration: none; }
+            a { color: var(--ink); text-decoration: none; }
             .print-actions { display: none; }
         }
         @media screen and (max-width: 700px) {
-            body { padding: 16px; }
+            body { padding: 24px 16px; }
             .impact-grid, .skills-grid, .education-grid { grid-template-columns: 1fr; }
             .contact { overflow-wrap: anywhere; }
         }
 
         .header {
-            text-align: center;
-            border-bottom: 2px solid #333;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
+            text-align: left;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 16px;
+            margin-bottom: 22px;
         }
 
         .header h1 {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 5px;
+            font: 400 30px/1.1 'DM Serif Display', Georgia, serif;
+            letter-spacing: -0.04em;
+            margin-bottom: 6px;
         }
 
         .header .title {
-            font-size: 16px;
-            color: #666;
+            font-size: 12px;
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
             margin-bottom: 10px;
         }
 
         .contact {
-            font-size: 11px;
-            color: #666;
+            font-size: 9.5px;
+            color: var(--muted);
         }
 
         .contact a {
-            color: #333;
+            color: var(--ink);
             text-decoration: none;
         }
 
@@ -82,12 +103,13 @@
         }
 
         .section h2 {
-            font-size: 16px;
-            font-weight: bold;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 5px;
-            margin-bottom: 10px;
-            color: #333;
+            font: 500 11px/1.4 'IBM Plex Mono', monospace;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 6px;
+            margin-bottom: 11px;
+            color: var(--accent);
         }
 
         .summary {
@@ -103,9 +125,10 @@
         }
 
         .impact-card {
-            border: 1px solid #ddd;
+            border: 1px solid var(--line);
+            border-left: 2px solid var(--accent);
             padding: 8px;
-            border-radius: 4px;
+            border-radius: 3px;
         }
 
         .impact-card h3 {
@@ -116,7 +139,7 @@
 
         .impact-card p {
             font-size: 11px;
-            color: #666;
+            color: var(--muted);
         }
 
         .skills-grid {
@@ -151,13 +174,13 @@
 
         .timeline-item {
             margin-bottom: 15px;
-            border-left: 3px solid #333;
-            padding-left: 10px;
+            border-left: 2px solid var(--accent);
+            padding-left: 12px;
         }
 
         .timeline-date {
             font-size: 11px;
-            color: #666;
+            color: var(--accent);
             font-weight: bold;
         }
 
@@ -169,7 +192,7 @@
 
         .timeline-item p {
             font-size: 12px;
-            color: #666;
+            color: var(--accent);
             margin-bottom: 8px;
         }
 
@@ -198,9 +221,9 @@
         }
 
         .project-card {
-            border: 1px solid #ddd;
+            border: 1px solid var(--line);
             padding: 10px;
-            border-radius: 4px;
+            border-radius: 3px;
         }
 
         .project-card h3 {
@@ -214,6 +237,10 @@
             margin-bottom: 5px;
         }
 
+        .project-card a {
+            color: var(--accent);
+        }
+
         .education-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -221,9 +248,10 @@
         }
 
         .education-card {
-            border: 1px solid #ddd;
+            border: 1px solid var(--line);
+            border-left: 2px solid var(--accent);
             padding: 8px;
-            border-radius: 4px;
+            border-radius: 3px;
         }
 
         .education-card h3 {
@@ -234,7 +262,7 @@
 
         .education-card p {
             font-size: 11px;
-            color: #666;
+            color: var(--muted);
         }
 
         .contact-info p {
@@ -243,7 +271,7 @@
         }
 
         .contact-info a {
-            color: #333;
+            color: var(--accent);
             text-decoration: none;
         }
     </style>
@@ -256,7 +284,7 @@
 
     <div class="header">
         <h1>Agustín Cabral</h1>
-        <div class="title">Analista de Datos & QA Tester</div>
+        <div class="title">Analista de Datos | Data Quality & QA</div>
         <div class="contact">
             Buenos Aires, Argentina | agustinkbral2013@gmail.com | +54 11 2397-1679<br>
             linkedin.com/in/agustincabral13 | github.com/agustiininicabral
@@ -266,36 +294,24 @@
     <div class="section">
         <h2>Resumen Profesional</h2>
         <p class="summary">
-            Analista de datos con enfoque en Data Quality, Business Intelligence y Testing. Experiencia en análisis, validación y transformación de datos mediante SQL, Power BI, Excel y Python. Perfil híbrido con capacidad para detectar inconsistencias, optimizar procesos, validar APIs RESTful y generar insights accionables. Conocimientos técnicos en integración de sistemas y manejo de flujos de información, orientado a roles data-driven con capacidad de entender arquitecturas backend.
+            Analista de datos con experiencia en tareas administrativas, validación de datos operativos y control de calidad en Farmafe. Mi recorrido en operaciones también incluye gestión de e-commerce y conciliación de pagos. Complemento esa experiencia con formación y proyectos propios en SQL, Power BI, Excel y Python, además de pruebas de APIs y automatización. Me enfoco en entender la fuente y el uso de los datos, identificar inconsistencias y documentar controles y hallazgos con claridad.
         </p>
     </div>
 
     <div class="section">
-        <h2>Áreas de Impacto</h2>
+        <h2>Cómo aporto</h2>
         <div class="impact-grid">
             <div class="impact-card">
-                <h3>Data Quality</h3>
-                <p>Validación, limpieza y control de integridad de datos</p>
+                <h3>Calidad y trazabilidad</h3>
+                <p>Controles sobre datos operativos y documentación de validaciones y fuentes</p>
             </div>
             <div class="impact-card">
-                <h3>Data Analysis</h3>
-                <p>Exploración de datos y generación de insights accionables</p>
+                <h3>Análisis y reporting</h3>
+                <p>Exploración y reportes en SQL, Power BI y Excel con contexto operativo</p>
             </div>
             <div class="impact-card">
-                <h3>API Validation</h3>
-                <p>Testing de endpoints REST y control de flujos de datos</p>
-            </div>
-            <div class="impact-card">
-                <h3>Process Optimization</h3>
-                <p>Mejora de procesos operativos basada en análisis de datos</p>
-            </div>
-            <div class="impact-card">
-                <h3>Reporting & BI</h3>
-                <p>Creación de dashboards interactivos en Power BI</p>
-            </div>
-            <div class="impact-card">
-                <h3>Backend & Data Flow</h3>
-                <p>Comprensión de integraciones y flujos de datos complejos</p>
+                <h3>QA e integración</h3>
+                <p>Validación de APIs REST, datos JSON y casos de prueba</p>
             </div>
         </div>
     </div>
@@ -304,7 +320,7 @@
         <h2>Habilidades Técnicas</h2>
         <div class="skills-grid">
             <div class="skill-card">
-                <h3>Data</h3>
+                <h3>Analítica & BI</h3>
                 <ul>
                     <li>SQL: JOIN, agregaciones, filtros, subqueries</li>
                     <li>Power BI: modelado, KPIs, dashboards, DAX</li>
@@ -313,7 +329,7 @@
                 </ul>
             </div>
             <div class="skill-card">
-                <h3>QA</h3>
+                <h3>Calidad & QA</h3>
                 <ul>
                     <li>Testing manual, triage, reporte de bugs</li>
                     <li>API Testing con Postman y validación JSON</li>
@@ -322,7 +338,7 @@
                 </ul>
             </div>
             <div class="skill-card">
-                <h3>Stack Tecnológico</h3>
+                <h3>Automatización & stack</h3>
                 <ul>
                     <li>SQL, Power BI, Excel</li>
                     <li>Python (pandas), Power Query</li>
@@ -331,7 +347,7 @@
                 </ul>
             </div>
             <div class="skill-card">
-                <h3>Backend/APIs</h3>
+                <h3>Integración & APIs</h3>
                 <ul>
                     <li>REST APIs: consumo e integración de endpoints</li>
                     <li>Testing de APIs con Postman y validación de contratos</li>

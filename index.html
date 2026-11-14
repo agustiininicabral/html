@@ -3,45 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#07111f">
+    <meta name="theme-color" content="#0b1020">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Agustín Cabral | Data, QA & Automation">
-    <meta property="og:description" content="Portfolio profesional con proyectos de análisis de datos, SQL, Python, QA y automatización.">
+    <meta property="og:description" content="Agustín Cabral: experiencia en operaciones y calidad de datos, con proyectos de análisis, SQL, Python y QA.">
     <meta property="og:url" content="https://portfolio-agustin.agustinkbral2013.workers.dev/">
     <meta name="twitter:card" content="summary">
-    <meta name="description" content="Agustín Cabral - Data Analyst, QA Automation y Python Automation. Proyectos de SQL, Power BI, APIs, ETL, Excel y testing.">
+    <meta name="description" content="Portfolio de Agustín Cabral: experiencia en operaciones y calidad de datos, con proyectos de análisis, SQL, Power BI, Python y QA.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://portfolio-agustin.agustinkbral2013.workers.dev/">
-    <title>Agustín Cabral | Data, QA & Automation</title>
+    <title>Agustín Cabral | Data Quality, Analytics & QA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="bg-animation" aria-hidden="true"></div>
-
-<div class="language-switcher" aria-label="Language switcher">
-    <button data-lang="es" class="lang-toggle active" aria-label="Español">🇦🇷 ES</button>
-    <button data-lang="en" class="lang-toggle" aria-label="English">🇺🇸 EN</button>
-</div>
-
-<!-- Panel de selección de idioma -->
-<div id="language-screen" class="stage">
-    <div class="language-container card-soft">
-        <h1 data-es="Bienvenido" data-en="Welcome">Bienvenido</h1>
-        <p data-es="Selecciona tu idioma" data-en="Select your language">Selecciona tu idioma</p>
-        <div class="lang-buttons">
-            <button id="btn-es" data-lang="es">🇦🇷 Español</button>
-            <button id="btn-en" data-lang="en">🇺🇸 English</button>
-        </div>
-        <small data-es="Despliega tu perfil profesional" data-en="Launch your professional profile">Despliega tu perfil profesional</small>
-    </div>
-</div>
+<div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
 
 <!-- Contenido principal -->
-<div id="main-content" class="hidden">
+<div id="main-content">
     <header class="site-header">
         <div class="nav-wrapper glass" id="nav-wrapper">
             <a class="logo" href="#home">AC</a>
@@ -50,11 +33,15 @@
                 <a href="#skills" data-es="Habilidades" data-en="Skills">Habilidades</a>
                 <a href="#experience" data-es="Experiencia" data-en="Experience">Experiencia</a>
                 <a href="#projects" data-es="Proyectos" data-en="Projects">Proyectos</a>
+                <a href="#education" data-es="Formación" data-en="Education">Formación</a>
                 <a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a>
             </nav>
             <div class="nav-actions">
-                <button id="show-projects" data-es="Ver proyectos" data-en="View projects">Ver proyectos</button>
-                <a class="cv-btn" href="cv.html" id="download-cv-nav" target="_blank" rel="noopener noreferrer" data-es="Ver CV / imprimir" data-en="View / print CV">Ver CV / imprimir</a>
+                <div class="language-switcher" aria-label="Language">
+                    <button data-lang="es" class="lang-toggle active" aria-label="Español">ES</button>
+                    <button data-lang="en" class="lang-toggle" aria-label="English">EN</button>
+                </div>
+                <a class="cv-btn" href="cv.html" id="download-cv-nav" target="_blank" rel="noopener noreferrer" data-es="CV imprimible" data-en="Printable CV">CV imprimible</a>
             </div>
         </div>
     </header>
@@ -63,95 +50,70 @@
 
         <div class="portfolio-main">
             <section class="hero reveal" id="hero">
-            <div class="hero-content">
-                <p class="intro-label" data-es="ANALISTA DE DATOS" data-en="DATA ANALYST">ANALISTA DE DATOS</p>
-                
-                <h1 data-es="Agustín Cabral" data-en="Agustín Cabral">Agustín Cabral</h1>
-                
-                <h2 class="hero-title" data-es="Data Quality · SQL · Power BI · REST APIs" data-en="Data Quality · SQL · Power BI · REST APIs">Data Quality · SQL · Power BI · REST APIs</h2>
-                
-                <p class="hero-description" data-es="Analista de datos con experiencia en validación de información, control de calidad y análisis operativo. Trabajo con SQL, Power BI, Excel y Python para detectar inconsistencias, preparar datos y generar reportes que faciliten decisiones informadas." data-en="Data analyst with experience in data validation, quality control, and operational analysis. I use SQL, Power BI, Excel, and Python to identify inconsistencies, prepare data, and build reports that support informed decisions.">Especialista en calidad de datos, validación de procesos y análisis operativo. Optimizo la integridad de información en entornos complejos y genero insights accionables que impulsan decisiones informadas.</p>
-                
-                <div class="badge-grid">
-                    <span class="badge badge-primary" data-es="Data Analyst Jr + QA" data-en="Data Analyst Jr + QA">Data Analyst Jr • QA</span>
-                    <span class="badge badge-secondary" data-es="Perfil Híbrido" data-en="Hybrid Profile">Perfil Híbrido</span>
-                    <span class="badge badge-tertiary" data-es="Data Quality" data-en="Data Quality">Data Quality</span>
-                </div>
-
-                <div class="specialization-block">
-                    <p class="spec-label" data-es="Enfoque en:" data-en="Focus areas:">Enfoque en:</p>
-                    <div class="spec-tags">
-                        <span data-es="Validación de Datos" data-en="Data Validation">Validación de Datos</span>
-                        <span data-es="SQL Analytics" data-en="SQL Analytics">SQL Analytics</span>
-                        <span data-es="Optimización de Procesos" data-en="Process Optimization">Optimización de Procesos</span>
-                        <span data-es="Validación de APIs" data-en="API Testing">Validación de APIs</span>
+                <div class="hero-layout">
+                    <div class="hero-content">
+                        <p class="intro-label" data-es="PORTFOLIO PROFESIONAL · BUENOS AIRES, ARGENTINA" data-en="PROFESSIONAL PORTFOLIO · BUENOS AIRES, ARGENTINA">PORTFOLIO PROFESIONAL · BUENOS AIRES, ARGENTINA</p>
+                        <h1>Agustín <span>Cabral</span></h1>
+                        <h2 class="hero-title" data-es="Datos confiables. Decisiones mejor fundamentadas." data-en="Reliable data. Better-grounded decisions.">Datos confiables. Decisiones mejor fundamentadas.</h2>
+                        <p class="hero-description" data-es="Analista de datos con experiencia en calidad de información y operaciones. Combino esa mirada práctica con proyectos de SQL, Power BI, Python y QA para validar datos, entender procesos y comunicar hallazgos con claridad." data-en="Data analyst with experience in information quality and operations. I combine that practical perspective with SQL, Power BI, Python, and QA projects to validate data, understand processes, and communicate findings clearly.">Analista de datos con experiencia en calidad de información y operaciones. Combino esa mirada práctica con proyectos de SQL, Power BI, Python y QA para validar datos, entender procesos y comunicar hallazgos con claridad.</p>
+                        <div class="hero-cta-wrapper">
+                            <a class="btn btn-primary" href="#projects" data-es="Ver proyectos seleccionados" data-en="Explore selected projects">Ver proyectos seleccionados</a>
+                            <a href="cv.html" class="btn btn-secondary" id="download-cv-hero" target="_blank" rel="noopener noreferrer" data-es="Abrir CV imprimible" data-en="Open printable CV">Abrir CV imprimible</a>
+                        </div>
+                        <div class="hero-footer">
+                            <span data-es="Data Quality" data-en="Data Quality">Data Quality</span>
+                            <span>SQL · Power BI · Python</span>
+                            <span>QA · APIs · ETL</span>
+                        </div>
                     </div>
+                    <aside class="hero-note" aria-label="Enfoque profesional">
+                        <div class="hero-note-mark" aria-hidden="true">AC<span>.</span></div>
+                        <p class="hero-note-label" data-es="MI ENFOQUE" data-en="MY APPROACH">MI ENFOQUE</p>
+                        <p class="hero-note-quote" data-es="Antes de mostrar un dato, me importa saber si merece confianza." data-en="Before presenting a metric, I want to know whether it deserves trust.">Antes de mostrar un dato, me importa saber si merece confianza.</p>
+                        <div class="hero-note-flow" aria-label="Validar, analizar y comunicar">
+                            <span data-es="Validar" data-en="Validate">Validar</span>
+                            <span data-es="Analizar" data-en="Analyze">Analizar</span>
+                            <span data-es="Comunicar" data-en="Communicate">Comunicar</span>
+                        </div>
+                    </aside>
                 </div>
-                
-                <div class="hero-cta-wrapper">
-                    <button id="hero-projects" class="btn btn-primary" data-es="Explorar proyectos" data-en="Explore projects">Explorar proyectos</button>
-                    <a href="cv.html" class="btn btn-secondary" id="download-cv-hero" target="_blank" rel="noopener" data-es="Ver CV / imprimir" data-en="View / print CV">Ver CV / imprimir</a>
-                </div>
-                
-                <div class="hero-footer">
-                    <div class="footer-item">
-                        <span class="label" data-es="Ubicación:" data-en="Location:">Ubicación:</span>
-                        <span data-es="Buenos Aires, Argentina" data-en="Buenos Aires, Argentina">Buenos Aires, Argentina</span>
-                    </div>
-                    <div class="footer-divider"></div>
-                    <div class="footer-item">
-                        <span class="label" data-es="Disponibilidad:" data-en="Availability:">Disponibilidad:</span>
-                        <span data-es="Remoto / Híbrido" data-en="Remote / Hybrid">Remoto / Híbrido</span>
-                    </div>
-                    <div class="footer-divider"></div>
-                    <div class="footer-item">
-                        <span class="label" data-es="Email:" data-en="Email:">Email:</span>
-                        <a href="mailto:agustinkbral2013@gmail.com">agustinkbral2013@gmail.com</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
 
         <section id="overview" class="section reveal">
-            <h2 data-es="Perfil profesional" data-en="Professional profile">Perfil profesional</h2>
-            <p data-es="Analista de datos con enfoque en Data Quality, Business Intelligence y Testing. Experiencia en análisis, validación y transformación de datos mediante SQL, Power BI, Excel y Python. Perfil híbrido con capacidad para detectar inconsistencias, optimizar procesos, validar APIs RESTful y generar insights accionables. Conocimientos técnicos en integración de sistemas y manejo de flujos de información, orientado a roles data-driven con capacidad de entender arquitecturas backend." data-en="Data analyst with focus on Data Quality, Business Intelligence, and Testing. Experience in data analysis, validation, and transformation using SQL, Power BI, Excel, and Python. Hybrid profile with ability to detect inconsistencies, optimize processes, validate REST APIs, and generate actionable insights. Technical knowledge in system integration and information flows, oriented toward data-driven roles with backend architecture understanding.">Analista de datos con enfoque en Data Quality, Business Intelligence y Testing. Experiencia en análisis, validación y transformación de datos mediante SQL, Power BI, Excel y Python. Perfil híbrido con capacidad para detectar inconsistencias, optimizar procesos, validar APIs RESTful y generar insights accionables. Conocimientos técnicos en integración de sistemas y manejo de flujos de información, orientado a roles data-driven con capacidad de entender arquitecturas backend.</p>
+            <p class="section-kicker" data-es="PERFIL" data-en="PROFILE">PERFIL</p>
+            <h2 data-es="Una mirada que conecta datos y operación." data-en="A perspective connecting data and operations.">Una mirada que conecta datos y operación.</h2>
+            <p class="profile-copy" data-es="Mi experiencia en tareas administrativas y de calidad de datos me enseñó a mirar más allá de una planilla: entender de dónde viene la información, cómo se usa y qué puede salir mal. Hoy complemento esa base con análisis, visualización y pruebas técnicas. Me interesa aportar en equipos que necesitan datos claros, procesos trazables y resultados que se puedan explicar." data-en="My experience in administrative work and data quality taught me to look beyond a spreadsheet: where information comes from, how it is used, and what can go wrong. I now complement that foundation with analytics, visualization, and technical testing. I want to contribute to teams that need clear data, traceable processes, and explainable results.">Mi experiencia en tareas administrativas y de calidad de datos me enseñó a mirar más allá de una planilla: entender de dónde viene la información, cómo se usa y qué puede salir mal. Hoy complemento esa base con análisis, visualización y pruebas técnicas. Me interesa aportar en equipos que necesitan datos claros, procesos trazables y resultados que se puedan explicar.</p>
         </section>
 
         <section id="impact" class="section reveal">
-            <h2 data-es="Áreas de impacto" data-en="Core Capabilities">Áreas de impacto</h2>
+            <p class="section-kicker" data-es="QUÉ APORTO" data-en="WHAT I BRING">QUÉ APORTO</p>
+            <h2 data-es="Del dato crudo a una respuesta útil." data-en="From raw data to a useful answer.">Del dato crudo a una respuesta útil.</h2>
             <div class="impact-grid">
                 <article class="impact-card">
-                    <h3 data-es="Data Quality" data-en="Data Quality">Data Quality</h3>
-                    <p data-es="Validación, limpieza y control de integridad de datos" data-en="Data validation, cleansing, and integrity control">Validación, limpieza y control de integridad de datos</p>
+                    <span class="card-index">01</span>
+                    <h3 data-es="Calidad y trazabilidad" data-en="Quality and traceability">Calidad y trazabilidad</h3>
+                    <p data-es="Controles para detectar inconsistencias y dejar claro qué se validó, con qué criterio y sobre qué fuente." data-en="Checks to find inconsistencies and make clear what was validated, against which criteria, and from which source.">Controles para detectar inconsistencias y dejar claro qué se validó, con qué criterio y sobre qué fuente.</p>
                 </article>
                 <article class="impact-card">
-                    <h3 data-es="Data Analysis" data-en="Data Analysis">Data Analysis</h3>
-                    <p data-es="Exploración de datos y generación de insights accionables" data-en="Data exploration and actionable insights generation">Exploración de datos y generación de insights accionables</p>
+                    <span class="card-index">02</span>
+                    <h3 data-es="Análisis que se entiende" data-en="Analytics people can understand">Análisis que se entiende</h3>
+                    <p data-es="Consultas y reportes en SQL, Excel y Power BI para ordenar preguntas operativas y mostrar hallazgos con contexto." data-en="SQL, Excel, and Power BI queries and reports that clarify operational questions and present findings with context.">Consultas y reportes en SQL, Excel y Power BI para ordenar preguntas operativas y mostrar hallazgos con contexto.</p>
                 </article>
                 <article class="impact-card">
-                    <h3 data-es="API Validation" data-en="API Validation">API Validation</h3>
-                    <p data-es="Testing de endpoints REST y control de flujos de datos" data-en="REST endpoint testing and data flow control">Testing de endpoints REST y control de flujos de datos</p>
-                </article>
-                <article class="impact-card">
-                    <h3 data-es="Process Optimization" data-en="Process Optimization">Process Optimization</h3>
-                    <p data-es="Mejora de procesos operativos basada en análisis de datos" data-en="Data-driven operational process improvement">Mejora de procesos operativos basada en análisis de datos</p>
-                </article>
-                <article class="impact-card">
-                    <h3 data-es="Reporting & BI" data-en="Reporting & BI">Reporting & BI</h3>
-                    <p data-es="Creación de dashboards interactivos en Power BI" data-en="Interactive dashboard creation in Power BI">Creación de dashboards interactivos en Power BI</p>
-                </article>
-                <article class="impact-card">
-                    <h3 data-es="Backend & Data Flow" data-en="Backend & Data Flow">Backend & Data Flow</h3>
-                    <p data-es="Comprensión de integraciones y flujos de datos complejos" data-en="Understanding of integrations and complex data flows">Comprensión de integraciones y flujos de datos complejos</p>
+                    <span class="card-index">03</span>
+                    <h3 data-es="Validación técnica" data-en="Technical validation">Validación técnica</h3>
+                    <p data-es="Pruebas de APIs, reglas de datos y flujos automatizados para encontrar fallas antes de que lleguen al usuario." data-en="API, data-rule, and automated-flow testing to find issues before they reach users.">Pruebas de APIs, reglas de datos y flujos automatizados para encontrar fallas antes de que lleguen al usuario.</p>
                 </article>
             </div>
         </section>
 
         <section id="skills" class="section reveal">
-            <h2 data-es="Habilidades" data-en="Skills">Habilidades</h2>
+            <p class="section-kicker" data-es="HERRAMIENTAS Y MÉTODOS" data-en="TOOLS AND METHODS">HERRAMIENTAS Y MÉTODOS</p>
+            <h2 data-es="Un stack práctico, aplicado a problemas reales." data-en="A practical stack, applied to real problems.">Un stack práctico, aplicado a problemas reales.</h2>
             <div class="skills-grid">
                 <article class="skill-card">
-                    <h3 data-es="Data" data-en="Data">Data</h3>
+                    <span class="card-index">01</span>
+                    <h3 data-es="Análisis & BI" data-en="Analytics & BI">Análisis & BI</h3>
                     <ul>
                         <li data-es="SQL: JOIN, agregaciones, filtros, subqueries" data-en="SQL: JOINs, aggregations, filters, subqueries">SQL: JOIN, agregaciones, filtros, subqueries</li>
                         <li data-es="Power BI: modelado, KPIs, dashboards, DAX" data-en="Power BI: modeling, KPIs, dashboards, DAX">Power BI: modelado, KPIs, dashboards, DAX</li>
@@ -160,7 +122,8 @@
                     </ul>
                 </article>
                 <article class="skill-card">
-                    <h3 data-es="QA" data-en="QA">QA</h3>
+                    <span class="card-index">02</span>
+                    <h3 data-es="Calidad & QA" data-en="Quality & QA">Calidad & QA</h3>
                     <ul>
                         <li data-es="Testing manual, triage, reporte de bugs" data-en="Manual testing, triage, bug reporting">Testing manual, triage, reporte de bugs</li>
                         <li data-es="API Testing con Postman y validación JSON" data-en="API Testing with Postman and JSON validation">API Testing con Postman y validación JSON</li>
@@ -169,7 +132,8 @@
                     </ul>
                 </article>
                 <article class="skill-card">
-                    <h3 data-es="Stack" data-en="Stack">Stack</h3>
+                    <span class="card-index">03</span>
+                    <h3 data-es="Automatización & stack" data-en="Automation & stack">Automatización & stack</h3>
                     <ul>
                         <li>SQL, Power BI, Excel</li>
                         <li>Python (pandas), Power Query</li>
@@ -178,7 +142,8 @@
                     </ul>
                 </article>
                 <article class="skill-card">
-                    <h3 data-es="Backend/APIs" data-en="Backend/APIs">Backend/APIs</h3>
+                    <span class="card-index">04</span>
+                    <h3 data-es="Integración & APIs" data-en="Integration & APIs">Integración & APIs</h3>
                     <ul>
                         <li data-es="REST APIs: consumo e integración de endpoints" data-en="REST APIs: consumption and endpoint integration">REST APIs: consumo e integración de endpoints</li>
                         <li data-es="Testing de APIs con Postman y validación de contratos" data-en="API testing with Postman and contract validation">Testing de APIs con Postman y validación de contratos</li>
@@ -190,10 +155,11 @@
         </section>
 
         <section id="experience" class="section reveal">
-            <h2 data-es="Experiencia" data-en="Experience">Experiencia</h2>
+            <p class="section-kicker" data-es="TRAYECTORIA" data-en="EXPERIENCE">TRAYECTORIA</p>
+            <h2 data-es="Experiencia en operaciones, pagos y calidad de datos." data-en="Experience across operations, payments, and data quality.">Experiencia en operaciones, pagos y calidad de datos.</h2>
             <div class="timeline">
                 <article class="timeline-item card-soft">
-                    <span class="timeline-date">Sep 2024 - Mar 2026</span>
+                    <span class="timeline-date" data-es="Sep 2024 – Mar 2026" data-en="Sep 2024 – Mar 2026">Sep 2024 – Mar 2026</span>
                     <h3>Farmafe</h3>
                     <p data-es="Administrativo / Data Quality" data-en="Administrative / Data Quality">Administrativo / Data Quality</p>
                     <ul>
@@ -205,7 +171,7 @@
                 </article>
 
                 <article class="timeline-item card-soft">
-                    <span class="timeline-date">Abr 2022 - Nov 2023</span>
+                    <span class="timeline-date" data-es="Abr 2022 – Nov 2023" data-en="Apr 2022 – Nov 2023">Abr 2022 – Nov 2023</span>
                     <h3>COTO</h3>
                     <p data-es="Auxiliar Administrativo" data-en="Administrative Assistant">Auxiliar Administrativo</p>
                     <ul>
@@ -215,7 +181,7 @@
                 </article>
 
                 <article class="timeline-item card-soft">
-                    <span class="timeline-date">May 2021 - Feb 2022</span>
+                    <span class="timeline-date" data-es="May 2021 – Feb 2022" data-en="May 2021 – Feb 2022">May 2021 – Feb 2022</span>
                     <h3>Ravio</h3>
                     <p data-es="Coordinador de Pagos" data-en="Payments Coordinator">Coordinador de Pagos</p>
                     <ul>
@@ -226,9 +192,10 @@
             </div>
         </section>
 
-                <section id="projects" class="section reveal">
-            <h2 data-es="Proyectos destacados" data-en="Featured projects">Proyectos destacados</h2>
-            <p data-es="Ocho proyectos prácticos de Data, QA y automatización. Cada repositorio incluye documentación, pruebas reproducibles y workflows de integración continua." data-en="Eight practical Data, QA, and automation projects. Each repository includes documentation, reproducible tests, and continuous integration workflows.">Ocho proyectos prácticos de Data, QA y automatización. Cada repositorio incluye documentación, pruebas reproducibles y workflows de integración continua.</p>
+        <section id="projects" class="section reveal">
+            <p class="section-kicker" data-es="TRABAJO APLICADO" data-en="SELECTED WORK">TRABAJO APLICADO</p>
+            <h2 data-es="Proyectos que se pueden explorar y reproducir." data-en="Projects you can explore and reproduce.">Proyectos que se pueden explorar y reproducir.</h2>
+            <p class="section-intro" data-es="Desarrollo cada caso de punta a punta: planteo el problema, documento las decisiones y dejo pruebas o ejemplos para que el resultado se pueda revisar." data-en="I build each case end to end: frame the problem, document decisions, and include tests or examples so the result can be reviewed.">Desarrollo cada caso de punta a punta: planteo el problema, documento las decisiones y dejo pruebas o ejemplos para que el resultado se pueda revisar.</p>
             <div class="project-grid">
                 <article class="project-card card-soft">
                     <h3>Python Data Processing</h3>
@@ -308,47 +275,48 @@
         </section>
 
         <section id="education" class="section reveal">
-            <h2 data-es="Educación" data-en="Education">Educación</h2>
+            <p class="section-kicker" data-es="FORMACIÓN" data-en="LEARNING">FORMACIÓN</p>
+            <h2 data-es="Aprendizaje aplicado y base técnica." data-en="Applied learning and a technical foundation.">Aprendizaje aplicado y base técnica.</h2>
             <div class="education-grid">
                 <article class="education-card card-soft">
-                    <h3>Coderhouse - Data Analytics (Oct–Dic 2025)</h3>
-                    <p>SQL, Power BI, ETL y análisis de datos</p>
+                    <h3 data-es="Coderhouse - Data Analytics (Oct–Dic 2025)" data-en="Coderhouse - Data Analytics (Oct–Dec 2025)">Coderhouse - Data Analytics (Oct–Dic 2025)</h3>
+                    <p data-es="SQL, Power BI, ETL y análisis de datos" data-en="SQL, Power BI, ETL, and data analytics">SQL, Power BI, ETL y análisis de datos</p>
                 </article>
                 <article class="education-card card-soft">
-                    <h3>Coderhouse - QA Manual Testing (Nov 2025–Feb 2026)</h3>
-                    <p>Testing manual, Postman y gestión de bugs</p>
+                    <h3 data-es="Coderhouse - QA Manual Testing (Nov 2025–Feb 2026)" data-en="Coderhouse - Manual QA Testing (Nov 2025–Feb 2026)">Coderhouse - QA Manual Testing (Nov 2025–Feb 2026)</h3>
+                    <p data-es="Testing manual, Postman y gestión de bugs" data-en="Manual testing, Postman, and bug tracking">Testing manual, Postman y gestión de bugs</p>
                 </article>
                 <article class="education-card card-soft">
-                    <h3>Power BI (Jul 2026)</h3>
-                    <p>Modelado, visualización, KPIs y calidad de datos</p>
+                    <h3 data-es="Power BI (Jul 2026)" data-en="Power BI (Jul 2026)">Power BI (Jul 2026)</h3>
+                    <p data-es="Modelado, visualización, KPIs y calidad de datos" data-en="Data modeling, visualization, KPIs, and data quality">Modelado, visualización, KPIs y calidad de datos</p>
                 </article>
                 <article class="education-card card-soft">
-                    <h3>Python MTA (Sep 2026)</h3>
-                    <p>Fundamentos de Python, automatización y manipulación de datos</p>
+                    <h3 data-es="Python MTA (Sep 2026)" data-en="Python MTA (Sep 2026)">Python MTA (Sep 2026)</h3>
+                    <p data-es="Fundamentos de Python, automatización y manipulación de datos" data-en="Python fundamentals, automation, and data manipulation">Fundamentos de Python, automatización y manipulación de datos</p>
                 </article>
                 <article class="education-card card-soft">
-                    <h3>ITBA - Ingeniería en Petróleo (2021–2024, incompleto)</h3>
-                    <p>Formación analítica y técnica</p>
+                    <h3 data-es="ITBA - Ingeniería en Petróleo (2021–2024, incompleto)" data-en="ITBA - Petroleum Engineering (2021–2024, incomplete)">ITBA - Ingeniería en Petróleo (2021–2024, incompleto)</h3>
+                    <p data-es="Formación analítica y técnica" data-en="Analytical and technical foundation">Formación analítica y técnica</p>
                 </article>
                 <article class="education-card card-soft">
-                    <h3>UTN - Análisis de Sistemas (2017–2019, incompleto)</h3>
-                    <p>Fundamentos de sistemas, bases de datos y lógica</p>
+                    <h3 data-es="UTN - Análisis de Sistemas (2017–2019, incompleto)" data-en="UTN - Systems Analysis (2017–2019, incomplete)">UTN - Análisis de Sistemas (2017–2019, incompleto)</h3>
+                    <p data-es="Fundamentos de sistemas, bases de datos y lógica" data-en="Systems, database, and logic fundamentals">Fundamentos de sistemas, bases de datos y lógica</p>
                 </article>
             </div>
         </section>
 
         <section id="contact" class="section reveal">
-            <h2 data-es="Contacto" data-en="Contact">Contacto</h2>
+            <p class="section-kicker" data-es="CONTACTO" data-en="CONTACT">CONTACTO</p>
+            <h2 data-es="¿Hay un problema de datos para resolver?" data-en="Have a data problem to solve?">¿Hay un problema de datos para resolver?</h2>
             <div class="contact-grid">
-                <div>
-                    <p><strong>Ubicación:</strong> Buenos Aires, Argentina</p>
-                    <p><strong>Email:</strong> <a href="mailto:agustinkbral2013@gmail.com">agustinkbral2013@gmail.com</a></p>
-                    <p><strong>Tel:</strong> <a href="https://wa.me/541123971679" target="_blank" rel="noopener noreferrer">+54 11 2397-1679</a></p>
-                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/agustincabral13" target="_blank" rel="noopener noreferrer">linkedin.com/in/agustincabral13</a></p>
-                    <p><strong>GitHub:</strong> <a href="https://github.com/agustiininicabral" target="_blank" rel="noopener noreferrer">github.com/agustiininicabral</a></p>
-                    <p data-es="Disponible inmediato | Remoto / Híbrido" data-en="Available immediately | Remote / Hybrid">Disponible inmediato | Remoto / Híbrido</p>
+                <div class="contact-card">
+                    <p><strong data-es="Ubicación:" data-en="Location:">Ubicación:</strong> Buenos Aires, Argentina</p>
+                    <p><strong data-es="Email:" data-en="Email:">Email:</strong> <a href="mailto:agustinkbral2013@gmail.com">agustinkbral2013@gmail.com</a></p>
+                    <p><strong data-es="Teléfono:" data-en="Phone:">Teléfono:</strong> <a href="https://wa.me/541123971679" target="_blank" rel="noopener noreferrer">+54 11 2397-1679</a></p>
+                    <p><strong data-es="LinkedIn:" data-en="LinkedIn:">LinkedIn:</strong> <a href="https://www.linkedin.com/in/agustincabral13" target="_blank" rel="noopener noreferrer">linkedin.com/in/agustincabral13</a></p>
+                    <p><strong data-es="GitHub:" data-en="GitHub:">GitHub:</strong> <a href="https://github.com/agustiininicabral" target="_blank" rel="noopener noreferrer">github.com/agustiininicabral</a></p>
                 </div>
-                <div>
+                <div class="contact-card">
                     <p><strong data-es="Idiomas" data-en="Languages">Idiomas</strong></p>
                     <p data-es="Español: Nativo" data-en="Spanish: Native">Español: Nativo</p>
                     <p data-es="Inglés: Intermedio (B1/B2)" data-en="English: Intermediate (B1/B2)">Inglés: Intermedio (B1/B2)</p>
@@ -356,40 +324,12 @@
             </div>
         </section>
         </div>
-
-        <aside class="smart-panel reveal" id="smart-panel">
-            <div class="panel-header">
-                <h3 data-es="Perfil" data-en="Profile">Perfil</h3>
-            </div>
-            <div class="panel-content">
-                <div class="panel-section">
-                    <h4 data-es="Rol" data-en="Role">Rol</h4>
-                    <p>Data Analyst Jr<br>QA Tester</p>
-                </div>
-                <div class="panel-section">
-                    <h4 data-es="Especialidad" data-en="Specialty">Especialidad</h4>
-                    <p>Data Quality<br>REST APIs</p>
-                </div>
-                <div class="panel-section">
-                    <h4 data-es="Impacto" data-en="Impact">Impacto</h4>
-                    <ul class="impact-list">
-                        <li data-es="Validación de datos" data-en="Data validation">Validación de datos</li>
-                        <li data-es="Automatización y reporting" data-en="Automation and reporting">Automatización y reporting</li>
-                        <li data-es="Testing de APIs y regresión" data-en="API and regression testing">Testing de APIs y regresión</li>
-                    </ul>
-                </div>
-                <div class="panel-section">
-                    <h4 data-es="Stack" data-en="Stack">Stack</h4>
-                    <div class="stack-tags">
-                        <span>SQL</span>
-                        <span>Power BI</span>
-                        <span>Python</span>
-                        <span>Postman</span>
-                    </div>
-                </div>
-            </div>
-        </aside>
     </main>
+
+    <footer class="site-footer">
+        <span>Agustín Cabral · Data Quality, Analytics & QA</span>
+        <a href="#home" data-es="Volver al inicio ↑" data-en="Back to top ↑">Volver al inicio ↑</a>
+    </footer>
 
     <button id="back-to-top" class="back-to-top" aria-label="Volver arriba">↑</button>
 </div>
