@@ -14,6 +14,7 @@ on:
       - "wrangler.jsonc"
       - "README.md"
       - "scripts/**"
+      - "dist/**"
       - ".github/workflows/deploy.yml"
   workflow_dispatch:
 
@@ -40,16 +41,16 @@ jobs:
         with:
           node-version: "22"
 
+      - name: Prepare static assets
+        run: |
+          mkdir -p dist
+          cp index.html style.css script.js cv.html cv-en.html dist/
+
       - name: Validate site structure and content
         run: python3 scripts/validate_site.py
 
       - name: Validate JavaScript syntax
         run: node --check script.js
-
-      - name: Prepare static assets
-        run: |
-          mkdir -p dist
-          cp index.html style.css script.js cv.html cv-en.html dist/
 
       - name: Check Cloudflare credentials
         if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
