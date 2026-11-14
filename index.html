@@ -1,339 +1,203 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es-AR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0b1020">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Agustín Cabral | Data, QA & Automation">
-    <meta property="og:description" content="Agustín Cabral: experiencia en operaciones y calidad de datos, con proyectos de análisis, SQL, Python y QA.">
-    <meta property="og:url" content="https://portfolio-agustin.agustinkbral2013.workers.dev/">
-    <meta name="twitter:card" content="summary">
-    <meta name="description" content="Portfolio de Agustín Cabral: experiencia en operaciones y calidad de datos, con proyectos de análisis, SQL, Power BI, Python y QA.">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://portfolio-agustin.agustinkbral2013.workers.dev/">
-    <title>Agustín Cabral | Data Quality, Analytics & QA</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F5F1E9">
+  <meta name="description" content="Portfolio profesional de Agustín Cabral: QA Automation, Data Analytics, desarrollo y automatización. Proyectos verificables y trayectoria profesional.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://portfolio-agustin.agustinkbral2013.workers.dev/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:title" content="Agustín Cabral — Tecnología aplicada">
+  <meta property="og:description" content="QA Automation, Data Analytics y desarrollo de software. Proyectos, experiencia y formación.">
+  <meta property="og:url" content="https://portfolio-agustin.agustinkbral2013.workers.dev/">
+  <meta name="twitter:card" content="summary">
+  <title>Agustín Cabral — QA Automation, Data Analytics y tecnología</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Agustín Cabral","url":"https://portfolio-agustin.agustinkbral2013.workers.dev/","sameAs":["https://github.com/agustiininicabral","https://www.linkedin.com/in/agustincabral13/"],"knowsAbout":["QA Automation","Data Analytics","Python","SQL","API Testing","Playwright","Power BI","Software Development","Workflow Automation"]}
+  </script>
 </head>
 <body>
-
-<div class="bg-animation" aria-hidden="true"></div>
-<div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
-
-<!-- Contenido principal -->
-<div id="main-content">
-    <header class="site-header">
-        <div class="nav-wrapper glass" id="nav-wrapper">
-            <a class="logo" href="#home">AC</a>
-            <nav id="main-nav" class="nav-links">
-                <a href="#overview" data-es="Sobre mí" data-en="About">Sobre mí</a>
-                <a href="#skills" data-es="Habilidades" data-en="Skills">Habilidades</a>
-                <a href="#experience" data-es="Experiencia" data-en="Experience">Experiencia</a>
-                <a href="#projects" data-es="Proyectos" data-en="Projects">Proyectos</a>
-                <a href="#education" data-es="Formación" data-en="Education">Formación</a>
-                <a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a>
-            </nav>
-            <div class="nav-actions">
-                <div class="language-switcher" aria-label="Language">
-                    <button data-lang="es" class="lang-toggle active" aria-label="Español">ES</button>
-                    <button data-lang="en" class="lang-toggle" aria-label="English">EN</button>
-                </div>
-                <a class="cv-btn" href="cv.html" id="download-cv-nav" target="_blank" rel="noopener noreferrer" data-es="CV imprimible" data-en="Printable CV">CV imprimible</a>
-            </div>
+  <a class="skip-link" href="#main" data-es="Saltar al contenido" data-en="Skip to content">Saltar al contenido</a>
+  <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="#home" aria-label="Agustín Cabral — inicio">AC<span>.</span></a>
+      <nav class="nav-links" id="main-nav" aria-label="Navegación principal">
+        <a href="#profile" data-es="Perfil" data-en="Profile">Perfil</a>
+        <a href="#projects" data-es="Proyectos" data-en="Projects">Proyectos</a>
+        <a href="#skills" data-es="Competencias" data-en="Skills">Competencias</a>
+        <a href="#experience" data-es="Experiencia" data-en="Experience">Experiencia</a>
+        <a href="#education" data-es="Formación" data-en="Education">Formación</a>
+        <a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="language-switcher" role="group" aria-label="Selector de idioma">
+          <button type="button" data-lang="es" class="lang-toggle active" aria-pressed="true">ES</button>
+          <button type="button" data-lang="en" class="lang-toggle" aria-pressed="false">EN</button>
         </div>
-    </header>
+        <a class="cv-link" href="cv.html" id="cv-link" target="_blank" rel="noopener noreferrer" data-es="Ver CV" data-en="View CV">Ver CV</a>
+      </div>
+    </div>
+  </header>
 
-    <main id="home" class="portfolio-layout">
-
-        <div class="portfolio-main">
-            <section class="hero reveal" id="hero">
-                <div class="hero-layout">
-                    <div class="hero-content">
-                        <p class="intro-label" data-es="PORTFOLIO PROFESIONAL · BUENOS AIRES, ARGENTINA" data-en="PROFESSIONAL PORTFOLIO · BUENOS AIRES, ARGENTINA">PORTFOLIO PROFESIONAL · BUENOS AIRES, ARGENTINA</p>
-                        <h1>Agustín <span>Cabral</span></h1>
-                        <h2 class="hero-title" data-es="Datos confiables. Decisiones mejor fundamentadas." data-en="Reliable data. Better-grounded decisions.">Datos confiables. Decisiones mejor fundamentadas.</h2>
-                        <p class="hero-description" data-es="Analista de datos con experiencia en calidad de información y operaciones. Combino esa mirada práctica con proyectos de SQL, Power BI, Python y QA para validar datos, entender procesos y comunicar hallazgos con claridad." data-en="Data analyst with experience in information quality and operations. I combine that practical perspective with SQL, Power BI, Python, and QA projects to validate data, understand processes, and communicate findings clearly.">Analista de datos con experiencia en calidad de información y operaciones. Combino esa mirada práctica con proyectos de SQL, Power BI, Python y QA para validar datos, entender procesos y comunicar hallazgos con claridad.</p>
-                        <div class="hero-cta-wrapper">
-                            <a class="btn btn-primary" href="#projects" data-es="Ver proyectos seleccionados" data-en="Explore selected projects">Ver proyectos seleccionados</a>
-                            <a href="cv.html" class="btn btn-secondary" id="download-cv-hero" target="_blank" rel="noopener noreferrer" data-es="Abrir CV imprimible" data-en="Open printable CV">Abrir CV imprimible</a>
-                        </div>
-                        <div class="hero-footer">
-                            <span data-es="Data Quality" data-en="Data Quality">Data Quality</span>
-                            <span>SQL · Power BI · Python</span>
-                            <span>QA · APIs · ETL</span>
-                        </div>
-                    </div>
-                    <aside class="hero-note" aria-label="Enfoque profesional">
-                        <div class="hero-note-mark" aria-hidden="true">AC<span>.</span></div>
-                        <p class="hero-note-label" data-es="MI ENFOQUE" data-en="MY APPROACH">MI ENFOQUE</p>
-                        <p class="hero-note-quote" data-es="Antes de mostrar un dato, me importa saber si merece confianza." data-en="Before presenting a metric, I want to know whether it deserves trust.">Antes de mostrar un dato, me importa saber si merece confianza.</p>
-                        <div class="hero-note-flow" aria-label="Validar, analizar y comunicar">
-                            <span data-es="Validar" data-en="Validate">Validar</span>
-                            <span data-es="Analizar" data-en="Analyze">Analizar</span>
-                            <span data-es="Comunicar" data-en="Communicate">Comunicar</span>
-                        </div>
-                    </aside>
-                </div>
-            </section>
-
-        <section id="overview" class="section reveal">
-            <p class="section-kicker" data-es="PERFIL" data-en="PROFILE">PERFIL</p>
-            <h2 data-es="Una mirada que conecta datos y operación." data-en="A perspective connecting data and operations.">Una mirada que conecta datos y operación.</h2>
-            <p class="profile-copy" data-es="Mi experiencia en tareas administrativas y de calidad de datos me enseñó a mirar más allá de una planilla: entender de dónde viene la información, cómo se usa y qué puede salir mal. Hoy complemento esa base con análisis, visualización y pruebas técnicas. Me interesa aportar en equipos que necesitan datos claros, procesos trazables y resultados que se puedan explicar." data-en="My experience in administrative work and data quality taught me to look beyond a spreadsheet: where information comes from, how it is used, and what can go wrong. I now complement that foundation with analytics, visualization, and technical testing. I want to contribute to teams that need clear data, traceable processes, and explainable results.">Mi experiencia en tareas administrativas y de calidad de datos me enseñó a mirar más allá de una planilla: entender de dónde viene la información, cómo se usa y qué puede salir mal. Hoy complemento esa base con análisis, visualización y pruebas técnicas. Me interesa aportar en equipos que necesitan datos claros, procesos trazables y resultados que se puedan explicar.</p>
-        </section>
-
-        <section id="impact" class="section reveal">
-            <p class="section-kicker" data-es="QUÉ APORTO" data-en="WHAT I BRING">QUÉ APORTO</p>
-            <h2 data-es="Del dato crudo a una respuesta útil." data-en="From raw data to a useful answer.">Del dato crudo a una respuesta útil.</h2>
-            <div class="impact-grid">
-                <article class="impact-card">
-                    <span class="card-index">01</span>
-                    <h3 data-es="Calidad y trazabilidad" data-en="Quality and traceability">Calidad y trazabilidad</h3>
-                    <p data-es="Controles para detectar inconsistencias y dejar claro qué se validó, con qué criterio y sobre qué fuente." data-en="Checks to find inconsistencies and make clear what was validated, against which criteria, and from which source.">Controles para detectar inconsistencias y dejar claro qué se validó, con qué criterio y sobre qué fuente.</p>
-                </article>
-                <article class="impact-card">
-                    <span class="card-index">02</span>
-                    <h3 data-es="Análisis que se entiende" data-en="Analytics people can understand">Análisis que se entiende</h3>
-                    <p data-es="Consultas y reportes en SQL, Excel y Power BI para ordenar preguntas operativas y mostrar hallazgos con contexto." data-en="SQL, Excel, and Power BI queries and reports that clarify operational questions and present findings with context.">Consultas y reportes en SQL, Excel y Power BI para ordenar preguntas operativas y mostrar hallazgos con contexto.</p>
-                </article>
-                <article class="impact-card">
-                    <span class="card-index">03</span>
-                    <h3 data-es="Validación técnica" data-en="Technical validation">Validación técnica</h3>
-                    <p data-es="Pruebas de APIs, reglas de datos y flujos automatizados para encontrar fallas antes de que lleguen al usuario." data-en="API, data-rule, and automated-flow testing to find issues before they reach users.">Pruebas de APIs, reglas de datos y flujos automatizados para encontrar fallas antes de que lleguen al usuario.</p>
-                </article>
-            </div>
-        </section>
-
-        <section id="skills" class="section reveal">
-            <p class="section-kicker" data-es="HERRAMIENTAS Y MÉTODOS" data-en="TOOLS AND METHODS">HERRAMIENTAS Y MÉTODOS</p>
-            <h2 data-es="Un stack práctico, aplicado a problemas reales." data-en="A practical stack, applied to real problems.">Un stack práctico, aplicado a problemas reales.</h2>
-            <div class="skills-grid">
-                <article class="skill-card">
-                    <span class="card-index">01</span>
-                    <h3 data-es="Análisis & BI" data-en="Analytics & BI">Análisis & BI</h3>
-                    <ul>
-                        <li data-es="SQL: JOIN, agregaciones, filtros, subqueries" data-en="SQL: JOINs, aggregations, filters, subqueries">SQL: JOIN, agregaciones, filtros, subqueries</li>
-                        <li data-es="Power BI: modelado, KPIs, dashboards, DAX" data-en="Power BI: modeling, KPIs, dashboards, DAX">Power BI: modelado, KPIs, dashboards, DAX</li>
-                        <li data-es="Excel: tablas dinámicas, limpieza, reporting" data-en="Excel: pivot, cleaning, reporting">Excel: tablas dinámicas, limpieza, reporting</li>
-                        <li data-es="Power Query: ETL y normalización de datos" data-en="Power Query: ETL and data normalization">Power Query: ETL y normalización de datos</li>
-                    </ul>
-                </article>
-                <article class="skill-card">
-                    <span class="card-index">02</span>
-                    <h3 data-es="Calidad & QA" data-en="Quality & QA">Calidad & QA</h3>
-                    <ul>
-                        <li data-es="Testing manual, triage, reporte de bugs" data-en="Manual testing, triage, bug reporting">Testing manual, triage, reporte de bugs</li>
-                        <li data-es="API Testing con Postman y validación JSON" data-en="API Testing with Postman and JSON validation">API Testing con Postman y validación JSON</li>
-                        <li data-es="Casos de prueba, regresión y seguimiento" data-en="Test cases, regression, follow-up">Casos de prueba, regresión y seguimiento</li>
-                        <li data-es="Auditoría de integridad y control de datos" data-en="Data integrity audit and control">Auditoría de integridad y control de datos</li>
-                    </ul>
-                </article>
-                <article class="skill-card">
-                    <span class="card-index">03</span>
-                    <h3 data-es="Automatización & stack" data-en="Automation & stack">Automatización & stack</h3>
-                    <ul>
-                        <li>SQL, Power BI, Excel</li>
-                        <li>Python (pandas), Power Query</li>
-                        <li>Postman, Jira, Confluence</li>
-                        <li>Git, GitHub, C# (automatización)</li>
-                    </ul>
-                </article>
-                <article class="skill-card">
-                    <span class="card-index">04</span>
-                    <h3 data-es="Integración & APIs" data-en="Integration & APIs">Integración & APIs</h3>
-                    <ul>
-                        <li data-es="REST APIs: consumo e integración de endpoints" data-en="REST APIs: consumption and endpoint integration">REST APIs: consumo e integración de endpoints</li>
-                        <li data-es="Testing de APIs con Postman y validación de contratos" data-en="API testing with Postman and contract validation">Testing de APIs con Postman y validación de contratos</li>
-                        <li data-es="Manejo de JSON y estructuras de datos" data-en="JSON handling and data structures">Manejo de JSON y estructuras de datos</li>
-                        <li data-es="Automatización backend en Python y C#" data-en="Backend automation in Python and C#">Automatización backend en Python y C#</li>
-                    </ul>
-                </article>
-            </div>
-        </section>
-
-        <section id="experience" class="section reveal">
-            <p class="section-kicker" data-es="TRAYECTORIA" data-en="EXPERIENCE">TRAYECTORIA</p>
-            <h2 data-es="Experiencia en operaciones, pagos y calidad de datos." data-en="Experience across operations, payments, and data quality.">Experiencia en operaciones, pagos y calidad de datos.</h2>
-            <div class="timeline">
-                <article class="timeline-item card-soft">
-                    <span class="timeline-date" data-es="Sep 2024 – Mar 2026" data-en="Sep 2024 – Mar 2026">Sep 2024 – Mar 2026</span>
-                    <h3>Farmafe</h3>
-                    <p data-es="Administrativo / Data Quality" data-en="Administrative / Data Quality">Administrativo / Data Quality</p>
-                    <ul>
-                        <li data-es="Validación de calidad de datos operativos de múltiples fuentes" data-en="Quality validation of operational data from multiple sources">Validación de calidad de datos operativos de múltiples fuentes</li>
-                        <li data-es="Detección de inconsistencias y mejoras en precisión de registros" data-en="Inconsistency detection and record accuracy improvements">Detección de inconsistencias y mejoras en precisión de registros</li>
-                        <li data-es="Generación de reportes para decisiones operativas" data-en="Report generation for operational decisions">Generación de reportes para decisiones operativas</li>
-                        <li data-es="Documentación de procesos y trazabilidad" data-en="Process documentation and traceability">Documentación de procesos y trazabilidad</li>
-                    </ul>
-                </article>
-
-                <article class="timeline-item card-soft">
-                    <span class="timeline-date" data-es="Abr 2022 – Nov 2023" data-en="Apr 2022 – Nov 2023">Abr 2022 – Nov 2023</span>
-                    <h3>COTO</h3>
-                    <p data-es="Auxiliar Administrativo" data-en="Administrative Assistant">Auxiliar Administrativo</p>
-                    <ul>
-                        <li data-es="Gestión y validación de datos en e-commerce" data-en="Data management and validation in e-commerce">Gestión y validación de datos en e-commerce</li>
-                        <li data-es="Control de stock, facturación y resolución de incidencias" data-en="Inventory control, invoicing, and incident resolution">Control de stock, facturación y resolución de incidencias</li>
-                    </ul>
-                </article>
-
-                <article class="timeline-item card-soft">
-                    <span class="timeline-date" data-es="May 2021 – Feb 2022" data-en="May 2021 – Feb 2022">May 2021 – Feb 2022</span>
-                    <h3>Ravio</h3>
-                    <p data-es="Coordinador de Pagos" data-en="Payments Coordinator">Coordinador de Pagos</p>
-                    <ul>
-                        <li data-es="Conciliación y validación de datos financieros" data-en="Financial data reconciliation and validation">Conciliación y validación de datos financieros</li>
-                        <li data-es="Control de operaciones y registros" data-en="Operations monitoring and record control">Control de operaciones y registros</li>
-                    </ul>
-                </article>
-            </div>
-        </section>
-
-        <section id="projects" class="section reveal">
-            <p class="section-kicker" data-es="TRABAJO APLICADO" data-en="SELECTED WORK">TRABAJO APLICADO</p>
-            <h2 data-es="Proyectos que se pueden explorar y reproducir." data-en="Projects you can explore and reproduce.">Proyectos que se pueden explorar y reproducir.</h2>
-            <p class="section-intro" data-es="Desarrollo cada caso de punta a punta: planteo el problema, documento las decisiones y dejo pruebas o ejemplos para que el resultado se pueda revisar." data-en="I build each case end to end: frame the problem, document decisions, and include tests or examples so the result can be reviewed.">Desarrollo cada caso de punta a punta: planteo el problema, documento las decisiones y dejo pruebas o ejemplos para que el resultado se pueda revisar.</p>
-            <div class="project-grid">
-                <article class="project-card card-soft">
-                    <h3>Python Data Processing</h3>
-                    <p data-es="Pipeline reproducible para limpiar y validar datos de ventas en CSV, separar registros rechazados y generar KPIs y agregaciones mensuales." data-en="Reproducible pipeline to clean and validate sales CSV data, separate rejected records, and generate KPIs and monthly aggregations.">Pipeline reproducible para limpiar y validar datos de ventas en CSV, separar registros rechazados y generar KPIs y agregaciones mensuales.</p>
-                    <p><strong data-es="Stack:" data-en="Stack:">Stack:</strong> Python, pandas, NumPy</p>
-                    <div class="project-actions">
-                        <a href="https://github.com/agustiininicabral/python-data-processing" target="_blank" rel="noopener noreferrer" data-es="Ver repositorio" data-en="View repository">Ver repositorio</a>
-                        <a href="https://github.com/agustiininicabral/python-data-processing/actions" target="_blank" rel="noopener noreferrer" data-es="Ver CI" data-en="View CI">Ver CI</a>
-                    </div>
-                </article>
-                <article class="project-card card-soft">
-                    <h3>SQL Advanced Analytics</h3>
-                    <p data-es="Caso de analítica comercial sobre DuckDB: modelo relacional, JOINs, CTEs, window functions, segmentación RFM, cohortes y controles de calidad." data-en="Business analytics case study using DuckDB: relational modelling, JOINs, CTEs, window functions, RFM segmentation, cohorts, and data-quality checks.">Caso de analítica comercial sobre DuckDB: modelo relacional, JOINs, CTEs, window functions, segmentación RFM, cohortes y controles de calidad.</p>
-                    <p><strong data-es="Stack:" data-en="Stack:">Stack:</strong> SQL, DuckDB, Python</p>
-                    <div class="project-actions">
-                        <a href="https://github.com/agustiininicabral/sql-advanced-analytics" target="_blank" rel="noopener noreferrer" data-es="Ver repositorio" data-en="View repository">Ver repositorio</a>
-                        <a href="https://github.com/agustiininicabral/sql-advanced-analytics/actions" target="_blank" rel="noopener noreferrer" data-es="Ver CI" data-en="View CI">Ver CI</a>
-                    </div>
-                </article>
-                <article class="project-card card-soft">
-                    <h3>Automated ETL Pipeline</h3>
-                    <p data-es="ETL batch que extrae JSON y CSV, valida y transforma registros, carga datos en SQLite con transacciones y genera reportes de auditoría y rechazos." data-en="Batch ETL that extracts JSON and CSV, validates and transforms records, loads data transactionally into SQLite, and produces audit and rejection reports.">ETL batch que extrae JSON y CSV, valida y transforma registros, carga datos en SQLite con transacciones y genera reportes de auditoría y rechazos.</p>
-                    <p><strong data-es="Stack:" data-en="Stack:">Stack:</strong> Python, SQLite, ETL</p>
-                    <div class="project-actions">
-                        <a href="https://github.com/agustiininicabral/automated-etl-pipeline" target="_blank" rel="noopener noreferrer" data-es="Ver repositorio" data-en="View repository">Ver repositorio</a>
-                        <a href="https://github.com/agustiininicabral/automated-etl-pipeline/actions" target="_blank" rel="noopener noreferrer" data-es="Ver CI" data-en="View CI">Ver CI</a>
-                    </div>
-                </article>
-                <article class="project-card card-soft">
-                    <h3>Excel Automation Toolkit</h3>
-                    <p data-es="Genera reportes Excel desde CSV con validaciones, hojas de resumen y calidad de datos, métricas mensuales y gráficos integrados." data-en="Generates Excel reports from CSV with validation, summary and data-quality sheets, monthly metrics, and embedded charts.">Genera reportes Excel desde CSV con validaciones, hojas de resumen y calidad de datos, métricas mensuales y gráficos integrados.</p>
-                    <p><strong data-es="Stack:" data-en="Stack:">Stack:</strong> Python, pandas, openpyxl, Excel</p>
-                    <div class="project-actions">
-                        <a href="https://github.com/agustiininicabral/excel-automation-toolkit" target="_blank" rel="noopener noreferrer" data-es="Ver repositorio" data-en="View repository">Ver repositorio</a>
-                        <a href="https://github.com/agustiininicabral/excel-automation-toolkit/actions" target="_blank" rel="noopener noreferrer" data-es="Ver CI" data-en="View CI">Ver CI</a>
-                    </div>
-                </article>
-                <article class="project-card card-soft">
-                    <h3>Database Quality Validator</h3>
-                    <p data-es="Framework QA para SQLite que ejecuta reglas SQL reutilizables, detecta duplicados, referencias huérfanas y datos inválidos, y exporta reportes JSON." data-en="SQLite QA framework that runs reusable SQL rules, detects duplicates, orphan references, and invalid data, and exports JSON reports.">Framework QA para SQLite que ejecuta reglas SQL reutilizables, detecta duplicados, referencias huérfanas y datos inválidos, y exporta reportes JSON.</p>
-                    <p><strong data-es="Stack:" data-en="Stack:">Stack:</strong> Python, SQLite, SQL, pytest</p>
-                    <div class="project-actions">
-                        <a href="https://github.com/agustiininicabral/database-quality-validator" target="_blank" rel="noopener noreferrer" data-es="Ver repositorio" data-en="View repository">Ver repositorio</a>
-                        <a href="https://github.com/agustiininicabral/database-quality-validator/actions" target="_blank" rel="noopener noreferrer" data-es="Ver CI" data-en="View CI">Ver CI</a>
-                    </div>
-                </article>
-                <article class="project-card card-soft">
-                    <h3>Python API Integration</h3>
-                    <p data-es="Cliente REST con GET, POST, PUT, PATCH y DELETE, autenticación Bearer configurable, timeouts, reintentos acotados, contratos HTTP y colección Postman." data-en="REST client with GET, POST, PUT, PATCH, and DELETE, configurable Bearer authentication, timeouts, bounded retries, HTTP contracts, and a Postman collection.">Cliente REST con GET, POST, PUT, PATCH y DELETE, autenticación Bearer configurable, timeouts, reintentos acotados, contratos HTTP y colección Postman.</p>
-                    <p><strong data-es="Stack:" data-en="Stack:">Stack:</strong> Python, Requests, pytest, Postman</p>
-                    <div class="project-actions">
-                        <a href="https://github.com/agustiininicabral/python-api-integration" target="_blank" rel="noopener noreferrer" data-es="Ver repositorio" data-en="View repository">Ver repositorio</a>
-                        <a href="https://github.com/agustiininicabral/python-api-integration/actions" target="_blank" rel="noopener noreferrer" data-es="Ver CI" data-en="View CI">Ver CI</a>
-                    </div>
-                </article>
-                <article class="project-card card-soft">
-                    <h3>Web Automation Testing</h3>
-                    <p data-es="Pruebas funcionales y de regresión con Selenium y Playwright, Page Object Model y pytest sobre una tienda demo local; incluye ejecución Chromium en CI." data-en="Functional and regression tests with Selenium and Playwright, Page Object Model, and pytest against a local demo storefront; includes Chromium CI execution.">Pruebas funcionales y de regresión con Selenium y Playwright, Page Object Model y pytest sobre una tienda demo local; incluye ejecución Chromium en CI.</p>
-                    <p><strong data-es="Stack:" data-en="Stack:">Stack:</strong> Python, Selenium, Playwright, pytest</p>
-                    <div class="project-actions">
-                        <a href="https://github.com/agustiininicabral/web-automation-testing" target="_blank" rel="noopener noreferrer" data-es="Ver repositorio" data-en="View repository">Ver repositorio</a>
-                        <a href="https://github.com/agustiininicabral/web-automation-testing/actions" target="_blank" rel="noopener noreferrer" data-es="Ver CI" data-en="View CI">Ver CI</a>
-                    </div>
-                </article>
-                <article class="project-card card-soft">
-                    <h3>Performance & Load Testing</h3>
-                    <p data-es="Pruebas de carga con Locust y Apache JMeter sobre una API FastAPI local. Registra throughput, latencias percentiles y errores; el smoke CI no representa capacidad productiva." data-en="Load tests with Locust and Apache JMeter against a local FastAPI service. Records throughput, percentile latency, and errors; CI smoke tests are not production capacity benchmarks.">Pruebas de carga con Locust y Apache JMeter sobre una API FastAPI local. Registra throughput, latencias percentiles y errores; el smoke CI no representa capacidad productiva.</p>
-                    <p><strong data-es="Stack:" data-en="Stack:">Stack:</strong> Python, Locust, Apache JMeter, FastAPI</p>
-                    <div class="project-actions">
-                        <a href="https://github.com/agustiininicabral/performance-load-testing" target="_blank" rel="noopener noreferrer" data-es="Ver repositorio" data-en="View repository">Ver repositorio</a>
-                        <a href="https://github.com/agustiininicabral/performance-load-testing/actions" target="_blank" rel="noopener noreferrer" data-es="Ver CI" data-en="View CI">Ver CI</a>
-                    </div>
-                </article>
-            </div>
-            <p data-es="También podés explorar otros laboratorios y proyectos en mi perfil de GitHub." data-en="You can also explore additional labs and projects on my GitHub profile.">También podés explorar otros laboratorios y proyectos en mi perfil de GitHub.</p>
-            <p><a href="https://github.com/agustiininicabral" target="_blank" rel="noopener noreferrer" data-es="Explorar perfil de GitHub" data-en="Explore GitHub profile">Explorar perfil de GitHub</a></p>
-        </section>
-
-        <section id="education" class="section reveal">
-            <p class="section-kicker" data-es="FORMACIÓN" data-en="LEARNING">FORMACIÓN</p>
-            <h2 data-es="Aprendizaje aplicado y base técnica." data-en="Applied learning and a technical foundation.">Aprendizaje aplicado y base técnica.</h2>
-            <div class="education-grid">
-                <article class="education-card card-soft">
-                    <h3 data-es="Coderhouse - Data Analytics (Oct–Dic 2025)" data-en="Coderhouse - Data Analytics (Oct–Dec 2025)">Coderhouse - Data Analytics (Oct–Dic 2025)</h3>
-                    <p data-es="SQL, Power BI, ETL y análisis de datos" data-en="SQL, Power BI, ETL, and data analytics">SQL, Power BI, ETL y análisis de datos</p>
-                </article>
-                <article class="education-card card-soft">
-                    <h3 data-es="Coderhouse - QA Manual Testing (Nov 2025–Feb 2026)" data-en="Coderhouse - Manual QA Testing (Nov 2025–Feb 2026)">Coderhouse - QA Manual Testing (Nov 2025–Feb 2026)</h3>
-                    <p data-es="Testing manual, Postman y gestión de bugs" data-en="Manual testing, Postman, and bug tracking">Testing manual, Postman y gestión de bugs</p>
-                </article>
-                <article class="education-card card-soft">
-                    <h3 data-es="Power BI (Jul 2026)" data-en="Power BI (Jul 2026)">Power BI (Jul 2026)</h3>
-                    <p data-es="Modelado, visualización, KPIs y calidad de datos" data-en="Data modeling, visualization, KPIs, and data quality">Modelado, visualización, KPIs y calidad de datos</p>
-                </article>
-                <article class="education-card card-soft">
-                    <h3 data-es="Python MTA (Sep 2026)" data-en="Python MTA (Sep 2026)">Python MTA (Sep 2026)</h3>
-                    <p data-es="Fundamentos de Python, automatización y manipulación de datos" data-en="Python fundamentals, automation, and data manipulation">Fundamentos de Python, automatización y manipulación de datos</p>
-                </article>
-                <article class="education-card card-soft">
-                    <h3 data-es="ITBA - Ingeniería en Petróleo (2021–2024, incompleto)" data-en="ITBA - Petroleum Engineering (2021–2024, incomplete)">ITBA - Ingeniería en Petróleo (2021–2024, incompleto)</h3>
-                    <p data-es="Formación analítica y técnica" data-en="Analytical and technical foundation">Formación analítica y técnica</p>
-                </article>
-                <article class="education-card card-soft">
-                    <h3 data-es="UTN - Análisis de Sistemas (2017–2019, incompleto)" data-en="UTN - Systems Analysis (2017–2019, incomplete)">UTN - Análisis de Sistemas (2017–2019, incompleto)</h3>
-                    <p data-es="Fundamentos de sistemas, bases de datos y lógica" data-en="Systems, database, and logic fundamentals">Fundamentos de sistemas, bases de datos y lógica</p>
-                </article>
-            </div>
-        </section>
-
-        <section id="contact" class="section reveal">
-            <p class="section-kicker" data-es="CONTACTO" data-en="CONTACT">CONTACTO</p>
-            <h2 data-es="¿Hay un problema de datos para resolver?" data-en="Have a data problem to solve?">¿Hay un problema de datos para resolver?</h2>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <p><strong data-es="Ubicación:" data-en="Location:">Ubicación:</strong> Buenos Aires, Argentina</p>
-                    <p><strong data-es="Email:" data-en="Email:">Email:</strong> <a href="mailto:agustinkbral2013@gmail.com">agustinkbral2013@gmail.com</a></p>
-                    <p><strong data-es="Teléfono:" data-en="Phone:">Teléfono:</strong> <a href="https://wa.me/541123971679" target="_blank" rel="noopener noreferrer">+54 11 2397-1679</a></p>
-                    <p><strong data-es="LinkedIn:" data-en="LinkedIn:">LinkedIn:</strong> <a href="https://www.linkedin.com/in/agustincabral13" target="_blank" rel="noopener noreferrer">linkedin.com/in/agustincabral13</a></p>
-                    <p><strong data-es="GitHub:" data-en="GitHub:">GitHub:</strong> <a href="https://github.com/agustiininicabral" target="_blank" rel="noopener noreferrer">github.com/agustiininicabral</a></p>
-                </div>
-                <div class="contact-card">
-                    <p><strong data-es="Idiomas" data-en="Languages">Idiomas</strong></p>
-                    <p data-es="Español: Nativo" data-en="Spanish: Native">Español: Nativo</p>
-                    <p data-es="Inglés: Intermedio (B1/B2)" data-en="English: Intermediate (B1/B2)">Inglés: Intermedio (B1/B2)</p>
-                </div>
-            </div>
-        </section>
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="hero-image" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="eyebrow" data-es="PORTFOLIO PROFESIONAL · BUENOS AIRES, ARGENTINA" data-en="PROFESSIONAL PORTFOLIO · BUENOS AIRES, ARGENTINA">PORTFOLIO PROFESIONAL · BUENOS AIRES, ARGENTINA</p>
+        <h1>Agustín<br><em>Cabral.</em></h1>
+        <p class="hero-line" data-es="Datos, calidad y tecnología aplicada." data-en="Data, quality and applied technology.">Datos, calidad y tecnología aplicada.</p>
+        <p class="hero-copy" data-es="Combino experiencia en operaciones y administración con formación y proyectos prácticos en QA Automation, análisis de datos y desarrollo. Me interesa construir soluciones claras, comprobables y útiles para el negocio." data-en="I combine operations and administrative experience with hands-on learning and projects in QA Automation, data analytics and software development. I focus on building clear, verifiable solutions that serve real business needs.">Combino experiencia en operaciones y administración con formación y proyectos prácticos en QA Automation, análisis de datos y desarrollo. Me interesa construir soluciones claras, comprobables y útiles para el negocio.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects" data-es="Explorar proyectos" data-en="Explore projects">Explorar proyectos</a>
+          <a class="button button-outline" href="cv.html" target="_blank" rel="noopener noreferrer" data-es="Abrir CV" data-en="Open CV">Abrir CV</a>
+          <a class="text-link" href="https://www.linkedin.com/in/agustincabral13/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
         </div>
-    </main>
+        <p class="hero-tags">QA AUTOMATION <span>·</span> DATA ANALYTICS <span>·</span> SOFTWARE & AUTOMATION</p>
+      </div>
+      <span class="hero-index" aria-hidden="true">01 / 06</span>
+    </section>
 
-    <footer class="site-footer">
-        <span>Agustín Cabral · Data Quality, Analytics & QA</span>
-        <a href="#home" data-es="Volver al inicio ↑" data-en="Back to top ↑">Volver al inicio ↑</a>
-    </footer>
+    <section class="section profile-section" id="profile">
+      <div class="section-heading">
+        <p class="eyebrow">01 — <span data-es="PERFIL" data-en="PROFILE">PERFIL</span></p>
+        <h2 data-es="Una trayectoria que conecta procesos, datos y tecnología." data-en="A background connecting processes, data and technology.">Una trayectoria que conecta procesos, datos y tecnología.</h2>
+      </div>
+      <div class="profile-content">
+        <p class="lead" data-es="Mi recorrido profesional comenzó en tareas administrativas, atención y operaciones. Esa experiencia me dio una perspectiva concreta sobre la calidad de la información, la documentación y el impacto de los procesos en el trabajo diario." data-en="My professional path began in administrative, customer-facing and operations roles. That experience gave me a practical perspective on information quality, documentation and how processes affect day-to-day work.">Mi recorrido profesional comenzó en tareas administrativas, atención y operaciones. Esa experiencia me dio una perspectiva concreta sobre la calidad de la información, la documentación y el impacto de los procesos en el trabajo diario.</p>
+        <p data-es="En paralelo, fui profundizando mi formación en análisis de sistemas, datos, testing y gestión de proyectos. Hoy desarrollo proyectos propios que me permiten aplicar esos conocimientos en automatización de pruebas, APIs, análisis y herramientas de software. Busco aportar criterio, capacidad de aprendizaje y una forma de trabajo ordenada y verificable." data-en="Alongside that experience, I have continued developing my knowledge of systems analysis, data, testing and project management. I build independent projects to apply those skills in test automation, APIs, analytics and software tools. I bring sound judgment, continuous learning and a structured, evidence-based approach.">En paralelo, fui profundizando mi formación en análisis de sistemas, datos, testing y gestión de proyectos. Hoy desarrollo proyectos propios que me permiten aplicar esos conocimientos en automatización de pruebas, APIs, análisis y herramientas de software. Busco aportar criterio, capacidad de aprendizaje y una forma de trabajo ordenada y verificable.</p>
+        <div class="profile-note">
+          <span class="note-mark">“</span>
+          <p data-es="No alcanza con que una solución funcione: también tiene que poder explicarse, probarse y mantenerse." data-en="A solution should not only work; it should also be explainable, testable and maintainable.">No alcanza con que una solución funcione: también tiene que poder explicarse, probarse y mantenerse.</p>
+        </div>
+      </div>
+    </section>
 
-    <button id="back-to-top" class="back-to-top" aria-label="Volver arriba">↑</button>
-</div>
+    <section class="section projects-section" id="projects">
+      <div class="section-heading">
+        <p class="eyebrow">02 — <span data-es="PROYECTOS SELECCIONADOS" data-en="SELECTED PROJECTS">PROYECTOS SELECCIONADOS</span></p>
+        <h2 data-es="Trabajo aplicado, con alcance y estado transparentes." data-en="Applied work, with clear scope and status.">Trabajo aplicado, con alcance y estado transparentes.</h2>
+        <p class="section-intro" data-es="Una selección de proyectos personales. Cada ficha distingue lo implementado de lo que todavía está en desarrollo o requiere validación." data-en="A selection of personal projects. Each card distinguishes implemented functionality from work still in development or awaiting validation.">Una selección de proyectos personales. Cada ficha distingue lo implementado de lo que todavía está en desarrollo o requiere validación.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="project-top"><span class="project-number">01</span><span class="status status-done" data-es="Publicado" data-en="Published">Publicado</span></div>
+          <p class="project-type">QA AUTOMATION · API</p>
+          <h3>API Testing Framework</h3>
+          <p data-es="Framework de pruebas REST desarrollado con Python, pytest y requests. Incluye escenarios positivos y negativos, validación de contratos, tipos de datos, errores de conexión y timeouts, con pruebas unitarias e integración diferenciadas." data-en="REST API testing framework built with Python, pytest and requests. Covers positive and negative scenarios, contract and data-type validation, connection errors and timeouts, with separate unit and integration suites.">Framework de pruebas REST desarrollado con Python, pytest y requests. Incluye escenarios positivos y negativos, validación de contratos, tipos de datos, errores de conexión y timeouts, con pruebas unitarias e integración diferenciadas.</p>
+          <p class="stack">Python · pytest · Requests · GitHub Actions</p>
+          <a class="project-link" href="https://github.com/agustiininicabral/api-testing-framework" target="_blank" rel="noopener noreferrer" data-es="Ver repositorio" data-en="View repository">Ver repositorio ↗</a>
+        </article>
+        <article class="project-card">
+          <div class="project-top"><span class="project-number">02</span><span class="status status-done" data-es="Publicado" data-en="Published">Publicado</span></div>
+          <p class="project-type">QA AUTOMATION · UI</p>
+          <h3>Playwright UI Testing</h3>
+          <p data-es="Suite de automatización para flujos de login con Python, pytest y Playwright. Separa pruebas locales deterministas de pruebas de integración contra un sitio público e incorpora reportes HTML, capturas y ejecución en GitHub Actions." data-en="UI automation suite for login flows using Python, pytest and Playwright. Separates deterministic local tests from integration tests against a public site, with HTML reports, screenshots and GitHub Actions execution.">Suite de automatización para flujos de login con Python, pytest y Playwright. Separa pruebas locales deterministas de pruebas de integración contra un sitio público e incorpora reportes HTML, capturas y ejecución en GitHub Actions.</p>
+          <p class="stack">Python · Playwright · pytest · Chromium · CI</p>
+          <a class="project-link" href="https://github.com/agustiininicabral/playwright-ui-testing" target="_blank" rel="noopener noreferrer" data-es="Ver repositorio" data-en="View repository">Ver repositorio ↗</a>
+        </article>
+        <article class="project-card">
+          <div class="project-top"><span class="project-number">03</span><span class="status status-progress" data-es="En desarrollo" data-en="In development">En desarrollo</span></div>
+          <p class="project-type">SOFTWARE · DATA</p>
+          <h3>PriceWatch</h3>
+          <p data-es="Aplicación local para organizar productos, publicaciones y observaciones manuales de precios, comparar ofertas y evaluar alertas. El núcleo está implementado; las integraciones reales con tiendas y las notificaciones automáticas todavía no están disponibles." data-en="Local application to organize products, listings and manually recorded prices, compare offers and evaluate alerts. The core is implemented; real store integrations and automatic notifications are not yet available.">Aplicación local para organizar productos, publicaciones y observaciones manuales de precios, comparar ofertas y evaluar alertas. El núcleo está implementado; las integraciones reales con tiendas y las notificaciones automáticas todavía no están disponibles.</p>
+          <p class="stack">Python · FastAPI · SQLite · JavaScript · HTML/CSS</p>
+          <a class="project-link" href="https://github.com/agustiininicabral/pricewatch" target="_blank" rel="noopener noreferrer" data-es="Ver repositorio" data-en="View repository">Ver repositorio ↗</a>
+        </article>
+        <article class="project-card">
+          <div class="project-top"><span class="project-number">04</span><span class="status status-progress" data-es="En desarrollo" data-en="In development">En desarrollo</span></div>
+          <p class="project-type">DESKTOP APP · AI · AUTOMATION</p>
+          <h3>Automatic-OC</h3>
+          <p data-es="Agente de escritorio local en evolución, con interfaz Tauri/React y backend FastAPI. El objetivo es coordinar tareas asistidas por modelos locales y APIs externas opcionales, manteniendo aprobación del usuario y trazabilidad. No se presenta como producto terminado." data-en="An evolving local desktop agent with a Tauri/React interface and FastAPI backend. Its goal is to coordinate tasks assisted by local models and optional external APIs, while preserving user approval and traceability. It is not presented as a finished product.">Agente de escritorio local en evolución, con interfaz Tauri/React y backend FastAPI. El objetivo es coordinar tareas asistidas por modelos locales y APIs externas opcionales, manteniendo aprobación del usuario y trazabilidad. No se presenta como producto terminado.</p>
+          <p class="stack">Tauri · React · Python · FastAPI</p>
+          <span class="project-note" data-es="Proyecto local · demostración pública pendiente" data-en="Local project · public demonstration pending">Proyecto local · demostración pública pendiente</span>
+        </article>
+        <article class="project-card">
+          <div class="project-top"><span class="project-number">05</span><span class="status status-review" data-es="Pendiente de validar" data-en="Validation pending">Pendiente de validar</span></div>
+          <p class="project-type">WORKFLOW AUTOMATION</p>
+          <h3>n8n Automation Portfolio</h3>
+          <p data-es="Colección educativa de ocho workflows para webhooks, integración de APIs, procesamiento de datos, reportes y validación de entradas. Cuenta con validaciones automatizadas del JSON y de la lógica de nodos; falta completar la verificación de importación y ejecución dentro de n8n." data-en="Educational collection of eight workflows for webhooks, API integration, data processing, reporting and input validation. Automated JSON and node-logic checks are in place; import and execution inside n8n still need verification.">Colección educativa de ocho workflows para webhooks, integración de APIs, procesamiento de datos, reportes y validación de entradas. Cuenta con validaciones automatizadas del JSON y de la lógica de nodos; falta completar la verificación de importación y ejecución dentro de n8n.</p>
+          <p class="stack">n8n · REST APIs · Webhooks · JavaScript · JSON</p>
+          <a class="project-link" href="https://github.com/agustiininicabral/n8n-automation-portfolio" target="_blank" rel="noopener noreferrer" data-es="Ver repositorio" data-en="View repository">Ver repositorio ↗</a>
+        </article>
+      </div>
+    </section>
 
-<script src="script.js"></script>
+    <section class="section skills-section" id="skills">
+      <div class="section-heading">
+        <p class="eyebrow">03 — <span data-es="COMPETENCIAS" data-en="SKILLS">COMPETENCIAS</span></p>
+        <h2 data-es="Herramientas y métodos." data-en="Tools and methods.">Herramientas y métodos.</h2>
+      </div>
+      <div class="skills-list">
+        <article class="skill-row"><h3 data-es="Data Analytics & BI" data-en="Data Analytics & BI">Data Analytics & BI</h3><p>SQL · Python · Power BI · Excel · Power Query · MySQL · SQL Server · Microsoft Fabric · pandas</p></article>
+        <article class="skill-row"><h3 data-es="QA & Testing" data-en="QA & Testing">QA & Testing</h3><p>Playwright · pytest · Postman · API Testing · Manual Testing · Regression Testing · Test Design</p></article>
+        <article class="skill-row"><h3 data-es="Desarrollo de software" data-en="Software development">Desarrollo de software</h3><p>Python · JavaScript · React · FastAPI · Node.js · Tauri · C# · HTML · CSS</p></article>
+        <article class="skill-row"><h3 data-es="Automatización e integración" data-en="Automation & integration">Automatización e integración</h3><p>n8n · REST APIs · JSON · Webhooks · Git · GitHub Actions · ETL</p></article>
+        <article class="skill-row"><h3 data-es="Gestión de proyectos" data-en="Project management">Gestión de proyectos</h3><p>Agile · Scrum · Kanban · Design Thinking · Project Planning · Documentation</p></article>
+      </div>
+      <p class="skills-footnote" data-es="Las competencias reflejan una combinación de experiencia, formación y aplicación en proyectos personales; no implican dominio profesional avanzado de cada herramienta." data-en="These skills reflect a combination of work experience, training and personal project work; they do not imply advanced professional mastery of every tool.">Las competencias reflejan una combinación de experiencia, formación y aplicación en proyectos personales; no implican dominio profesional avanzado de cada herramienta.</p>
+    </section>
+
+    <section class="section experience-section" id="experience">
+      <div class="section-heading">
+        <p class="eyebrow">04 — <span data-es="EXPERIENCIA" data-en="EXPERIENCE">EXPERIENCIA</span></p>
+        <h2 data-es="Experiencia laboral." data-en="Professional experience.">Experiencia laboral.</h2>
+      </div>
+      <div class="experience-list">
+        <article class="experience-item"><time>Sep 2024 — Abr 2025</time><div><h3>Farmafe</h3><p class="role" data-es="Administrativo · Relación laboral" data-en="Administrative assistant · Employee">Administrativo · Relación laboral</p><ul><li data-es="Soporte administrativo y tareas de facturación." data-en="Administrative support and invoicing tasks.">Soporte administrativo y tareas de facturación.</li><li data-es="Carga y control de facturas en el sistema; colaboración en tareas contables utilizando SAS." data-en="Invoice entry and checks in the business system; support with accounting tasks using SAS.">Carga y control de facturas en el sistema; colaboración en tareas contables utilizando SAS.</li><li data-es="Revisión de documentación y seguimiento de inconsistencias operativas." data-en="Document review and follow-up of operational inconsistencies.">Revisión de documentación y seguimiento de inconsistencias operativas.</li></ul></div></article>
+        <article class="experience-item"><time>Abr 2022 — Nov 2023</time><div><h3>COTO</h3><p class="role" data-es="Auxiliar administrativo · Relación laboral" data-en="Administrative assistant · Employee">Auxiliar administrativo · Relación laboral</p><ul><li data-es="Gestión administrativa de facturación y devoluciones." data-en="Administrative handling of invoicing and returns.">Gestión administrativa de facturación y devoluciones.</li><li data-es="Manejo de documentación fiscal y trámites administrativos." data-en="Handling tax documentation and related administrative procedures.">Manejo de documentación y trámites vinculados con ARCA.</li><li data-es="Elaboración de reportes y seguimiento de incidencias." data-en="Report preparation and incident follow-up.">Elaboración de reportes y seguimiento de incidencias.</li></ul></div></article>
+        <article class="experience-item"><time>Dic 2021 — Abr 2022</time><div><h3>Hotel Devoto</h3><p class="role" data-es="Recepción y administración · Relación laboral" data-en="Front desk and administration · Employee">Recepción y administración · Relación laboral</p><ul><li data-es="Atención y recepción de huéspedes." data-en="Guest reception and customer service.">Atención y recepción de huéspedes.</li><li data-es="Tareas administrativas y coordinación de información operativa." data-en="Administrative tasks and operational information coordination.">Tareas administrativas y coordinación de información operativa.</li></ul></div></article>
+        <article class="experience-item"><time>Ene 2021 — Ago 2021</time><div><h3>Ravio</h3><p class="role" data-es="Soporte y operaciones con ERP · Parcial / híbrido" data-en="ERP support and operations · Part-time / hybrid">Soporte y operaciones con ERP · Parcial / híbrido</p><ul><li data-es="Soporte operativo y asistencia en el uso de herramientas ERP." data-en="Operational support and assistance with ERP tools.">Soporte operativo y asistencia en el uso de herramientas ERP.</li><li data-es="Seguimiento de procesos y resolución de incidencias." data-en="Process follow-up and issue resolution.">Seguimiento de procesos y resolución de incidencias.</li></ul></div></article>
+        <article class="experience-item"><time>Mar 2018 — Nov 2019</time><div><h3>Concorsistemas</h3><p class="role" data-es="E-commerce, desarrollo y soporte técnico · Autónomo" data-en="E-commerce, development and technical support · Self-employed">E-commerce, desarrollo y soporte técnico · Autónomo</p><ul><li data-es="Trabajo independiente vinculado con e-commerce y soluciones digitales." data-en="Independent work related to e-commerce and digital solutions.">Trabajo independiente vinculado con e-commerce y soluciones digitales.</li><li data-es="Desarrollo y soporte técnico de herramientas y procesos." data-en="Development and technical support for tools and processes.">Desarrollo y soporte técnico de herramientas y procesos.</li></ul></div></article>
+        <article class="experience-item"><time>Ene 2017 — Feb 2018</time><div><h3>COPAGRAN</h3><p class="role" data-es="Auxiliar administrativo ganadero · Relación laboral" data-en="Livestock administration assistant · Employee">Auxiliar administrativo ganadero · Relación laboral</p><ul><li data-es="Apoyo administrativo en operaciones vinculadas con actividad ganadera." data-en="Administrative support for livestock-related operations.">Apoyo administrativo en operaciones vinculadas con actividad ganadera.</li><li data-es="Registro, organización y control de documentación." data-en="Record keeping, organization and document control.">Registro, organización y control de documentación.</li></ul></div></article>
+      </div>
+    </section>
+
+    <section class="section education-section" id="education">
+      <div class="section-heading">
+        <p class="eyebrow">05 — <span data-es="FORMACIÓN" data-en="EDUCATION">FORMACIÓN</span></p>
+        <h2 data-es="Formación académica y profesional." data-en="Academic and professional learning.">Formación académica y profesional.</h2>
+      </div>
+      <div class="education-grid">
+        <article class="education-card"><p class="education-date">Mar 2021 — Ago 2024</p><h3>ITBA · Instituto Tecnológico de Buenos Aires</h3><p data-es="Ingeniería en Petróleo · estudios universitarios incompletos." data-en="Petroleum Engineering · undergraduate studies not completed.">Ingeniería en Petróleo · estudios universitarios incompletos.</p></article>
+        <article class="education-card"><p class="education-date">Feb 2017 — Mar 2019</p><h3>UTN · Universidad Tecnológica Nacional</h3><p data-es="Análisis de Sistemas · formación universitaria parcial." data-en="Systems Analysis · partial university studies.">Análisis de Sistemas · formación universitaria parcial.</p></article>
+      </div>
+      <div class="certifications">
+        <h3 data-es="Cursos y certificaciones" data-en="Courses and certificates">Cursos y certificaciones</h3>
+        <div class="cert-group"><h4 data-es="Gestión de proyectos y Agile" data-en="Project Management & Agile">Gestión de proyectos y Agile</h4><ul><li data-es="IBM — Project Management Fundamentals (en curso, nov. 2026)." data-en="IBM — Project Management Fundamentals (in progress, Nov 2026).">IBM — Project Management Fundamentals (nov. 2026).</li><li data-es="Academia 3E — Metodologías ágiles para gestión de proyectos · 20 horas · Scrum, Kanban y Design Thinking (nov. 2026)." data-en="Academia 3E — Agile Project Management · 20 hours · Scrum, Kanban and Design Thinking (Nov 2026).">Academia 3E — Metodologías ágiles para gestión de proyectos · 20 horas · Scrum, Kanban y Design Thinking (nov. 2026).</li><li data-es="Santander — Gestión efectiva de proyectos y equipos (2026)." data-en="Santander — Effective project and team management (2026).">Santander — Gestión efectiva de proyectos y equipos (2026).</li></ul></div>
+        <div class="cert-group"><h4 data-es="Datos y BI" data-en="Data & BI">Datos y BI</h4><ul><li data-es="Coderhouse — Data Analytics Flex (oct.–dic. 2025)." data-en="Coderhouse — Data Analytics (Dec 2025).">Coderhouse — Data Analytics (dic. 2025).</li><li data-es="Santander — Python (oct. 2026)." data-en="Santander — Python (Oct 2026).">Santander — Python (oct. 2026).</li><li data-es="Santander — Power BI Intermedio: Análisis y Modelado de Datos (sept. 2026)." data-en="Santander — Intermediate Power BI: Data Analysis and Modeling (Sep 2026).">Santander — Power BI Intermedio: Análisis y Modelado de Datos (sept. 2026).</li><li data-es="LinkedIn Learning — Consultas SQL, Power Query (PL-300), SQL Server 2019 esencial, SAP ERP, SQL en Microsoft Fabric y Azure SQL (dic. 2025)." data-en="LinkedIn Learning — SQL Queries, Power Query (PL-300), SQL Server 2019 Essentials, SAP ERP, SQL in Microsoft Fabric and Azure SQL (Dec 2025).">LinkedIn Learning — Consultas SQL, Power Query (PL-300), SQL Server 2019 esencial, SAP ERP, SQL en Microsoft Fabric y Azure SQL (dic. 2025).</li><li data-es="Santander — Excel y herramientas para internacionalizar pymes (2026)." data-en="Santander — Excel and tools for SME internationalization (2026).">Santander — Excel y herramientas para internacionalizar pymes (2026).</li></ul></div>
+        <div class="cert-group"><h4 data-es="QA y Testing" data-en="QA & Testing">QA y Testing</h4><ul><li data-es="Coderhouse — Testing QA Manual (nov. 2025–feb. 2026; certificado emitido en mar. 2026)." data-en="Coderhouse — Manual QA Testing (Mar 2026).">Coderhouse — Testing QA Manual (mar. 2026).</li></ul></div>
+        <div class="cert-group"><h4 data-es="Otras formaciones" data-en="Additional learning">Otras formaciones</h4><ul><li data-es="Santander — Negociación (2026)." data-en="Santander — Negotiation (2026).">Santander — Negociación (2026).</li></ul></div>
+      </div>
+      <p class="education-note" data-es="Los estudios universitarios se presentan como formación parcial, no como títulos obtenidos. Los cursos se enumeran como formación realizada; su inclusión no implica vigencia indefinida de una credencial." data-en="University studies are listed as partial studies, not completed degrees. Courses are listed as completed learning; inclusion does not imply that a credential remains valid indefinitely.">Los estudios universitarios se presentan como formación parcial, no como títulos obtenidos. Los cursos se enumeran como formación realizada; su inclusión no implica vigencia indefinida de una credencial.</p>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="section-heading">
+        <p class="eyebrow">06 — <span data-es="CONTACTO" data-en="CONTACT">CONTACTO</span></p>
+        <h2 data-es="Conectemos." data-en="Get in touch.">Conectemos.</h2>
+        <p class="section-intro" data-es="Disponible para oportunidades y colaboraciones en tecnología, QA, datos y automatización." data-en="Open to opportunities and collaborations in technology, QA, data and automation.">Disponible para oportunidades y colaboraciones en tecnología, QA, datos y automatización.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:agustinkbral2013@gmail.com">agustinkbral2013@gmail.com ↗</a>
+        <a href="https://www.linkedin.com/in/agustincabral13/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a href="https://github.com/agustiininicabral" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+      <p class="location">Buenos Aires, Argentina</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 Agustín Cabral</span>
+    <span class="photo-credit">Fuji photograph: <a href="https://commons.wikimedia.org/wiki/File:Mount_Fuji_from_Fuji_City.jpg" target="_blank" rel="noopener noreferrer">Alpsdake / Wikimedia Commons</a> · CC BY-SA 4.0</span>
+    <a href="#home" data-es="Volver arriba ↑" data-en="Back to top ↑">Volver arriba ↑</a>
+  </footer>
+  <script src="script.js" defer></script>
 </body>
 </html>

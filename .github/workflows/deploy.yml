@@ -1,6 +1,8 @@
 name: Validate and deploy portfolio
 
 on:
+  pull_request:
+    branches: [master]
   push:
     branches: [master]
     paths:
@@ -8,6 +10,7 @@ on:
       - "style.css"
       - "script.js"
       - "cv.html"
+      - "cv-en.html"
       - "wrangler.jsonc"
       - "scripts/**"
       - ".github/workflows/deploy.yml"
@@ -36,7 +39,7 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Validate site structure
+      - name: Validate site
         run: python3 scripts/validate_site.py
 
       - name: Validate JavaScript syntax
@@ -45,13 +48,12 @@ jobs:
       - name: Prepare static assets
         run: |
           mkdir -p dist
-          cp index.html style.css script.js cv.html dist/
+          cp index.html style.css script.js cv.html cv-en.html dist/
 
       - name: Deploy to Cloudflare Workers
-        if: ${{ env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != '' }}
+        if: ${{ github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != '' }}
         run: npx --yes wrangler@4 deploy --config wrangler.jsonc
 
       - name: Explain skipped deployment
-        if: ${{ env.CLOUDFLARE_API_TOKEN == '' || env.CLOUDFLARE_ACCOUNT_ID == '' }}
-        run: echo "Validation passed. Add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID repository secrets to enable deployment."
-
+        if: ${{ github.event_name == 'pull_request' || env.CLOUDFLARE_API_TOKEN == '' || env.CLOUDFLARE_ACCOUNT_ID == '' }}
+        run: echo "Validation passed. Pull requests never deploy; production deployment only runs on pushes to master when Cloudflare secrets are configured."
