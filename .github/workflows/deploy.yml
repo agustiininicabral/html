@@ -12,6 +12,7 @@ on:
       - "cv.html"
       - "cv-en.html"
       - "wrangler.jsonc"
+      - "README.md"
       - "scripts/**"
       - ".github/workflows/deploy.yml"
   workflow_dispatch:
@@ -39,7 +40,7 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Validate site
+      - name: Validate site structure and content
         run: python3 scripts/validate_site.py
 
       - name: Validate JavaScript syntax
@@ -50,10 +51,19 @@ jobs:
           mkdir -p dist
           cp index.html style.css script.js cv.html cv-en.html dist/
 
+      - name: Check Cloudflare credentials
+        if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
+        shell: bash
+        run: |
+          if [[ -z "$CLOUDFLARE_API_TOKEN" || -z "$CLOUDFLARE_ACCOUNT_ID" ]]; then
+            echo "::error::Missing CLOUDFLARE_API_TOKEN or CLOUDFLARE_ACCOUNT_ID repository secrets. Configure both before deploying."
+            exit 1
+          fi
+
       - name: Deploy to Cloudflare Workers
-        if: ${{ github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != '' }}
+        if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
         run: npx --yes wrangler@4 deploy --config wrangler.jsonc
 
-      - name: Explain skipped deployment
-        if: ${{ github.event_name == 'pull_request' || env.CLOUDFLARE_API_TOKEN == '' || env.CLOUDFLARE_ACCOUNT_ID == '' }}
-        run: echo "Validation passed. Pull requests never deploy; production deployment only runs on pushes to master when Cloudflare secrets are configured."
+      - name: Confirm validation-only run
+        if: ${{ github.event_name == 'pull_request' }}
+        run: echo "Validation passed. Pull requests never deploy to production."
