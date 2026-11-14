@@ -38,7 +38,7 @@ El portfolio distingue experiencia laboral, formación académica, cursos y proy
 
 ## Desarrollo y validación
 
-El sitio es estático y no requiere framework ni framework de compilación. Los archivos fuente editables están en la raíz y la carpeta dist/ contiene una copia sincronizada lista para el despliegue directo desde Cloudflare.
+El sitio es estático y no requiere un framework ni un proceso de compilación. Los archivos fuente editables están en la raíz y la carpeta dist/ contiene una copia sincronizada lista para el despliegue directo desde Cloudflare.
 
 Para actualizar la carpeta publicada después de editar los archivos fuente:
 
