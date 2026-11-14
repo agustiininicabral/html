@@ -45,6 +45,16 @@ for filename in REQUIRED_FILES:
     if not (ROOT / filename).is_file():
         fail(f"required file is missing: {filename}")
 
+# Cloudflare's Git-connected build deploys the committed dist/ directory directly.
+# Keep it synchronized with the editable source files at the repository root.
+for filename in REQUIRED_FILES:
+    source = ROOT / filename
+    deployed = ROOT / "dist" / filename
+    if not deployed.is_file():
+        fail(f"Cloudflare deployment asset is missing: dist/{filename}")
+    if source.read_bytes() != deployed.read_bytes():
+        fail(f"dist/{filename} is out of sync with {filename}; refresh dist/ before committing")
+
 parsers = {}
 for filename in ("index.html", "cv.html", "cv-en.html"):
     parser = SiteParser()
