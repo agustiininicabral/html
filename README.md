@@ -38,10 +38,19 @@ El portfolio distingue experiencia laboral, formación académica, cursos y proy
 
 ## Desarrollo y validación
 
-El sitio es estático y no requiere framework ni proceso de compilación.
+El sitio es estático y no requiere framework ni framework de compilación. Los archivos fuente editables están en la raíz y la carpeta dist/ contiene una copia sincronizada lista para el despliegue directo desde Cloudflare.
+
+Para actualizar la carpeta publicada después de editar los archivos fuente:
+
+    mkdir -p dist
+    cp index.html style.css script.js cv.html cv-en.html dist/
+
+Validación local:
 
     python scripts/validate_site.py
     node --check script.js
+
+La validación comprueba que los cinco archivos de dist/ existan y coincidan byte a byte con sus fuentes.
 
 ## Despliegue
 
@@ -49,7 +58,7 @@ El proyecto se publica como Static Assets en el Worker portfolio-agustin.
 
 El workflow de GitHub Actions valida el contenido, prepara los archivos en dist/ y despliega mediante Wrangler 4 cuando están configurados los secretos CLOUDFLARE_API_TOKEN y CLOUDFLARE_ACCOUNT_ID.
 
-Los cambios de rediseño se preparan en una rama independiente. No integrar a master ni publicar en producción hasta completar la revisión visual, funcional y de contenido.
+El repositorio es agustiininicabral/html y el Worker de destino es portfolio-agustin. La configuración wrangler.jsonc conserva el nombre del Worker y apunta a dist/. La carpeta dist/ está versionada para que una compilación Git-connected de Cloudflare pueda ejecutar npx wrangler deploy sin depender de un paso previo de generación.
 
 ## Límites y transparencia
 
