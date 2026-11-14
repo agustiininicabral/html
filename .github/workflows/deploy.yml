@@ -8,6 +8,7 @@ on:
       - "style.css"
       - "script.js"
       - "cv.html"
+      - "cv-en.html"
       - "wrangler.jsonc"
       - "scripts/**"
       - ".github/workflows/deploy.yml"
@@ -36,7 +37,7 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Validate site structure
+      - name: Validate site
         run: python3 scripts/validate_site.py
 
       - name: Validate JavaScript syntax
@@ -45,7 +46,7 @@ jobs:
       - name: Prepare static assets
         run: |
           mkdir -p dist
-          cp index.html style.css script.js cv.html dist/
+          cp index.html style.css script.js cv.html cv-en.html dist/
 
       - name: Deploy to Cloudflare Workers
         if: ${{ env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != '' }}
@@ -54,4 +55,3 @@ jobs:
       - name: Explain skipped deployment
         if: ${{ env.CLOUDFLARE_API_TOKEN == '' || env.CLOUDFLARE_ACCOUNT_ID == '' }}
         run: echo "Validation passed. Add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID repository secrets to enable deployment."
-
