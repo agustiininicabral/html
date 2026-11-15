@@ -14,6 +14,20 @@
   <meta property="og:url" content="https://portfolio-agustin.agustinkbral2013.workers.dev/">
   <meta name="twitter:card" content="summary">
   <title>Agustín Cabral — QA Automation, Data Analytics y tecnología</title>
+  <script>
+    try {
+      const lang = localStorage.getItem("portfolio_lang");
+      const expiresAt = Number(localStorage.getItem("portfolio_lang_expires"));
+      if ((lang === "es" || lang === "en") && expiresAt > Date.now()) {
+        document.documentElement.lang = lang === "es" ? "es-AR" : "en";
+      } else {
+        document.documentElement.classList.add("language-choice-required");
+      }
+    } catch (error) {
+      console.warn("Language preference could not be read.", error);
+      document.documentElement.classList.add("language-choice-required");
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -25,6 +39,21 @@
 <body>
   <a class="skip-link" href="#main" data-es="Saltar al contenido" data-en="Skip to content">Saltar al contenido</a>
   <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+  <dialog class="language-gate" id="language-gate" aria-labelledby="language-gate-title" aria-describedby="language-gate-description">
+    <div class="language-gate-panel">
+      <p class="language-gate-kicker">AGUSTÍN CABRAL <span>·</span> PORTFOLIO</p>
+      <h2 id="language-gate-title" data-es="Elegí tu idioma" data-en="Choose your language">Elegí tu idioma</h2>
+      <p id="language-gate-description" class="language-gate-description" data-es="Recordaremos tu elección durante 3 horas. Podés cambiar el idioma desde el menú cuando quieras." data-en="We’ll remember your choice for 3 hours. You can switch languages from the menu at any time.">Recordaremos tu elección durante 3 horas. Podés cambiar el idioma desde el menú cuando quieras.</p>
+      <div class="language-gate-options">
+        <button class="language-choice" type="button" data-lang="es" autofocus><span class="language-choice-code">ES</span><span>Español</span></button>
+        <button class="language-choice" type="button" data-lang="en"><span class="language-choice-code">EN</span><span>English</span></button>
+      </div>
+      <div class="language-gate-loading">
+        <span class="language-gate-progress" aria-hidden="true"><span></span></span>
+        <p data-es="Preparamos el portfolio mientras elegís." data-en="We’re preparing the portfolio while you choose.">Preparamos el portfolio mientras elegís.</p>
+      </div>
+    </div>
+  </dialog>
   <header class="site-header">
     <div class="nav-shell">
       <a class="brand" href="#home" aria-label="Agustín Cabral — inicio">

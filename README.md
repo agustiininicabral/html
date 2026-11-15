@@ -16,6 +16,8 @@ Sitio: https://portfolio-agustin.agustinkbral2013.workers.dev/
 
 El Hero utiliza una fotografía de Mount Fuji de Alpsdake, publicada en Wikimedia Commons bajo CC BY-SA 4.0. Se aplica un tratamiento visual tenue y frío. Crédito y licencia visibles en el pie del sitio.
 
+La primera visita muestra una pantalla de bienvenida para elegir español o inglés. La preferencia se recuerda durante 3 horas y puede cambiarse desde el selector del encabezado.
+
 ## Estructura
 
 - index.html: portfolio principal bilingüe.

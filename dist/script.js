@@ -1,4 +1,6 @@
 const LANG_KEY = "portfolio_lang";
+const LANG_EXPIRY_KEY = "portfolio_lang_expires";
+const LANG_TTL_MS = 3 * 60 * 60 * 1000;
 const translations = {
   es: {
     title: "Agustín Cabral — QA Automation, Data Analytics y tecnología",
@@ -10,19 +12,28 @@ const translations = {
   }
 };
 
-function readLanguage() {
-  try { return localStorage.getItem(LANG_KEY) === "en" ? "en" : "es"; }
-  catch { return "es"; }
+function readLanguagePreference() {
+  try {
+    const lang = localStorage.getItem(LANG_KEY);
+    const expiresAt = Number(localStorage.getItem(LANG_EXPIRY_KEY));
+    return (lang === "es" || lang === "en") && expiresAt > Date.now() ? lang : null;
+  } catch (error) {
+    console.warn("Language preference could not be read.", error);
+    return null;
+  }
 }
 
 function saveLanguage(lang) {
-  try { localStorage.setItem(LANG_KEY, lang); }
+  try {
+    localStorage.setItem(LANG_KEY, lang);
+    localStorage.setItem(LANG_EXPIRY_KEY, String(Date.now() + LANG_TTL_MS));
+  }
   catch (error) { console.warn("Language preference could not be saved.", error); }
 }
 
-function setLanguage(lang) {
+function setLanguage(lang, persist = true) {
   if (!["es", "en"].includes(lang)) return;
-  saveLanguage(lang);
+  if (persist) saveLanguage(lang);
   document.documentElement.lang = lang === "es" ? "es-AR" : "en";
   document.querySelectorAll("[data-es][data-en]").forEach((element) => {
     element.textContent = element.getAttribute(`data-${lang}`);
@@ -49,6 +60,30 @@ function setLanguage(lang) {
   if (skip) skip.href = "#main";
   const backToTop = document.querySelector('a[href="#home"]');
   if (backToTop) backToTop.setAttribute("aria-label", lang === "es" ? "Volver al inicio" : "Back to top");
+}
+
+function setupLanguageGate(showGate) {
+  const gate = document.getElementById("language-gate");
+  if (!gate) return;
+  if (!showGate) {
+    document.documentElement.classList.remove("language-choice-required");
+    return;
+  }
+
+  document.documentElement.classList.add("language-choice-required");
+  gate.querySelectorAll(".language-choice").forEach((button) => {
+    button.addEventListener("click", () => {
+      const lang = button.dataset.lang;
+      if (!["es", "en"].includes(lang)) return;
+      setLanguage(lang);
+      gate.close();
+      document.documentElement.classList.remove("language-choice-required");
+      const activeToggle = document.querySelector(`.lang-toggle[data-lang="${lang}"]`);
+      if (activeToggle) activeToggle.focus();
+    });
+  });
+  gate.addEventListener("cancel", (event) => event.preventDefault());
+  gate.showModal();
 }
 
 function setupNavigation() {
@@ -87,7 +122,9 @@ function initialize() {
   document.querySelectorAll(".lang-toggle").forEach((button) => {
     button.addEventListener("click", () => setLanguage(button.dataset.lang));
   });
-  setLanguage(readLanguage());
+  const savedLanguage = readLanguagePreference();
+  setLanguage(savedLanguage || "es", false);
+  setupLanguageGate(!savedLanguage);
   setupNavigation();
   setupScrollProgress();
 }
