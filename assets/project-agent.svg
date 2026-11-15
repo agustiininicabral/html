@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 180" fill="none">
-  <g stroke="#A65D42" stroke-opacity=".25" stroke-width="2">
+  <g stroke="#087E8B" stroke-opacity=".25" stroke-width="2">
     <path d="M190 88 122 48M190 88l75-40M190 88l-70 48M190 88l76 49"/>
     <path d="M190 55V28M190 121v27"/>
   </g>
-  <circle cx="190" cy="88" r="34" fill="#B9A58D" fill-opacity=".14" stroke="#A65D42" stroke-opacity=".32" stroke-width="2"/>
-  <circle cx="177" cy="85" r="4" fill="#A65D42" fill-opacity=".4"/>
-  <circle cx="203" cy="85" r="4" fill="#A65D42" fill-opacity=".4"/>
-  <path d="M178 101c7 5 17 5 24 0" stroke="#A65D42" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/>
-  <g fill="#B9A58D" fill-opacity=".48">
+  <circle cx="190" cy="88" r="34" fill="#9CBCC1" fill-opacity=".14" stroke="#087E8B" stroke-opacity=".32" stroke-width="2"/>
+  <circle cx="177" cy="85" r="4" fill="#087E8B" fill-opacity=".4"/>
+  <circle cx="203" cy="85" r="4" fill="#087E8B" fill-opacity=".4"/>
+  <path d="M178 101c7 5 17 5 24 0" stroke="#087E8B" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/>
+  <g fill="#9CBCC1" fill-opacity=".48">
     <circle cx="122" cy="48" r="9"/>
     <circle cx="265" cy="48" r="9"/>
     <circle cx="120" cy="136" r="9"/>

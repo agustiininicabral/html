@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 480" fill="none">
-  <g stroke="#A65D42" stroke-opacity=".16" stroke-width="2">
+  <g stroke="#087E8B" stroke-opacity=".16" stroke-width="2">
     <path d="M110 82h82v74h89"/>
     <path d="M192 156v89h98"/>
     <path d="M289 156h67V89"/>
@@ -10,7 +10,7 @@
     <path d="M109 82v90"/>
     <path d="M192 156v-74h98"/>
   </g>
-  <g fill="#B9A58D" fill-opacity=".3">
+  <g fill="#9CBCC1" fill-opacity=".3">
     <circle cx="110" cy="82" r="8"/>
     <circle cx="192" cy="156" r="9"/>
     <circle cx="281" cy="156" r="7"/>

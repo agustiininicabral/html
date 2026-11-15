@@ -6,13 +6,15 @@ Sitio: https://portfolio-agustin.agustinkbral2013.workers.dev/
 
 ## Identidad visual
 
-- Marfil: #F5F1E9
-- Arena: #E5DED2
-- Carbón: #252525
-- Terracota: #A65D42
-- Beige: #B9A58D
+- Azul hielo: #F3F7F9
+- Bruma: #E2EDF1
+- Azul profundo: #142B3A
+- Turquesa: #087E8B
+- Azul suave: #9CBCC1
+- Terracota suave (detalle): #C77D68
+- Naranja intenso (nombre en el Hero): #FF4D00
 
-El Hero utiliza una fotografía de Mount Fuji de Alpsdake, publicada en Wikimedia Commons bajo CC BY-SA 4.0. Se aplica un tratamiento visual tenue y cálido. Crédito y licencia visibles en el pie del sitio.
+El Hero utiliza una fotografía de Mount Fuji de Alpsdake, publicada en Wikimedia Commons bajo CC BY-SA 4.0. Se aplica un tratamiento visual tenue y frío. Crédito y licencia visibles en el pie del sitio.
 
 ## Estructura
 

@@ -93,7 +93,7 @@ for employer in ("Farmafe", "COTO", "Hotel Devoto", "Ravio", "Concorsistemas", "
     if employer not in index_html or employer not in cv_es or employer not in cv_en:
         fail(f"verified work history is missing from portfolio or CV: {employer}")
 
-for token in ("#F5F1E9", "#E5DED2", "#252525", "#A65D42", "#B9A58D"):
+for token in ("#F3F7F9", "#E2EDF1", "#142B3A", "#087E8B", "#9CBCC1", "#C77D68", "#FF4D00"):
     if token.lower() not in css.lower():
         fail(f"visual palette token is missing: {token}")
 
