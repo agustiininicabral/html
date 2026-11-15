@@ -60,7 +60,7 @@ La validación comprueba que los cinco archivos de dist/ existan y coincidan byt
 
 El proyecto se publica como Static Assets en el Worker portfolio-agustin.
 
-El workflow de GitHub Actions valida el contenido, prepara los archivos en dist/ y despliega mediante Wrangler 4 cuando están configurados los secretos CLOUDFLARE_API_TOKEN y CLOUDFLARE_ACCOUNT_ID.
+El workflow de GitHub Actions valida el contenido y la sintaxis JavaScript en cada PR. En pushes a master y ejecuciones manuales, despliega mediante Wrangler 4 únicamente cuando están configurados los secretos CLOUDFLARE_API_TOKEN y CLOUDFLARE_ACCOUNT_ID. Si faltan, la validación termina correctamente y el despliegue queda omitido con una notificación; no se informa falsamente como desplegado.
 
 El repositorio es agustiininicabral/html y el Worker de destino es portfolio-agustin. La configuración wrangler.jsonc conserva el nombre del Worker y apunta a dist/. La carpeta dist/ está versionada para que una compilación Git-connected de Cloudflare pueda ejecutar npx wrangler deploy sin depender de un paso previo de generación.
 
