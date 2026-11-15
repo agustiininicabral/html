@@ -269,3 +269,5 @@ html.language-choice-required .language-gate,.language-gate[open]{display:grid}
 @keyframes language-gate-progress{from{transform:translateX(-100%)}to{transform:translateX(250%)}}
 @media(max-width:520px){.language-gate{padding:18px}.language-gate-panel{padding:28px 22px}.language-gate-options{gap:9px}.language-choice{min-height:68px;gap:9px;padding:12px 10px}.language-choice-code{width:34px;height:34px;flex-basis:34px}}
 @media(prefers-reduced-motion:reduce){.language-gate-panel,.language-gate-progress span{animation:none}}
+.education-details-static{padding:22px 24px}
+@media(max-width:520px){.education-details-static{padding:20px}}
