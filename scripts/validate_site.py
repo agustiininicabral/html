@@ -83,6 +83,7 @@ for filename, parser in parsers.items():
 if parsers["index.html"].project_cards != 5:
     fail(f"expected 5 selected project cards, found {parsers['index.html'].project_cards}")
 
+wrangler = (ROOT / "wrangler.jsonc").read_text(encoding="utf-8")
 if '"name": "portfolio-agustin"' not in wrangler:
     fail("wrangler.jsonc must target the portfolio-agustin Worker")
 
@@ -91,7 +92,6 @@ cv_es = (ROOT / "cv.html").read_text(encoding="utf-8")
 cv_en = (ROOT / "cv-en.html").read_text(encoding="utf-8")
 css = (ROOT / "style.css").read_text(encoding="utf-8")
 js = (ROOT / "script.js").read_text(encoding="utf-8")
-wrangler = (ROOT / "wrangler.jsonc").read_text(encoding="utf-8")
 
 for employer in ("Farmafe", "COTO", "Hotel Devoto", "Ravio", "Concorsistemas", "COPAGRAN"):
     if employer not in index_html or employer not in cv_es or employer not in cv_en:
