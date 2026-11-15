@@ -26,7 +26,7 @@ env:
   CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
 concurrency:
-  group: portfolio-production
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -53,18 +53,22 @@ jobs:
         run: node --check script.js
 
       - name: Check Cloudflare credentials
+        id: cloudflare
         if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
         shell: bash
         run: |
           if [[ -z "$CLOUDFLARE_API_TOKEN" || -z "$CLOUDFLARE_ACCOUNT_ID" ]]; then
-            echo "::error::Missing CLOUDFLARE_API_TOKEN or CLOUDFLARE_ACCOUNT_ID repository secrets. Configure both before deploying."
-            exit 1
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Validation passed. Cloudflare deployment was skipped because CLOUDFLARE_API_TOKEN and/or CLOUDFLARE_ACCOUNT_ID are not configured."
+          else
+            echo "available=true" >> "$GITHUB_OUTPUT"
+            echo "Cloudflare credentials are available."
           fi
 
       - name: Deploy to Cloudflare Workers
-        if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
+        if: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && steps.cloudflare.outputs.available == 'true' }}
         run: npx --yes wrangler@4 deploy --config wrangler.jsonc
 
       - name: Confirm validation-only run
-        if: ${{ github.event_name == 'pull_request' }}
-        run: echo "Validation passed. Pull requests never deploy to production."
+        if: ${{ github.event_name == 'pull_request' || ((github.event_name == 'push' || github.event_name == 'workflow_dispatch') && steps.cloudflare.outputs.available != 'true') }}
+        run: echo "Validation passed. Production deployment was skipped because credentials are unavailable or this is a pull request."

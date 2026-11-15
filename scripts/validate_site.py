@@ -83,6 +83,10 @@ for filename, parser in parsers.items():
 if parsers["index.html"].project_cards != 5:
     fail(f"expected 5 selected project cards, found {parsers['index.html'].project_cards}")
 
+wrangler = (ROOT / "wrangler.jsonc").read_text(encoding="utf-8")
+if '"name": "portfolio-agustin"' not in wrangler:
+    fail("wrangler.jsonc must target the portfolio-agustin Worker")
+
 index_html = (ROOT / "index.html").read_text(encoding="utf-8")
 cv_es = (ROOT / "cv.html").read_text(encoding="utf-8")
 cv_en = (ROOT / "cv-en.html").read_text(encoding="utf-8")
@@ -115,6 +119,7 @@ print("PASS: HTML documents have no duplicate IDs or broken in-page anchors")
 print("PASS: all referenced local assets exist")
 print("PASS: external target=_blank links include noopener protection")
 print("PASS: exactly five selected projects are presented")
+print("PASS: Cloudflare configuration targets the portfolio-agustin Worker")
 print("PASS: all six verified employers appear in the portfolio and both CVs")
 print("PASS: editorial premium palette is defined")
 print("PASS: Spanish and English CV links and language attributes exist")
