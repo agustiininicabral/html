@@ -97,7 +97,7 @@ for token in ("#F5F1E9", "#E5DED2", "#252525", "#A65D42", "#B9A58D"):
     if token.lower() not in css.lower():
         fail(f"visual palette token is missing: {token}")
 
-if "cv-en.html" not in index_html or "cv-en.html" not in js:
+if 'href="cv.html"' not in index_html or "cv-en.html" not in js:
     fail("English CV link is missing from portfolio or language switcher")
 if 'data-es="' not in index_html or 'data-en="' not in index_html:
     fail("portfolio language attributes are missing")
