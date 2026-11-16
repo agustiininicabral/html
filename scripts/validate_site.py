@@ -122,13 +122,13 @@ for employer in ("Farmafe", "COTO Digital", "Hotel Devoto", "Ravio", "Concorsist
         fail("verified employer missing across portfolio and CVs: " + employer)
 
 project_area = index.split('<div class="project-grid">', 1)[1].split("</section>", 1)[0]
-names = ("Farmacia BI", "API Testing Framework", "Playwright UI Testing", "PriceWatch", "Automatic-OC", "n8n Automation Portfolio")
+names = ("Farmacia BI", "API Testing Framework", "Playwright UI Testing", "PriceWatch", "Automatic-OC", "n8n Automation Portfolio", "Excel to SQL — Users Migration", "Excel to SQL — Roles & Permissions", "Excel to SQL — Activity History")
 positions = [project_area.find(name) for name in names]
 if any(p < 0 for p in positions) or positions != sorted(positions):
-    fail("six projects are missing or not in the requested order")
-if len(re.findall(r'class="project-card ', project_area)) != 6:
-    fail("portfolio must show exactly six project cards")
-for token in ("01", "02", "03", "04", "05", "06", "En desarrollo", "In progress", "Evidencia histórica", "Historical evidence", "Pendiente de validar", "Validation pending", "01 / 06"):
+    fail("nine projects are missing or not in the requested order")
+if len(re.findall(r'class="project-card ', project_area)) != 9:
+    fail("portfolio must show exactly nine project cards")
+for token in ("01", "02", "03", "04", "05", "06", "07", "08", "09", "En desarrollo", "In progress", "Evidencia histórica", "Historical evidence", "Pendiente de validar", "Validation pending", "01 / 09"):
     if token not in index:
         fail("project counter or state missing: " + token)
 for html, required in ((cv_es, ("Estado: En desarrollo", "Repositorio y documentación", "Estado: Pendiente de validar")), (cv_en, ("Status: In progress", "Repository and documentation", "Status: Validation pending"))):
@@ -197,7 +197,7 @@ print("PASS: source and dist files are synchronized")
 print("PASS: HTML structure, one h1, IDs, anchors, images and external links")
 print("PASS: all six employment records, exact COTO Digital details and dates are aligned")
 print("PASS: obsolete employers, titles, dates and IBM in-progress states are rejected")
-print("PASS: six projects are ordered and their statuses are explicit")
+print("PASS: nine projects are ordered and their statuses are explicit")
 print("PASS: bilingual CV metadata and optional Credly slots are present")
 print("PASS: accessible focus, skip navigation, reduced motion and mobile refinements")
 print("PASS: contact methods and single LinkedIn/GitHub profile card")
