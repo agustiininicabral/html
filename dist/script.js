@@ -4,11 +4,11 @@ const LANG_TTL_MS = 3 * 60 * 60 * 1000;
 const translations = {
   es: {
     title: "Agustín Cabral — QA Automation, Data Analytics y tecnología",
-    description: "Portfolio profesional de Agustín Cabral: QA Automation, análisis de datos, desarrollo y automatización."
+    description: "Portfolio de Agustín Cabral: análisis de datos, Business Intelligence, SQL, Power BI, QA Automation y desarrollo."
   },
   en: {
     title: "Agustín Cabral — QA Automation, Data Analytics & Technology",
-    description: "Agustín Cabral's professional portfolio: QA Automation, data analytics, software development and automation."
+    description: "Agustín Cabral's portfolio: data analytics, Business Intelligence, SQL, Power BI, QA Automation and software development."
   }
 };
 
