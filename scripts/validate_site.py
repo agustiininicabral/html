@@ -129,7 +129,9 @@ if any(p < 0 for p in positions) or positions != sorted(positions):
 for repository in ("excel-to-sql-users-migration", "excel-to-sql-roles-permissions", "excel-to-sql-activity-history"):
     if "https://github.com/agustiininicabral/" + repository not in project_area:
         fail("Excel-to-SQL project link is missing: " + repository)
-if project_area.count("docs/architecture.svg") != 3 or project_area.count("docs/quality-summary.svg") != 3:
+architecture_images = re.findall(r'<img[^>]+src="[^"]*docs/architecture\.svg"', project_area)
+quality_images = re.findall(r'<img[^>]+src="[^"]*docs/quality-summary\.svg"', project_area)
+if len(architecture_images) != 3 or len(quality_images) != 3:
     fail("all three migration projects must show architecture and quality visuals")
 if len(re.findall(r'class="project-card ', project_area)) != 9:
     fail("portfolio must show exactly nine project cards")
