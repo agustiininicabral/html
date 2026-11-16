@@ -83,6 +83,16 @@ for filename, parser in parsers.items():
 if parsers["index.html"].project_cards != 6:
     fail(f"expected 6 selected project cards, found {parsers['index.html'].project_cards}")
 
+wrangler = (ROOT / "wrangler.jsonc").read_text(encoding="utf-8")
+if '"name": "portfolio-agustin"' not in wrangler:
+    fail("wrangler.jsonc must target the portfolio-agustin Worker")
+
+index_html = (ROOT / "index.html").read_text(encoding="utf-8")
+cv_es = (ROOT / "cv.html").read_text(encoding="utf-8")
+cv_en = (ROOT / "cv-en.html").read_text(encoding="utf-8")
+css = (ROOT / "style.css").read_text(encoding="utf-8")
+js = (ROOT / "script.js").read_text(encoding="utf-8")
+
 for token in ("Farmacia BI", "Sep 2024 — Abr 2026", "Abr 2022 — Oct 2023", "Administrativo de Auditoría"):
     if token not in index_html:
         fail(f"portfolio is missing updated data or project: {token}")
@@ -93,15 +103,6 @@ for token in ("Sep 2024 — Apr 2026", "Apr 2022 — Oct 2023"):
     if token not in cv_en:
         fail(f"English CV is missing updated employment dates: {token}")
 
-wrangler = (ROOT / "wrangler.jsonc").read_text(encoding="utf-8")
-if '"name": "portfolio-agustin"' not in wrangler:
-    fail("wrangler.jsonc must target the portfolio-agustin Worker")
-
-index_html = (ROOT / "index.html").read_text(encoding="utf-8")
-cv_es = (ROOT / "cv.html").read_text(encoding="utf-8")
-cv_en = (ROOT / "cv-en.html").read_text(encoding="utf-8")
-css = (ROOT / "style.css").read_text(encoding="utf-8")
-js = (ROOT / "script.js").read_text(encoding="utf-8")
 
 for employer in ("Farmafe", "COTO", "Hotel Devoto", "Ravio", "Concorsistemas", "COPAGRAN"):
     if employer not in index_html or employer not in cv_es or employer not in cv_en:
