@@ -58,6 +58,8 @@ function setLanguage(lang, persist = true) {
   });
   const skip = document.querySelector(".skip-link");
   if (skip) skip.href = "#main";
+  const ogDescription = document.querySelector('meta[property="og:description"]');
+  if (ogDescription) ogDescription.content = translations[lang].description;
   const backToTop = document.querySelector('a[href="#home"]');
   if (backToTop) backToTop.setAttribute("aria-label", lang === "es" ? "Volver al inicio" : "Back to top");
 }
@@ -118,6 +120,20 @@ function setupScrollProgress() {
   update();
 }
 
+function setupEmailCopy() {
+  const button = document.querySelector("[data-copy-email]");
+  const status = document.getElementById("copy-email-status");
+  if (!button || !status || !navigator.clipboard?.writeText) return;
+  button.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(button.dataset.copyEmail);
+      status.textContent = document.documentElement.lang === "en" ? "Email copied" : "Correo copiado";
+    } catch (error) {
+      status.textContent = document.documentElement.lang === "en" ? "Copy unavailable. Use the email link." : "No se pudo copiar. Usá el enlace de correo.";
+    }
+  });
+}
+
 function initialize() {
   document.querySelectorAll(".lang-toggle").forEach((button) => {
     button.addEventListener("click", () => setLanguage(button.dataset.lang));
@@ -127,6 +143,7 @@ function initialize() {
   setupLanguageGate(!savedLanguage);
   setupNavigation();
   setupScrollProgress();
+  setupEmailCopy();
 }
 
 document.addEventListener("DOMContentLoaded", initialize);
