@@ -34,14 +34,15 @@ El portfolio distingue experiencia laboral, formación académica, cursos y proy
 
 ### Proyectos destacados
 
-1. API Testing Framework — publicado.
-2. Playwright UI Testing — publicado.
-3. PriceWatch — aplicación local en desarrollo; integraciones reales con tiendas y notificaciones automáticas pendientes.
-4. Automatic-OC — agente de escritorio local en desarrollo.
-5. n8n Automation Portfolio — workflows educativos; importación y ejecución real pendientes de validación.
-6. Excel to SQL — Users Migration — práctica de limpieza, deduplicación y carga de usuarios.
-7. Excel to SQL — Roles & Permissions — práctica de modelado relacional y claves foráneas.
-8. Excel to SQL — Activity History — práctica de auditoría, normalización UTC y validación de eventos.
+1. Farmacia BI — proyecto de análisis y BI; los PBIX originales siguen pendientes de auditoría.
+2. API Testing Framework — publicado.
+3. Playwright UI Testing — publicado.
+4. PriceWatch — aplicación local en desarrollo; integraciones reales con tiendas y notificaciones automáticas pendientes.
+5. Automatic-OC — agente de escritorio local en desarrollo.
+6. n8n Automation Portfolio — workflows educativos; importación y ejecución real pendientes de validación.
+7. Excel to SQL — Users Migration — práctica de limpieza, deduplicación y carga de usuarios.
+8. Excel to SQL — Roles & Permissions — práctica de modelado relacional y claves foráneas.
+9. Excel to SQL — Activity History — práctica de auditoría, normalización UTC y validación de eventos.
 
 Los tres proyectos Excel-to-SQL usan datos sintéticos, incluyen workbooks descargables, pruebas automatizadas y diagramas/resúmenes de validación; se presentan como práctica técnica.
 
