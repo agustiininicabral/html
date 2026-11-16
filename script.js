@@ -4,10 +4,12 @@ const LANG_TTL_MS = 3 * 60 * 60 * 1000;
 const translations = {
   es: {
     title: "Agustín Cabral — QA Automation, Data Analytics y tecnología",
+    ogTitle: "Agustín Cabral — Tecnología aplicada",
     description: "Portfolio de Agustín Cabral: análisis de datos, Business Intelligence, SQL, Power BI, QA Automation y desarrollo."
   },
   en: {
     title: "Agustín Cabral — QA Automation, Data Analytics & Technology",
+    ogTitle: "Agustín Cabral — Applied Technology",
     description: "Agustín Cabral's portfolio: data analytics, Business Intelligence, SQL, Power BI, QA Automation and software development."
   }
 };
@@ -41,6 +43,10 @@ function setLanguage(lang, persist = true) {
   document.title = translations[lang].title;
   const description = document.querySelector('meta[name="description"]');
   if (description) description.content = translations[lang].description;
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle) ogTitle.content = translations[lang].ogTitle;
+  const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+  if (twitterDescription) twitterDescription.content = translations[lang].description;
   const ogLocale = document.querySelector('meta[property="og:locale"]');
   if (ogLocale) ogLocale.content = lang === "es" ? "es_AR" : "en_US";
 
