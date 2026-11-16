@@ -122,10 +122,15 @@ for employer in ("Farmafe", "COTO Digital", "Hotel Devoto", "Ravio", "Concorsist
         fail("verified employer missing across portfolio and CVs: " + employer)
 
 project_area = index.split('<div class="project-grid">', 1)[1].split("</section>", 1)[0]
-names = ("Farmacia BI", "API Testing Framework", "Playwright UI Testing", "PriceWatch", "Automatic-OC", "n8n Automation Portfolio", "Excel to SQL — Users Migration", "Excel to SQL — Roles & Permissions", "Excel to SQL — Activity History")
+names = ("Farmacia BI", "API Testing Framework", "Playwright UI Testing", "PriceWatch", "Automatic-OC", "n8n Automation Portfolio", "Excel to SQL — Users Migration", "Excel to SQL — Roles &amp; Permissions", "Excel to SQL — Activity History")
 positions = [project_area.find(name) for name in names]
 if any(p < 0 for p in positions) or positions != sorted(positions):
     fail("nine projects are missing or not in the requested order")
+for repository in ("excel-to-sql-users-migration", "excel-to-sql-roles-permissions", "excel-to-sql-activity-history"):
+    if "https://github.com/agustiininicabral/" + repository not in project_area:
+        fail("Excel-to-SQL project link is missing: " + repository)
+if project_area.count("docs/architecture.svg") != 3 or project_area.count("docs/quality-summary.svg") != 3:
+    fail("all three migration projects must show architecture and quality visuals")
 if len(re.findall(r'class="project-card ', project_area)) != 9:
     fail("portfolio must show exactly nine project cards")
 for token in ("01", "02", "03", "04", "05", "06", "07", "08", "09", "En desarrollo", "In progress", "Evidencia histórica", "Historical evidence", "Pendiente de validar", "Validation pending", "01 / 09"):
