@@ -39,6 +39,11 @@ El portfolio distingue experiencia laboral, formación académica, cursos y proy
 3. PriceWatch — aplicación local en desarrollo; integraciones reales con tiendas y notificaciones automáticas pendientes.
 4. Automatic-OC — agente de escritorio local en desarrollo.
 5. n8n Automation Portfolio — workflows educativos; importación y ejecución real pendientes de validación.
+6. Excel to SQL — Users Migration — práctica de limpieza, deduplicación y carga de usuarios.
+7. Excel to SQL — Roles & Permissions — práctica de modelado relacional y claves foráneas.
+8. Excel to SQL — Activity History — práctica de auditoría, normalización UTC y validación de eventos.
+
+Los tres proyectos Excel-to-SQL usan datos sintéticos, incluyen workbooks descargables, pruebas automatizadas y diagramas/resúmenes de validación; se presentan como práctica técnica.
 
 ## Desarrollo y validación
 
