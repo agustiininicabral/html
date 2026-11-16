@@ -112,6 +112,9 @@ for date in ("Abr 2022 — Nov 2023",):
         fail("Spanish employment dates are inconsistent")
 if "Apr 2022 — Nov 2023" not in cv_en:
     fail("English COTO dates are inconsistent")
+for translated_date in ("Apr 2022 — Nov 2023", "Dec 2021 — Apr 2022", "Jan 2021 — Aug 2021", "Jan 2017 — Feb 2018"):
+    if translated_date not in index:
+        fail("English portfolio employment date is missing: " + translated_date)
 
 for employer in ("Farmafe", "COTO", "Hotel Devoto", "Ravio", "Concorsistemas", "COPAGRAN"):
     if any(employer not in html for html in documents.values()):
