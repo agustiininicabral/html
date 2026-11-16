@@ -138,6 +138,8 @@ for html, required in ((cv_es, ("Estado: En desarrollo", "Capturas próximamente
 for html in documents.values():
     if "IBM — Project Management Fundamentals" not in html:
         fail("IBM Project Management Fundamentals is missing")
+if "Finalizado" not in cv_es or "Completed" not in cv_en or "Finalizado" not in index:
+    fail("IBM Project Management Fundamentals must be marked completed in Spanish and English")
 if "Credly verification URL" not in index or "Credly verification URL" not in cv_es or "Credly verification URL" not in cv_en:
     fail("optional Credly verification insertion point is missing")
 
