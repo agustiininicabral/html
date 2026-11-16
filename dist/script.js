@@ -40,6 +40,12 @@ function setLanguage(lang, persist = true) {
   document.querySelectorAll("[data-es][data-en]").forEach((element) => {
     element.textContent = element.getAttribute(`data-${lang}`);
   });
+  document.querySelectorAll("[data-alt-es][data-alt-en]").forEach((element) => {
+    element.alt = element.getAttribute(`data-alt-${lang}`);
+  });
+  document.querySelectorAll("[data-aria-label-es][data-aria-label-en]").forEach((element) => {
+    element.setAttribute("aria-label", element.getAttribute(`data-aria-label-${lang}`));
+  });
   document.title = translations[lang].title;
   const description = document.querySelector('meta[name="description"]');
   if (description) description.content = translations[lang].description;
