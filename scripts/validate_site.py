@@ -93,7 +93,8 @@ for name, html in documents.items():
     for forbidden in ("Ripio Once", "Administrativo de Auditoría", "Administrative Audit Assistant", "Coto Centro Integra", "Abr 2025", "Abr 2026", "Oct 2023"):
         if forbidden.casefold() in html.casefold():
             fail(name + " contains outdated text: " + forbidden)
-    if re.search(r"IBM[^<]{0,120}(en curso|in progress)", html, re.I):
+    plain_text = re.sub(r"<[^>]+>", " ", html)
+    if re.search(r"IBM.{0,160}(en curso|in progress)|(en curso|in progress).{0,160}IBM", plain_text, re.I):
         fail(name + " marks an IBM course as in progress")
 
 experience_ranges = (
