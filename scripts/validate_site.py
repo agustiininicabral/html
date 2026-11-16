@@ -1,22 +1,27 @@
 from html.parser import HTMLParser
 from pathlib import Path
+import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-REQUIRED_FILES = ("index.html", "style.css", "script.js", "cv.html", "cv-en.html")
+FILES = ("index.html", "style.css", "script.js", "cv.html", "cv-en.html")
 
 class SiteParser(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
-        self.ids = []
-        self.anchors = []
-        self.project_cards = 0
-        self.local_assets = []
+        self.ids, self.anchors, self.local_assets = [], [], []
         self.unsafe_blank_links = []
         self.images_without_alt = 0
+        self.h1_count = 0
+        self.project_cards = 0
+        self.lang = None
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        if tag == "html":
+            self.lang = attrs.get("lang")
+        if tag == "h1":
+            self.h1_count += 1
         if "id" in attrs:
             self.ids.append(attrs["id"])
         href = attrs.get("href", "")
@@ -24,115 +29,156 @@ class SiteParser(HTMLParser):
             self.anchors.append(href[1:])
         if tag == "article" and "project-card" in attrs.get("class", "").split():
             self.project_cards += 1
-        if tag == "img" and "alt" not in attrs:
+        if tag == "img" and not attrs.get("alt", "").strip():
             self.images_without_alt += 1
         if tag == "a" and attrs.get("target") == "_blank":
-            rel = set(attrs.get("rel", "").lower().split())
-            if "noopener" not in rel:
+            if "noopener" not in attrs.get("rel", "").lower().split():
                 self.unsafe_blank_links.append(href)
         for key in ("href", "src"):
             value = attrs.get(key, "")
             if value and not value.startswith(("#", "http://", "https://", "mailto:", "tel:", "data:", "javascript:")):
-                path = value.split("?", 1)[0].split("#", 1)[0]
-                if path:
-                    self.local_assets.append(path)
+                local = value.split("?", 1)[0].split("#", 1)[0]
+                if local:
+                    self.local_assets.append(local)
 
 def fail(message):
-    print(f"FAIL: {message}")
+    print("FAIL: " + message)
     sys.exit(1)
 
-for filename in REQUIRED_FILES:
-    if not (ROOT / filename).is_file():
-        fail(f"required file is missing: {filename}")
-
-# Cloudflare's Git-connected build deploys the committed dist/ directory directly.
-# Keep it synchronized with the editable source files at the repository root.
-for filename in REQUIRED_FILES:
-    source = ROOT / filename
-    deployed = ROOT / "dist" / filename
-    if not deployed.is_file():
-        fail(f"Cloudflare deployment asset is missing: dist/{filename}")
+for name in FILES:
+    source = ROOT / name
+    deployed = ROOT / "dist" / name
+    if not source.is_file() or not deployed.is_file():
+        fail("required source or dist file missing: " + name)
     if source.read_bytes() != deployed.read_bytes():
-        fail(f"dist/{filename} is out of sync with {filename}; refresh dist/ before committing")
+        fail("dist/" + name + " is not synchronized with " + name)
 
-parsers = {}
-for filename in ("index.html", "cv.html", "cv-en.html"):
+documents = {}
+for name in ("index.html", "cv.html", "cv-en.html"):
+    html = (ROOT / name).read_text(encoding="utf-8")
     parser = SiteParser()
     try:
-        parser.feed((ROOT / filename).read_text(encoding="utf-8"))
+        parser.feed(html)
         parser.close()
     except Exception as exc:
-        fail(f"could not parse {filename}: {exc}")
-    parsers[filename] = parser
-
-for filename, parser in parsers.items():
-    duplicates = sorted({item for item in parser.ids if parser.ids.count(item) > 1})
-    if duplicates:
-        fail(f"{filename} has duplicate IDs: {', '.join(duplicates)}")
-    missing_anchors = sorted(set(parser.anchors) - set(parser.ids))
-    if missing_anchors:
-        fail(f"{filename} has missing in-page targets: {', '.join(missing_anchors)}")
-    missing_assets = sorted({p for p in parser.local_assets if not (ROOT / p).is_file()})
-    if missing_assets:
-        fail(f"{filename} has missing local assets: {', '.join(missing_assets)}")
-    if parser.unsafe_blank_links:
-        fail(f"{filename} has target=_blank links without noopener: {parser.unsafe_blank_links}")
+        fail("HTML parse error in " + name + ": " + str(exc))
+    if parser.h1_count != 1:
+        fail(name + " must contain exactly one h1")
+    if not parser.lang:
+        fail(name + " is missing html lang metadata")
     if parser.images_without_alt:
-        fail(f"{filename} has {parser.images_without_alt} images without alt text")
+        fail(name + " contains images without descriptive alt text")
+    if parser.unsafe_blank_links:
+        fail(name + " has target=_blank links without noopener")
+    if len(parser.ids) != len(set(parser.ids)):
+        fail(name + " contains duplicate IDs")
+    if set(parser.anchors) - set(parser.ids):
+        fail(name + " contains broken in-page anchors")
+    for asset in parser.local_assets:
+        if not (ROOT / asset).is_file():
+            fail(name + " references missing local asset: " + asset)
+    documents[name] = html
 
-if parsers["index.html"].project_cards != 6:
-    fail(f"expected 6 selected project cards, found {parsers['index.html'].project_cards}")
-
-wrangler = (ROOT / "wrangler.jsonc").read_text(encoding="utf-8")
-if '"name": "portfolio-agustin"' not in wrangler:
-    fail("wrangler.jsonc must target the portfolio-agustin Worker")
-
-index_html = (ROOT / "index.html").read_text(encoding="utf-8")
-cv_es = (ROOT / "cv.html").read_text(encoding="utf-8")
-cv_en = (ROOT / "cv-en.html").read_text(encoding="utf-8")
+index = documents["index.html"]
+cv_es = documents["cv.html"]
+cv_en = documents["cv-en.html"]
 css = (ROOT / "style.css").read_text(encoding="utf-8")
 js = (ROOT / "script.js").read_text(encoding="utf-8")
+wrangler = (ROOT / "wrangler.jsonc").read_text(encoding="utf-8")
 
-for token in ("Farmacia BI", "Sep 2024 — Abr 2026", "Abr 2022 — Oct 2023", "Administrativo de Auditoría"):
-    if token not in index_html:
-        fail(f"portfolio is missing updated data or project: {token}")
-for token in ("Sep 2024 — Abr 2026", "Abr 2022 — Oct 2023"):
-    if token not in cv_es:
-        fail(f"Spanish CV is missing updated employment dates: {token}")
-for token in ("Sep 2024 — Apr 2026", "Apr 2022 — Oct 2023"):
-    if token not in cv_en:
-        fail(f"English CV is missing updated employment dates: {token}")
+if '"name": "portfolio"' not in wrangler or '"workers_dev": true' not in wrangler or '"directory": "./dist"' not in wrangler:
+    fail("Wrangler must deploy dist/ as the portfolio Worker on workers.dev")
 
+for name, html in documents.items():
+    for forbidden in ("Ripio Once", "Administrativo de Auditoría", "Administrative Audit Assistant", "Abr 2025", "Abr 2026", "Oct 2023"):
+        if forbidden.casefold() in html.casefold():
+            fail(name + " contains outdated text: " + forbidden)
+    if re.search(r"IBM[^<]{0,120}(en curso|in progress)", html, re.I):
+        fail(name + " marks an IBM course as in progress")
+
+experience_ranges = (
+    (index.split('<section class="section experience-section"', 1)[1].split('<section class="section education-section"', 1)[0], "portfolio"),
+    (cv_es.split('<section class="section"><h2>Experiencia laboral</h2>', 1)[1].split("</section>", 1)[0], "Spanish CV"),
+    (cv_en.split('<section class="section"><h2>Professional experience</h2>', 1)[1].split("</section>", 1)[0], "English CV"),
+)
+for section, label in experience_ranges:
+    for date in ("Sep 2024 — Feb 2026",):
+        if date not in section:
+            fail(label + " is missing Farmafe's verified dates")
+    if "Feb 2026" not in section or section.count("Feb 2026") != 1:
+        fail(label + " has Feb 2026 outside Farmafe or an incorrect count")
+for date in ("Abr 2022 — Nov 2023",):
+    if date not in index or date not in cv_es:
+        fail("Spanish employment dates are inconsistent")
+if "Apr 2022 — Nov 2023" not in cv_en:
+    fail("English COTO dates are inconsistent")
 
 for employer in ("Farmafe", "COTO", "Hotel Devoto", "Ravio", "Concorsistemas", "COPAGRAN"):
-    if employer not in index_html or employer not in cv_es or employer not in cv_en:
-        fail(f"verified work history is missing from portfolio or CV: {employer}")
+    if any(employer not in html for html in documents.values()):
+        fail("verified employer missing across portfolio and CVs: " + employer)
 
-for token in ("#F3F7F9", "#E2EDF1", "#142B3A", "#087E8B", "#9CBCC1", "#C77D68", "#FF4D00"):
-    if token.lower() not in css.lower():
-        fail(f"visual palette token is missing: {token}")
+project_area = index.split('<div class="project-grid">', 1)[1].split("</section>", 1)[0]
+names = ("Farmacia BI", "API Testing Framework", "Playwright UI Testing", "PriceWatch", "Automatic-OC", "n8n Automation Portfolio")
+positions = [project_area.find(name) for name in names]
+if any(p < 0 for p in positions) or positions != sorted(positions):
+    fail("six projects are missing or not in the requested order")
+if len(re.findall(r'class="project-card ', project_area)) != 6:
+    fail("portfolio must show exactly six project cards")
+for token in ("01", "02", "03", "04", "05", "06", "En desarrollo", "In progress", "Capturas próximamente", "Screenshots coming soon", "Pendiente de validar", "Validation pending", "01 / 06"):
+    if token not in index:
+        fail("project counter or state missing: " + token)
+for html, required in ((cv_es, ("Estado: En desarrollo", "Capturas próximamente", "Estado: Pendiente de validar")), (cv_en, ("Status: In progress", "Screenshots coming soon", "Status: Validation pending"))):
+    for phrase in required:
+        if phrase not in html:
+            fail("CV project status missing: " + phrase)
 
-if 'href="cv.html"' not in index_html or "cv-en.html" not in js:
-    fail("English CV link is missing from portfolio or language switcher")
-if 'data-es="' not in index_html or 'data-en="' not in index_html:
-    fail("portfolio language attributes are missing")
-if "prefers-reduced-motion" not in css:
-    fail("reduced-motion support is missing")
+for html in documents.values():
+    if "IBM — Project Management Fundamentals" not in html:
+        fail("IBM Project Management Fundamentals is missing")
+if "Credly verification URL" not in index or "Credly verification URL" not in cv_es or "Credly verification URL" not in cv_en:
+    fail("optional Credly verification insertion point is missing")
+
+for employer in ("Farmafe", "COTO", "Hotel Devoto", "Ravio", "Concorsistemas", "COPAGRAN"):
+    if employer not in index or employer not in cv_es or employer not in cv_en:
+        fail("experience record mismatch: " + employer)
+
+for color in ("#F3F7F9", "#E2EDF1", "#142B3A", "#087E8B", "#9CBCC1", "#C77D68", "#FF4D00"):
+    if color.lower() not in css.lower():
+        fail("visual palette token missing: " + color)
+if "prefers-reduced-motion" not in css or ":focus-visible" not in css or "class=\"skip-link\"" not in index:
+    fail("keyboard focus, skip navigation or reduced-motion support missing")
+if "min-width:360px" not in css or "max-width:430px" not in css:
+    fail("explicit 360–430 px mobile rules missing")
+if "og:title" not in index or "og:description" not in js or "twitter:description" not in js:
+    fail("bilingual social metadata support missing")
+if 'href="cv.html"' not in index or "cv-en.html" not in js or 'data-es="' not in index or 'data-en="' not in index:
+    fail("bilingual navigation or language content missing")
+if index.count('class="contact-profile-card') != 1:
+    fail("contact profile blocks were not consolidated")
+contact_area = index.split('class="contact-profiles"', 1)[1].split('class="contact-actions"', 1)[0]
+for link in ("https://www.linkedin.com/in/agustincabral13/", "https://github.com/agustiininicabral"):
+    if link not in contact_area:
+        fail("contact profile missing " + link)
+for token in ('href="mailto:agustinkbral2013@gmail.com"', 'href="tel:+541178217296"', 'https://wa.me/541178217296', 'data-copy-email='):
+    if token not in index:
+        fail("contact action missing: " + token)
+if ".hero-image{" not in css or "photo-credit" not in index:
+    fail("Fuji photo credit should be retained only while the image is used")
 if "window.requestAnimationFrame" not in js:
-    fail("scroll progress should use requestAnimationFrame")
+    fail("scroll progress animation is missing")
 
-for filename, html in (("cv.html", cv_es), ("cv-en.html", cv_en)):
-    if "<html lang=" not in html or "window.print()" not in html:
-        fail(f"{filename} is missing language metadata or print support")
+for name, expected_lang in (("cv.html", "es-AR"), ("cv-en.html", "en")):
+    html = documents[name]
+    if '<html lang="' + expected_lang + '">' not in html or "window.print()" not in html or "og:locale" not in html:
+        fail(name + " is missing language, social or print metadata")
 
-print("PASS: required portfolio and bilingual CV files exist")
-print("PASS: HTML documents have no duplicate IDs or broken in-page anchors")
-print("PASS: all referenced local assets exist")
-print("PASS: external target=_blank links include noopener protection")
-print("PASS: exactly six selected projects are presented")
-print("PASS: Cloudflare configuration targets the portfolio-agustin Worker")
-print("PASS: all six verified employers appear in the portfolio and both CVs")
-print("PASS: editorial premium palette is defined")
-print("PASS: Spanish and English CV links and language attributes exist")
-print("PASS: reduced-motion and scroll-progress behavior are present")
-print("PASS: both CVs include language metadata and print support")
+print("PASS: source and dist files are synchronized")
+print("PASS: HTML structure, one h1, IDs, anchors, images and external links")
+print("PASS: all six employment records and dates are aligned")
+print("PASS: obsolete employers, titles, dates and IBM in-progress states are rejected")
+print("PASS: six projects are ordered and their statuses are explicit")
+print("PASS: bilingual CV metadata and optional Credly slots are present")
+print("PASS: accessible focus, skip navigation, reduced motion and mobile refinements")
+print("PASS: contact methods and single LinkedIn/GitHub profile card")
+print("PASS: Fuji credit matches the actual hero image usage")
+print("PASS: Cloudflare deploy config targets portfolio.agustiincabral.workers.dev")
