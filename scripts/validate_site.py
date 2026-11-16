@@ -128,10 +128,10 @@ if any(p < 0 for p in positions) or positions != sorted(positions):
     fail("six projects are missing or not in the requested order")
 if len(re.findall(r'class="project-card ', project_area)) != 6:
     fail("portfolio must show exactly six project cards")
-for token in ("01", "02", "03", "04", "05", "06", "En desarrollo", "In progress", "Capturas próximamente", "Screenshots coming soon", "Pendiente de validar", "Validation pending", "01 / 06"):
+for token in ("01", "02", "03", "04", "05", "06", "En desarrollo", "In progress", "Evidencia histórica", "Historical evidence", "Pendiente de validar", "Validation pending", "01 / 06"):
     if token not in index:
         fail("project counter or state missing: " + token)
-for html, required in ((cv_es, ("Estado: En desarrollo", "Capturas próximamente", "Estado: Pendiente de validar")), (cv_en, ("Status: In progress", "Screenshots coming soon", "Status: Validation pending"))):
+for html, required in ((cv_es, ("Estado: En desarrollo", "Repositorio y documentación", "Estado: Pendiente de validar")), (cv_en, ("Status: In progress", "Repository and documentation", "Status: Validation pending"))):
     for phrase in required:
         if phrase not in html:
             fail("CV project status missing: " + phrase)
