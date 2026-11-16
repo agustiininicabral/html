@@ -123,7 +123,11 @@ function setupScrollProgress() {
 function setupEmailCopy() {
   const button = document.querySelector("[data-copy-email]");
   const status = document.getElementById("copy-email-status");
-  if (!button || !status || !navigator.clipboard?.writeText) return;
+  if (!button || !status) return;
+  if (!navigator.clipboard?.writeText) {
+    button.hidden = true;
+    return;
+  }
   button.addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText(button.dataset.copyEmail);
