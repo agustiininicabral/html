@@ -80,8 +80,8 @@ for filename, parser in parsers.items():
     if parser.images_without_alt:
         fail(f"{filename} has {parser.images_without_alt} images without alt text")
 
-if parsers["index.html"].project_cards != 5:
-    fail(f"expected 5 selected project cards, found {parsers['index.html'].project_cards}")
+if parsers["index.html"].project_cards != 6:
+    fail(f"expected 6 selected project cards, found {parsers['index.html'].project_cards}")
 
 wrangler = (ROOT / "wrangler.jsonc").read_text(encoding="utf-8")
 if '"name": "portfolio-agustin"' not in wrangler:
@@ -118,7 +118,7 @@ print("PASS: required portfolio and bilingual CV files exist")
 print("PASS: HTML documents have no duplicate IDs or broken in-page anchors")
 print("PASS: all referenced local assets exist")
 print("PASS: external target=_blank links include noopener protection")
-print("PASS: exactly five selected projects are presented")
+print("PASS: exactly six selected projects are presented")
 print("PASS: Cloudflare configuration targets the portfolio-agustin Worker")
 print("PASS: all six verified employers appear in the portfolio and both CVs")
 print("PASS: editorial premium palette is defined")
