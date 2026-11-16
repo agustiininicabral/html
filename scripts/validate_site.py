@@ -151,6 +151,8 @@ if "min-width:360px" not in css or "max-width:430px" not in css:
     fail("explicit 360–430 px mobile rules missing")
 if "og:title" not in index or "og:description" not in js or "twitter:description" not in js:
     fail("bilingual social metadata support missing")
+if "data-alt-es" not in index or "data-alt-en" not in index or "data-aria-label-es" not in index or "data-aria-label-en" not in index:
+    fail("bilingual accessible image or aria labels are missing")
 if 'href="cv.html"' not in index or "cv-en.html" not in js or 'data-es="' not in index or 'data-en="' not in index:
     fail("bilingual navigation or language content missing")
 if index.count('class="contact-profile-card') != 1:
