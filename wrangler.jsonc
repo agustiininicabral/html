@@ -1,6 +1,6 @@
 {
   "$schema": "https://developers.cloudflare.com/workers/wrangler/config-schema.json",
-  "name": "portfolio-agustin",
+  "name": "portfolio",
   "compatibility_date": "2026-10-30",
   "workers_dev": true,
   "assets": {
