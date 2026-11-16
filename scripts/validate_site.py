@@ -90,7 +90,7 @@ if '"name": "portfolio"' not in wrangler or '"workers_dev": true' not in wrangle
     fail("Wrangler must deploy dist/ as the portfolio Worker on workers.dev")
 
 for name, html in documents.items():
-    for forbidden in ("Ripio Once", "Administrativo de Auditoría", "Administrative Audit Assistant", "Abr 2025", "Abr 2026", "Oct 2023"):
+    for forbidden in ("Ripio Once", "Administrativo de Auditoría", "Administrative Audit Assistant", "Coto Centro Integra", "Abr 2025", "Abr 2026", "Oct 2023"):
         if forbidden.casefold() in html.casefold():
             fail(name + " contains outdated text: " + forbidden)
     if re.search(r"IBM[^<]{0,120}(en curso|in progress)", html, re.I):
@@ -116,7 +116,7 @@ for translated_date in ("Apr 2022 — Nov 2023", "Dec 2021 — Apr 2022", "Jan 2
     if translated_date not in index:
         fail("English portfolio employment date is missing: " + translated_date)
 
-for employer in ("Farmafe", "COTO", "Hotel Devoto", "Ravio", "Concorsistemas", "COPAGRAN"):
+for employer in ("Farmafe", "COTO Digital", "Hotel Devoto", "Ravio", "Concorsistemas", "COPAGRAN"):
     if any(employer not in html for html in documents.values()):
         fail("verified employer missing across portfolio and CVs: " + employer)
 
@@ -141,9 +141,22 @@ for html in documents.values():
 if "Credly verification URL" not in index or "Credly verification URL" not in cv_es or "Credly verification URL" not in cv_en:
     fail("optional Credly verification insertion point is missing")
 
-for employer in ("Farmafe", "COTO", "Hotel Devoto", "Ravio", "Concorsistemas", "COPAGRAN"):
+for employer in ("Farmafe", "COTO Digital", "Hotel Devoto", "Ravio", "Concorsistemas", "COPAGRAN"):
     if employer not in index or employer not in cv_es or employer not in cv_en:
         fail("experience record mismatch: " + employer)
+
+for html, required in ((index, ("Elaboré reportes de ventas con Power BI y consultas SQL", "Analicé la información de operaciones", "COTO Digital")), (cv_es, ("Elaboré reportes de ventas con Power BI y consultas SQL", "Analicé la información de operaciones", "COTO Digital")), (cv_en, ("Prepared sales reports with Power BI and SQL queries", "Analyzed operational data", "COTO Digital"))):
+    for phrase in required:
+        if phrase not in html:
+            fail("COTO Digital experience detail is missing: " + phrase)
+
+required_skills = ("SQL", "MySQL", "Power BI", "Excel", "Python", "pytest", "Playwright", "Postman", "API Testing", "FastAPI", "JavaScript", "REST APIs", "Git", "GitHub Actions")
+for skill in required_skills:
+    if skill not in index or skill not in cv_es or skill not in cv_en:
+        fail("technical skill missing across portfolio and CVs: " + skill)
+for note in ("Competencias aplicadas en experiencia laboral, formación práctica y proyectos propios.", "Skills applied through work experience, practical training and independent projects."):
+    if note not in index and note not in cv_es and note not in cv_en:
+        fail("skills context note is missing: " + note)
 
 for color in ("#F3F7F9", "#E2EDF1", "#142B3A", "#087783", "#52777F", "#9C5948", "#FF4D00"):
     if color.lower() not in css.lower():
@@ -179,7 +192,7 @@ for name, expected_lang in (("cv.html", "es-AR"), ("cv-en.html", "en")):
 
 print("PASS: source and dist files are synchronized")
 print("PASS: HTML structure, one h1, IDs, anchors, images and external links")
-print("PASS: all six employment records and dates are aligned")
+print("PASS: all six employment records, exact COTO Digital details and dates are aligned")
 print("PASS: obsolete employers, titles, dates and IBM in-progress states are rejected")
 print("PASS: six projects are ordered and their statuses are explicit")
 print("PASS: bilingual CV metadata and optional Credly slots are present")
