@@ -2,7 +2,7 @@
 
 Portfolio profesional bilingüe (español / inglés) para presentar experiencia laboral, formación, competencias y proyectos verificables de QA Automation, Data Analytics, desarrollo y automatización.
 
-Sitio: https://portfolio-agustin.agustinkbral2013.workers.dev/
+Sitio: https://portfolio.agustiincabral.workers.dev/
 
 ## Identidad visual
 
