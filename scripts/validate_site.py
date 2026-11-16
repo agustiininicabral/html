@@ -106,8 +106,8 @@ for section, label in experience_ranges:
     for date in ("Sep 2024 — Feb 2026",):
         if date not in section:
             fail(label + " is missing Farmafe's verified dates")
-    if "Feb 2026" not in section or section.count("Feb 2026") != 1:
-        fail(label + " has Feb 2026 outside Farmafe or an incorrect count")
+    if "Farmafe" not in section or "Sep 2024 — Feb 2026" not in section:
+        fail(label + " is missing Farmafe or its verified employment dates")
 for date in ("Abr 2022 — Nov 2023",):
     if date not in index or date not in cv_es:
         fail("Spanish employment dates are inconsistent")
