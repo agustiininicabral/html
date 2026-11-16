@@ -142,7 +142,7 @@ for employer in ("Farmafe", "COTO", "Hotel Devoto", "Ravio", "Concorsistemas", "
     if employer not in index or employer not in cv_es or employer not in cv_en:
         fail("experience record mismatch: " + employer)
 
-for color in ("#F3F7F9", "#E2EDF1", "#142B3A", "#087E8B", "#9CBCC1", "#C77D68", "#FF4D00"):
+for color in ("#F3F7F9", "#E2EDF1", "#142B3A", "#087783", "#52777F", "#9C5948", "#FF4D00"):
     if color.lower() not in css.lower():
         fail("visual palette token missing: " + color)
 if "prefers-reduced-motion" not in css or ":focus-visible" not in css or "class=\"skip-link\"" not in index:
