@@ -2,31 +2,36 @@
 
 Portfolio profesional bilingüe (español / inglés) para presentar experiencia laboral, formación, competencias y proyectos verificables de QA Automation, Data Analytics, desarrollo y automatización.
 
-Sitio: https://portfolio.agustiincabral.workers.dev/
+- **Sitio publicado:** https://portfolio.agustiincabral.workers.dev/
+- **Repositorio:** https://github.com/agustiininicabral/html
+- **Worker de Cloudflare:** `portfolio`
+- **Rama principal:** `master`
 
 ## Identidad visual
 
-- Azul hielo: #F3F7F9
-- Bruma: #E2EDF1
-- Azul profundo: #142B3A
-- Turquesa: #087E8B
-- Azul suave: #9CBCC1
-- Terracota suave (detalle): #C77D68
-- Naranja intenso (nombre en el Hero): #FF4D00
+- Azul hielo: `#F3F7F9`
+- Bruma: `#E2EDF1`
+- Azul profundo: `#142B3A`
+- Turquesa: `#087E8B`
+- Azul suave: `#9CBCC1`
+- Terracota suave: `#C77D68`
+- Naranja intenso (nombre en el Hero): `#FF4D00`
 
-El Hero utiliza una fotografía de Mount Fuji de Alpsdake, publicada en Wikimedia Commons bajo CC BY-SA 4.0. Se aplica un tratamiento visual tenue y frío. Crédito y licencia visibles en el pie del sitio.
+El Hero utiliza una fotografía de Mount Fuji de Alpsdake, publicada en Wikimedia Commons bajo CC BY-SA 4.0. El crédito y la licencia se muestran en el pie del sitio.
 
-La primera visita muestra una pantalla de bienvenida para elegir español o inglés. La preferencia se recuerda durante 3 horas y puede cambiarse desde el selector del encabezado.
+La primera visita permite elegir español o inglés. La preferencia se recuerda durante 3 horas y puede cambiarse desde el selector del encabezado.
 
 ## Estructura
 
-- index.html: portfolio principal bilingüe.
-- style.css: sistema visual editorial y responsive.
-- script.js: selector ES/EN, preferencia de idioma, navegación activa y progreso de lectura.
-- cv.html: CV en español, optimizado para impresión A4.
-- cv-en.html: CV en inglés, optimizado para impresión A4.
-- scripts/validate_site.py: validaciones estructurales y de contenido.
-- wrangler.jsonc: configuración de Cloudflare Workers Static Assets.
+- `index.html`: portfolio principal bilingüe.
+- `style.css`: sistema visual responsive.
+- `script.js`: selector ES/EN, preferencia de idioma, navegación activa y progreso de lectura.
+- `cv.html`: CV en español, optimizado para impresión A4.
+- `cv-en.html`: CV en inglés, optimizado para impresión A4.
+- `assets/`: recursos visuales.
+- `scripts/validate_site.py`: validaciones estructurales y de contenido.
+- `wrangler.jsonc`: configuración de Cloudflare Workers Static Assets.
+- `dist/`: copia de publicación; debe mantenerse sincronizada con los cinco archivos principales.
 
 ## Contenido
 
@@ -48,27 +53,37 @@ Los tres proyectos Excel-to-SQL usan datos sintéticos, incluyen workbooks desca
 
 ## Desarrollo y validación
 
-El sitio es estático y no requiere un framework ni un proceso de compilación. Los archivos fuente editables están en la raíz y la carpeta dist/ contiene una copia sincronizada lista para el despliegue directo desde Cloudflare.
+El sitio es estático: no requiere framework ni proceso de compilación. Los archivos fuente editables están en la raíz y `dist/` contiene la copia sincronizada que consume Cloudflare Workers Static Assets.
 
-Para actualizar la carpeta publicada después de editar los archivos fuente:
+Después de modificar archivos fuente, sincronizá la copia publicada:
 
-    mkdir -p dist
-    cp index.html style.css script.js cv.html cv-en.html dist/
+```bash
+cp index.html style.css script.js cv.html cv-en.html dist/
+```
 
 Validación local:
 
-    python scripts/validate_site.py
-    node --check script.js
+```bash
+python scripts/validate_site.py
+node --check script.js
+```
 
-La validación comprueba que los cinco archivos de dist/ existan y coincidan byte a byte con sus fuentes.
+El validador comprueba que los cinco archivos de `dist/` existan y coincidan byte a byte con sus fuentes, además de revisar estructura HTML, enlaces internos, recursos locales, fechas laborales, proyectos, competencias, accesibilidad básica y configuración de despliegue.
 
 ## Despliegue
 
-El proyecto se publica como Static Assets en el Worker portfolio-agustin.
+La configuración `wrangler.jsonc` define el nombre real del Worker como **`portfolio`** y publica el contenido de `dist/`. El sitio público es:
 
-El workflow de GitHub Actions valida el contenido y la sintaxis JavaScript en cada PR. En pushes a master y ejecuciones manuales, despliega mediante Wrangler 4 únicamente cuando están configurados los secretos CLOUDFLARE_API_TOKEN y CLOUDFLARE_ACCOUNT_ID. Si faltan, la validación termina correctamente y el despliegue queda omitido con una notificación; no se informa falsamente como desplegado.
+https://portfolio.agustiincabral.workers.dev/
 
-El repositorio es agustiininicabral/html y el Worker de destino es portfolio-agustin. La configuración wrangler.jsonc conserva el nombre del Worker y apunta a dist/. La carpeta dist/ está versionada para que una compilación Git-connected de Cloudflare pueda ejecutar npx wrangler deploy sin depender de un paso previo de generación.
+El workflow de GitHub Actions:
+
+- Valida la estructura y el contenido en cada pull request hacia `master`.
+- Valida y comprueba la sintaxis de JavaScript en los pushes a `master`.
+- En pushes a `master` y ejecuciones manuales, despliega con Wrangler 4 solo si están configurados los secretos `CLOUDFLARE_API_TOKEN` y `CLOUDFLARE_ACCOUNT_ID`.
+- Si faltan credenciales, la validación puede finalizar correctamente, pero el despliegue se omite y se informa mediante una notificación.
+
+Un push a `master` puede activar el workflow y, si los secretos están disponibles, publicar los cambios en producción. No se debe considerar un cambio desplegado hasta comprobar el resultado de la ejecución y el sitio público.
 
 ## Límites y transparencia
 
